@@ -3,8 +3,13 @@ class PopulateUsers < ActiveRecord::Migration
     user = User.new
     user.login = 'test'
     user.collectedPoints = 10
+    user.email = 'aaa@bbb.com'
+    user.password = "aaabbb"
     user.role = "PLAYER"
-    user.save()
+    
+    if not user.save() 
+      say user.errors
+    end
   end
 
   def down

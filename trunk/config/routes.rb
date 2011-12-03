@@ -1,5 +1,7 @@
 TheTask::Application.routes.draw do
-  resources :actions
+  devise_for :users
+
+  resources :player_challenges
 
   resources :plays
 

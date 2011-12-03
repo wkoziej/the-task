@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :collectedPoints
       t.string :login
       t.string :role
-
       t.timestamps
     end
   end

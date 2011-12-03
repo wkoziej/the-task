@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Status:</b>
+  <%= @player_challenge.status %>
+</p>
+
+<p>
+  <b>Play:</b>
+  <%= @player_challenge.play %>
+</p>
+
+<p>
+  <b>Challenge:</b>
+  <%= @player_challenge.challenge %>
+</p>
+
+
+<%= link_to 'Edit', edit_player_challenge_path(@player_challenge) %> |
+<%= link_to 'Back', player_challenges_path %>

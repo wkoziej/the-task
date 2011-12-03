@@ -1,7 +1,7 @@
 class CreatePlays < ActiveRecord::Migration
   def change
     create_table :plays do |t|
-      t.timestamp :statedAt
+      t.timestamp :startedAt
       t.timestamp :finishedAt
       t.string :status
       t.references :game
