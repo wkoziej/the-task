@@ -1,0 +1,31 @@
+<h1>Listing plays</h1>
+
+<table>
+  <tr>
+    <th>Statedat</th>
+    <th>Finishedat</th>
+    <th>Status</th>
+    <th>Game</th>
+    <th>Player</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @plays.each do |play| %>
+  <tr>
+    <td><%= play.statedAt %></td>
+    <td><%= play.finishedAt %></td>
+    <td><%= play.status %></td>
+    <td><%= play.game %></td>
+    <td><%= play.player %></td>
+    <td><%= link_to 'Show', play %></td>
+    <td><%= link_to 'Edit', edit_play_path(play) %></td>
+    <td><%= link_to 'Destroy', play, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Play', new_play_path %>

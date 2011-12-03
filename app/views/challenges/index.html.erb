@@ -1,0 +1,29 @@
+<h1>Listing challenges</h1>
+
+<table>
+  <tr>
+    <th>Points</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Game</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @challenges.each do |challenge| %>
+  <tr>
+    <td><%= challenge.points %></td>
+    <td><%= challenge.title %></td>
+    <td><%= challenge.description %></td>
+    <td><%= challenge.game %></td>
+    <td><%= link_to 'Show', challenge %></td>
+    <td><%= link_to 'Edit', edit_challenge_path(challenge) %></td>
+    <td><%= link_to 'Destroy', challenge, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Challenge', new_challenge_path %>
