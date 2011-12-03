@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  collectedPoints: 1
+  login: MyString
+  role: MyString
+
+two:
+  collectedPoints: 1
+  login: MyString
+  role: MyString

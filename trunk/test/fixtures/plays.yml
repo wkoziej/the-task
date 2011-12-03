@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  statedAt: 2011-12-03 17:38:19
+  finishedAt: 2011-12-03 17:38:19
+  status: MyString
+  game: 
+  player: 
+
+two:
+  statedAt: 2011-12-03 17:38:19
+  finishedAt: 2011-12-03 17:38:19
+  status: MyString
+  game: 
+  player: 
