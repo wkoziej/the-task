@@ -1,0 +1,27 @@
+<h1>Listing player_challenges</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>Play</th>
+    <th>Challenge</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @player_challenges.each do |player_challenge| %>
+  <tr>
+    <td><%= player_challenge.status %></td>
+    <td><%= player_challenge.play %></td>
+    <td><%= player_challenge.challenge %></td>
+    <td><%= link_to 'Show', player_challenge %></td>
+    <td><%= link_to 'Edit', edit_player_challenge_path(player_challenge) %></td>
+    <td><%= link_to 'Destroy', player_challenge, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Player challenge', new_player_challenge_path %>

@@ -41,7 +41,7 @@ class PlaysController < ApplicationController
   # POST /plays.json
   def create
     @play = Play.new(params[:play])
-
+    @play.startedAt = Time.now
     respond_to do |format|
       if @play.save
         format.html { redirect_to @play, :notice => 'Play was successfully created.' }

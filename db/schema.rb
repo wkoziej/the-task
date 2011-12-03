@@ -10,18 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203164918) do
-
-  create_table "actions", :force => true do |t|
-    t.string   "status"
-    t.integer  "play_id"
-    t.integer  "challenge_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "actions", ["challenge_id"], :name => "index_actions_on_challenge_id"
-  add_index "actions", ["play_id"], :name => "index_actions_on_play_id"
+ActiveRecord::Schema.define(:version => 20111203215108) do
 
   create_table "challenges", :force => true do |t|
     t.integer  "points"
@@ -46,8 +35,19 @@ ActiveRecord::Schema.define(:version => 20111203164918) do
 
   add_index "games", ["creator_id"], :name => "index_games_on_creator_id"
 
+  create_table "player_challenges", :force => true do |t|
+    t.string   "status"
+    t.integer  "play_id"
+    t.integer  "challenge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "player_challenges", ["challenge_id"], :name => "index_player_challenges_on_challenge_id"
+  add_index "player_challenges", ["play_id"], :name => "index_player_challenges_on_play_id"
+
   create_table "plays", :force => true do |t|
-    t.datetime "statedAt"
+    t.datetime "startedAt"
     t.datetime "finishedAt"
     t.string   "status"
     t.integer  "game_id"
@@ -65,6 +65,19 @@ ActiveRecord::Schema.define(:version => 20111203164918) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
