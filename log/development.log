@@ -15887,3 +15887,618 @@ ActionView::Template::Error (undefined local variable or method `new_reward_path
 Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
 Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
 Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (227.8ms)
+
+
+Started GET "/rewards/1" for 127.0.0.1 at Thu Dec 08 10:04:39 +0100 2011
+  Processing by RewardsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mReward Load (0.3ms)[0m  SELECT "rewards".* FROM "rewards" WHERE "rewards"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered rewards/show.html.erb within layouts/application (116.4ms)
+Completed 200 OK in 675ms (Views: 619.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /challenges.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /games.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /plays.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /rewards.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /user.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /users.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /jquery.js - 304 Not Modified (83ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /challenges.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /games.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:41 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:42 +0100 2011
+Served asset /plays.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:42 +0100 2011
+Served asset /rewards.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:42 +0100 2011
+Served asset /user.js - 304 Not Modified (12ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:42 +0100 2011
+Served asset /users.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:42 +0100 2011
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/system/images/1/medium/IMG_0211.JPG?1323328747" for 127.0.0.1 at Thu Dec 08 10:04:42 +0100 2011
+
+ActionController::RoutingError (No route matches [GET] "/system/images/1/medium/IMG_0211.JPG"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/system/images/1/thumb/IMG_0211.JPG?1323328747" for 127.0.0.1 at Thu Dec 08 10:04:42 +0100 2011
+
+ActionController::RoutingError (No route matches [GET] "/system/images/1/thumb/IMG_0211.JPG"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started PUT "/rewards/1" for 127.0.0.1 at Thu Dec 08 10:04:53 +0100 2011
+  Processing by RewardsController#update as HTML
+  Parameters: {"commit"=>"Update Reward", "reward"=>{"sponsor_id"=>"", "expirationDate(2i)"=>"12", "expirationDate(3i)"=>"8", "expirationDate(4i)"=>"07", "expirationDate(5i)"=>"13", "creator_id"=>"", "userLimit"=>"2", "description"=>"asdfasdf dd", "priceInPoints"=>"12", "image"=>#<ActionDispatch::Http::UploadedFile:0x103304fb8 @content_type="image/jpeg", @tempfile=#<File:/var/folders/SE/SE4QzaLBGmCAlz4EmnxRA++++TI/-Tmp-/RackMultipart20111208-88597-2dr49s-0>, @original_filename="IMG_0211.JPG", @headers="Content-Disposition: form-data; name=\"reward[image]\"; filename=\"IMG_0211.JPG\"\r\nContent-Type: image/jpeg\r\n">, "expirationDate(1i)"=>"2011"}, "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo=", "utf8"=>"✓", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mReward Load (0.4ms)[0m  SELECT "rewards".* FROM "rewards" WHERE "rewards"."id" = ? LIMIT 1  [["id", "1"]]
+[32mCommand[0m :: identify -format %wx%h '/var/folders/SE/SE4QzaLBGmCAlz4EmnxRA++++TI/-Tmp-/stream20111208-88597-1efx3s1-0.JPG[0]'
+[32mCommand[0m :: convert '/var/folders/SE/SE4QzaLBGmCAlz4EmnxRA++++TI/-Tmp-/stream20111208-88597-1efx3s1-0.JPG[0]' -resize "100x100>" '/var/folders/SE/SE4QzaLBGmCAlz4EmnxRA++++TI/-Tmp-/stream20111208-88597-1efx3s1-020111208-88597-1flp9an-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/SE/SE4QzaLBGmCAlz4EmnxRA++++TI/-Tmp-/stream20111208-88597-1efx3s1-0.JPG[0]'
+[32mCommand[0m :: convert '/var/folders/SE/SE4QzaLBGmCAlz4EmnxRA++++TI/-Tmp-/stream20111208-88597-1efx3s1-0.JPG[0]' -resize "300x300>" '/var/folders/SE/SE4QzaLBGmCAlz4EmnxRA++++TI/-Tmp-/stream20111208-88597-1efx3s1-020111208-88597-g3x6nf-0'
+  [1m[36m (0.6ms)[0m  [1mUPDATE "rewards" SET "description" = 'asdfasdf dd', "image_updated_at" = '2011-12-08 09:04:53.661802', "updated_at" = '2011-12-08 09:04:55.111795' WHERE "rewards"."id" = 1[0m
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/wokoziej/devel/the-task/public/system/images/1/original/IMG_0211.JPG
+[paperclip] saving /Users/wokoziej/devel/the-task/public/system/images/1/thumb/IMG_0211.JPG
+[paperclip] saving /Users/wokoziej/devel/the-task/public/system/images/1/original/IMG_0211.JPG
+[paperclip] saving /Users/wokoziej/devel/the-task/public/system/images/1/medium/IMG_0211.JPG
+Redirected to http://0.0.0.0:3000/rewards/1
+Completed 302 Found in 1814ms
+
+
+Started GET "/rewards/1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+  Processing by RewardsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mReward Load (0.3ms)[0m  [1mSELECT "rewards".* FROM "rewards" WHERE "rewards"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered rewards/show.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 137ms (Views: 67.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:55 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Thu Dec 08 10:04:56 +0100 2011
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/rewards" for 127.0.0.1 at Thu Dec 08 10:27:16 +0100 2011
+  Processing by RewardsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mReward Load (0.3ms)[0m  [1mSELECT "rewards".* FROM "rewards" [0m
+Rendered rewards/index.html.erb within layouts/application (22.7ms)
+Completed 200 OK in 207ms (Views: 63.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:17 +0100 2011
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/rewards/1" for 127.0.0.1 at Thu Dec 08 10:27:18 +0100 2011
+  Processing by RewardsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mReward Load (0.3ms)[0m  [1mSELECT "rewards".* FROM "rewards" WHERE "rewards"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered rewards/show.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 244ms (Views: 63.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Thu Dec 08 10:27:19 +0100 2011
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/rewards" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+  Processing by RewardsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mReward Load (0.3ms)[0m  [1mSELECT "rewards".* FROM "rewards" [0m
+Rendered rewards/index.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 161ms (Views: 102.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:56 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /plays.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Thu Dec 08 15:24:57 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/rewards" for 127.0.0.1 at Thu Dec 08 15:26:25 +0100 2011
+  Processing by RewardsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mReward Load (0.3ms)[0m  [1mSELECT "rewards".* FROM "rewards" [0m
+Rendered rewards/index.html.erb within layouts/application (130.6ms)
+Completed 500 Internal Server Error in 195ms
+
+ActionView::Template::Error (undefined method `image' for nil:NilClass):
+    22:     <td><%= reward.description %></td>
+    23:     <td><%= reward.sponsor %></td>
+    24:     <td><%= reward.creator %></td>
+    25:     <td><%= image_tag @reward.image.url(:thumb) %> </td>
+    26:     <td><%= link_to 'Show', reward %></td>
+    27:     <td><%= link_to 'Edit', edit_reward_path(reward) %></td>
+    28:     <td><%= link_to 'Destroy', reward, :confirm => 'Are you sure?', :method => :delete %></td>
+  app/views/rewards/index.html.erb:25:in `_app_views_rewards_index_html_erb___730069237_2171857060'
+  app/views/rewards/index.html.erb:17:in `each'
+  app/views/rewards/index.html.erb:17:in `_app_views_rewards_index_html_erb___730069237_2171857060'
+  app/controllers/rewards_controller.rb:7:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.1ms)
+
+
+Started GET "/rewards" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+  Processing by RewardsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mReward Load (0.3ms)[0m  [1mSELECT "rewards".* FROM "rewards" [0m
+Rendered rewards/index.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 216ms (Views: 56.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /challenges.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Thu Dec 08 15:26:42 +0100 2011
+Served asset /application.js - 304 Not Modified (1ms)
