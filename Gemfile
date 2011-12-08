@@ -32,4 +32,4 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 
 gem 'devise', '1.5.2'
-
+gem "paperclip", "~> 2.4"

@@ -1,4 +1,6 @@
 TheTask::Application.routes.draw do
+  resources :rewards
+
   get "dashboard/index"
 
   devise_for :users

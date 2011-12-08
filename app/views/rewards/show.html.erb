@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Priceinpoints:</b>
+  <%= @reward.priceInPoints %>
+</p>
+
+<p>
+  <b>Userlimit:</b>
+  <%= @reward.userLimit %>
+</p>
+
+<p>
+  <b>Expirationdate:</b>
+  <%= @reward.expirationDate %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @reward.description %>
+</p>
+
+<p>
+  <b>Sponsor:</b>
+  <%= @reward.sponsor %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <%= @reward.creator %>
+</p>
+
+
+
+<%= image_tag @reward.image.url %>
+<%= image_tag @reward.image.url(:medium) %>
+<%= image_tag @reward.image.url(:thumb) %>
+
+<%= link_to 'Edit', edit_reward_path(@reward) %> |
+<%= link_to 'Back', rewards_path %>
