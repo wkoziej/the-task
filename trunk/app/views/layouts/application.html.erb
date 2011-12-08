@@ -8,7 +8,19 @@
 </head>
 <body>
 
-<%= yield %>
+  <div id="top_menu">      
+    <%= link_to("Logout", destroy_user_session_path, :method => :delete) %>
+  </div>
+
+  <div id="menu">
+    <center>
+      <%= link_to 'games', games_path %> | <%= link_to 'plays', plays_path %> | <%= link_to 'points', user_path(current_user) if current_user %> 
+    </center>
+  </div>
+
+  <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
+
+<!--<%= yield %>-->
 
 </body>
 </html>

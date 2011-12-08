@@ -1,0 +1,33 @@
+<%= form_for(@reward_collection) do |f| %>
+  <% if @reward_collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reward_collection.errors.count, "error") %> prohibited this reward_collection from being saved:</h2>
+
+      <ul>
+      <% @reward_collection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :collectDate %><br />
+    <%= f.datetime_select :collectDate %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :winner_id %><br />
+    <%= f.text_field :winner_id %>
+  </div>
+  <div class="field">
+    <%= f.label :reward_id %><br />
+    <%= f.text_field :reward_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

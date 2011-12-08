@@ -1,0 +1,6 @@
+
+      <table>
+      <% user_marks.each do |mark| %>
+      <tr><td><%= mark.pointKind.name %></td> <td>:</td><td><%= mark.pointSum %>  </td></tr>
+      <% end %>
+      </table>

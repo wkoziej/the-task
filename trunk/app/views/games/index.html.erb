@@ -17,13 +17,11 @@
     <td><%= game.title %></td>
     <td><%= game.description %></td>
     <td><%= game.status %></td>
-    <td><%= game.creator %></td>
+    <td><%= game.creator.login %></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?',
     :method => :delete %></td>
-    <td><%= link_to 'Play', plays_path(:play => {:game_id => game.id, :player_id => game.creator } ), :confirm => 'Are you want to play?',
-    :method => :post%></td>
     <td><%= link_to 'Play', plays_path(:play => {:player_id => current_user, :game_id => game.id}), :confirm => 'Play?', :method => :post %></td>
   </tr>
 <% end %>

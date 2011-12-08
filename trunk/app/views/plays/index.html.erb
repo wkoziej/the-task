@@ -17,8 +17,8 @@
     <td><%= play.startedAt %></td>
     <td><%= play.finishedAt %></td>
     <td><%= play.status %></td>
-    <td><%= play.game %></td>
-    <td><%= play.player %></td>
+    <td><%= play.game.title %></td>
+    <td><%= play.player.login %></td>
     <td><%= link_to 'Show', play %></td>
     <td><%= link_to 'Edit', edit_play_path(play) %></td>
     <td><%= link_to 'Destroy', play, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -27,5 +27,6 @@
 </table>
 
 <br />
-
+<!--
 <%= link_to 'New Play', new_play_path %>
+-->

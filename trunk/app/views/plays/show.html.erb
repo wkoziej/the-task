@@ -17,12 +17,18 @@
 
 <p>
   <b>Game:</b>
-  <%= @play.game %>
+  <%= @play.game.title %>
 </p>
 
 <p>
   <b>Player:</b>
-  <%= @play.player %>
+  <%= @play.player.login %>
+</p>
+
+<hr />
+<p>
+  <b>Challenges:</b>
+  <%= render @play.player_challenges %>
 </p>
 
 

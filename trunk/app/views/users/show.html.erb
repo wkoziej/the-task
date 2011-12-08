@@ -2,7 +2,7 @@
 
 <p>
   <b>Collectedpoints:</b>
-  <%= @user.collectedPoints %>
+  <%= render :partial => "user_marks", :locals => { :user_marks => @user.marks} %>
 </p>
 
 <p>
