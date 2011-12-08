@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203215108) do
+ActiveRecord::Schema.define(:version => 20111208065943) do
+
+  create_table "actions", :force => true do |t|
+    t.string   "status"
+    t.integer  "play_id"
+    t.integer  "challenge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "actions", ["challenge_id"], :name => "index_actions_on_challenge_id"
+  add_index "actions", ["play_id"], :name => "index_actions_on_play_id"
 
   create_table "challenges", :force => true do |t|
     t.integer  "points"
@@ -47,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20111203215108) do
   add_index "player_challenges", ["play_id"], :name => "index_player_challenges_on_play_id"
 
   create_table "plays", :force => true do |t|
-    t.datetime "startedAt"
+    t.datetime "statedAt"
     t.datetime "finishedAt"
     t.string   "status"
     t.integer  "game_id"
@@ -58,6 +69,24 @@ ActiveRecord::Schema.define(:version => 20111203215108) do
 
   add_index "plays", ["game_id"], :name => "index_plays_on_game_id"
   add_index "plays", ["player_id"], :name => "index_plays_on_player_id"
+
+  create_table "rewards", :force => true do |t|
+    t.integer  "priceInPoints"
+    t.integer  "userLimit"
+    t.datetime "expirationDate"
+    t.text     "description"
+    t.integer  "sponsor_id"
+    t.integer  "creator_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "imgae_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rewards", ["creator_id"], :name => "index_rewards_on_creator_id"
+  add_index "rewards", ["sponsor_id"], :name => "index_rewards_on_sponsor_id"
 
   create_table "users", :force => true do |t|
     t.integer  "collectedPoints"

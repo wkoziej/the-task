@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :games
   has_many :plays
+  # has_many :rewards, :through => :users, :foreign_key => ""
 end

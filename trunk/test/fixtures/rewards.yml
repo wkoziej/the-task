@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  priceInPoints: 1
+  userLimit: 1
+  expirationDate: 2011-12-08 07:59:43
+  description: MyText
+  sponsor: 
+  creator: 
+
+two:
+  priceInPoints: 1
+  userLimit: 1
+  expirationDate: 2011-12-08 07:59:43
+  description: MyText
+  sponsor: 
+  creator: 
