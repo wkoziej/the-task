@@ -12,7 +12,9 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.collectedPoints %></td>
+    <td>
+      <%= render :partial => "user_marks", :locals => { :user_marks => user.marks} %>
+    </td>
     <td><%= user.login %></td>
     <td><%= user.role %></td>
     <td><%= link_to 'Show', user %></td>

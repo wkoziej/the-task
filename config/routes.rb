@@ -1,4 +1,6 @@
 TheTask::Application.routes.draw do
+  resources :reward_collections
+
   resources :rewards
 
   get "dashboard/index"

@@ -5,3 +5,7 @@
  *= require_self
  *= require_tree . 
 */
+#top_menu {
+    position:absolute;
+    right:50px;
+}

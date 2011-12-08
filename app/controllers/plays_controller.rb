@@ -14,7 +14,6 @@ class PlaysController < ApplicationController
   # GET /plays/1.json
   def show
     @play = Play.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @play }
@@ -42,6 +41,14 @@ class PlaysController < ApplicationController
   def create
     @play = Play.new(params[:play])
     @play.startedAt = Time.now
+
+    @play.game.challenges.each do |challenge|
+      playerChallenge = PlayerChallenge.new
+      playerChallenge.challenge = challenge
+      playerChallenge.play = @play
+      @play.player_challenges << playerChallenge  
+    end
+
     respond_to do |format|
       if @play.save
         format.html { redirect_to @play, :notice => 'Play was successfully created.' }

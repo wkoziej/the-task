@@ -10,18 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111208065943) do
-
-  create_table "actions", :force => true do |t|
-    t.string   "status"
-    t.integer  "play_id"
-    t.integer  "challenge_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "actions", ["challenge_id"], :name => "index_actions_on_challenge_id"
-  add_index "actions", ["play_id"], :name => "index_actions_on_play_id"
+ActiveRecord::Schema.define(:version => 20111208200634) do
 
   create_table "challenges", :force => true do |t|
     t.integer  "points"
@@ -46,6 +35,14 @@ ActiveRecord::Schema.define(:version => 20111208065943) do
 
   add_index "games", ["creator_id"], :name => "index_games_on_creator_id"
 
+  create_table "marks", :force => true do |t|
+    t.integer  "pointSum"
+    t.integer  "pointKind_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "player_challenges", :force => true do |t|
     t.string   "status"
     t.integer  "play_id"
@@ -58,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20111208065943) do
   add_index "player_challenges", ["play_id"], :name => "index_player_challenges_on_play_id"
 
   create_table "plays", :force => true do |t|
-    t.datetime "statedAt"
+    t.datetime "startedAt"
     t.datetime "finishedAt"
     t.string   "status"
     t.integer  "game_id"
@@ -69,6 +66,24 @@ ActiveRecord::Schema.define(:version => 20111208065943) do
 
   add_index "plays", ["game_id"], :name => "index_plays_on_game_id"
   add_index "plays", ["player_id"], :name => "index_plays_on_player_id"
+
+  create_table "point_kinds", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reward_collections", :force => true do |t|
+    t.datetime "collectDate"
+    t.string   "status"
+    t.integer  "winner_id"
+    t.integer  "reward_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reward_collections", ["reward_id"], :name => "index_reward_collections_on_reward_id"
+  add_index "reward_collections", ["winner_id"], :name => "index_reward_collections_on_winner_id"
 
   create_table "rewards", :force => true do |t|
     t.integer  "priceInPoints"
@@ -89,7 +104,6 @@ ActiveRecord::Schema.define(:version => 20111208065943) do
   add_index "rewards", ["sponsor_id"], :name => "index_rewards_on_sponsor_id"
 
   create_table "users", :force => true do |t|
-    t.integer  "collectedPoints"
     t.string   "login"
     t.string   "role"
     t.datetime "created_at"
