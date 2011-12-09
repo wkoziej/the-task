@@ -5,7 +5,6 @@ class PopulateGames < ActiveRecord::Migration
     game.creator = User.find(1)
     game.title = 'Collect two codes!'
     game.description = 'Visit interesting places. Collect two codes.'
-    game.status = "ACTIVE"
     game.save()
   end
 

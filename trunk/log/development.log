@@ -30540,3 +30540,2012 @@ Started GET "/player_challenges/1.json" for 127.0.0.1 at Thu Dec 08 23:07:32 +01
   [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
   [1m[36mPlayerChallenge Load (0.3ms)[0m  [1mSELECT "player_challenges".* FROM "player_challenges" WHERE "player_challenges"."id" = ? LIMIT 1[0m  [["id", "1"]]
 Completed 200 OK in 153ms (Views: 9.1ms | ActiveRecord: 1.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+Migrating to CreateGames (20111203151018)
+Migrating to CreateChallenges (20111203154126)
+Migrating to CreatePlays (20111203163819)
+Migrating to CreatePlayerChallenges (20111203205813)
+Migrating to AddDeviseToUsers (20111203213618)
+Migrating to PopulateUsers (20111203214629)
+Migrating to PopulateGames (20111203214918)
+Migrating to PopulateChallenges (20111203215108)
+Migrating to CreateRewards (20111208065943)
+Migrating to CreatePointKinds (20111208184954)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "point_kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208184954')
+Migrating to CreateMarks (20111208185509)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "marks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pointSum" integer, "pointKind_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208185509')
+Migrating to PopulatePointKinds (20111208191237)
+  [1m[36mSQL (85.2ms)[0m  [1mINSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00], ["name", "PUBLIC"], ["updated_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00], ["name", "SPONSORED_BY_A"], ["updated_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208191237')[0m
+Migrating to PopulateMarks (20111208191449)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPointKind Load (0.2ms)[0m  [1mSELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00], ["pointKind_id", 1], ["pointSum", 110], ["updated_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00], ["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPointKind Load (0.1ms)[0m  SELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00], ["pointKind_id", 2], ["pointSum", 10], ["updated_at", Fri, 09 Dec 2011 06:42:34 UTC +00:00], ["user_id", 1]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208191449')
+Migrating to CreateRewardCollections (20111208200634)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "reward_collections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "collectDate" datetime, "status" varchar(255), "winner_id" integer, "reward_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("reward_collections")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_reward_collections_on_winner_id" ON "reward_collections" ("winner_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("reward_collections")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_reward_collections_on_winner_id')[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_reward_collections_on_reward_id" ON "reward_collections" ("reward_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208200634')[0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("actions")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_actions_on_challenge_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_actions_on_play_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_challenges_on_game_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_games_on_creator_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("marks")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_challenge_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_player_challenges_on_play_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_player_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_plays_on_game_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("point_kinds")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_reward_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_reward_collections_on_winner_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_rewards_on_creator_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_rewards_on_sponsor_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 07:47:50 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mGame Load (0.3ms)[0m  SELECT "games".* FROM "games" 
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered games/index.html.erb within layouts/application (135.2ms)
+Completed 200 OK in 431ms (Views: 368.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /challenges.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /games.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /plays.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /rewards.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /user.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /users.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /jquery.js - 304 Not Modified (37ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /challenges.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /games.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /plays.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /rewards.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /user.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /users.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 07:47:51 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started POST "/plays?play%5Bgame_id%5D=1&play%5Bplayer_id%5D=2" for 127.0.0.1 at Fri Dec 09 07:47:54 +0100 2011
+  Processing by PlaysController#create as HTML
+  Parameters: {"play"=>{"player_id"=>"2", "game_id"=>"1"}, "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 500 Internal Server Error in 160ms
+
+NoMethodError (undefined method `startedAt=' for #<Play:0x10333f258>):
+  app/controllers/plays_controller.rb:43:in `create'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.4ms)
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "role" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151009')[0m
+Migrating to CreateGames (20111203151018)
+  [1m[35m (0.7ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "status" varchar(255), "creator_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.3ms)[0m  CREATE INDEX "index_games_on_creator_id" ON "games" ("creator_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151018')[0m
+Migrating to CreateChallenges (20111203154126)
+  [1m[35m (0.6ms)[0m  CREATE TABLE "challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "points" integer, "title" varchar(255), "description" text, "game_id" integer, "status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_challenges_on_game_id" ON "challenges" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203154126')[0m
+Migrating to CreatePlays (20111203163819)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "plays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "started_at" datetime, "finished_at" datetime, "status" varchar(255), "game_id" integer, "player_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_plays_on_game_id" ON "plays" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_game_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_plays_on_player_id" ON "plays" ("player_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203163819')
+Migrating to CreatePlayerChallenges (20111203205813)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "player_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "play_id" integer, "challenge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_player_challenges_on_play_id" ON "player_challenges" ("play_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_play_id')[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_player_challenges_on_challenge_id" ON "player_challenges" ("challenge_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203205813')[0m
+Migrating to AddDeviseToUsers (20111203213618)
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(128) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203213618')[0m
+Migrating to PopulateUsers (20111203214629)
+  [1m[35m (0.2ms)[0m  SELECT 1 FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1
+  [1m[36mSQL (4.9ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "login", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:50:47 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "aaa@bbb.com"], ["encrypted_password", "$2a$10$iPTQpBeul8rq06kMzgNueutRO2f9x1E/FjVq/Wo3xPuZKcICVJ8.m"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["login", "test"], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["role", "PLAYER"], ["sign_in_count", 0], ["updated_at", Fri, 09 Dec 2011 06:50:47 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203214629')
+Migrating to PopulateGames (20111203214918)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "games" ("created_at", "creator_id", "description", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["creator_id", 1], ["description", "Visit interesting places. Collect two codes."], ["status", "ACTIVE"], ["title", "Collect two codes!"], ["updated_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203214918')[0m
+Migrating to PopulateChallenges (20111203215108)
+  [1m[35mGame Load (0.4ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "challenges" ("created_at", "description", "game_id", "points", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["description", "Ask barman for code"], ["game_id", 1], ["points", 5], ["status", "ACTIVE"], ["title", "Capture Code in XCaffee"], ["updated_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00]]
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "challenges" ("created_at", "description", "game_id", "points", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["description", "Order one beer and ask for code"], ["game_id", 1], ["points", 10], ["status", "ACTIVE"], ["title", "Order beer in 17 Pub :)"], ["updated_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203215108')
+Migrating to CreateRewards (20111208065943)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "rewards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "priceInPoints" integer, "userLimit" integer, "expirationDate" datetime, "description" text, "sponsor_id" integer, "creator_id" integer, "image_file_name" varchar(255), "image_content_type" varchar(255), "imgae_file_size" integer, "image_updated_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_rewards_on_sponsor_id" ON "rewards" ("sponsor_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_rewards_on_sponsor_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_rewards_on_creator_id" ON "rewards" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208065943')[0m
+Migrating to CreatePointKinds (20111208184954)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "point_kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208184954')[0m
+Migrating to CreateMarks (20111208185509)
+  [1m[35m (0.7ms)[0m  CREATE TABLE "marks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pointSum" integer, "pointKind_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208185509')[0m
+Migrating to PopulatePointKinds (20111208191237)
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["name", "PUBLIC"], ["updated_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["name", "SPONSORED_BY_A"], ["updated_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208191237')
+Migrating to PopulateMarks (20111208191449)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPointKind Load (0.2ms)[0m  SELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["pointKind_id", 1], ["pointSum", 110], ["updated_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["user_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPointKind Load (0.1ms)[0m  [1mSELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["pointKind_id", 2], ["pointSum", 10], ["updated_at", Fri, 09 Dec 2011 06:50:48 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208191449')[0m
+Migrating to CreateRewardCollections (20111208200634)
+  [1m[35m (0.7ms)[0m  CREATE TABLE "reward_collections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "collectDate" datetime, "status" varchar(255), "winner_id" integer, "reward_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_reward_collections_on_winner_id" ON "reward_collections" ("winner_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_winner_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_reward_collections_on_reward_id" ON "reward_collections" ("reward_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208200634')
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_challenges_on_game_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_games_on_creator_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("marks")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_challenge_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_player_challenges_on_play_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_player_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_plays_on_game_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("point_kinds")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_reward_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_reward_collections_on_winner_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_rewards_on_creator_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_rewards_on_sponsor_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 07:50:57 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 401 Unauthorized in 127ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered /usr/local/lib/ruby/gems/1.8/gems/devise-1.5.2/app/views/devise/shared/_links.erb (3.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/devise-1.5.2/app/views/devise/sessions/new.html.erb within layouts/application (48.4ms)
+Completed 200 OK in 229ms (Views: 171.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 07:50:58 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Fri Dec 09 07:51:01 +0100 2011
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo=", "utf8"=>"✓", "user"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "email"=>"aaa@bbb.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2011-12-09 06:51:01.924463', "current_sign_in_at" = '2011-12-09 06:51:01.924463', "current_sign_in_ip" = '127.0.0.1', "updated_at" = '2011-12-09 06:51:01.925709', "last_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1 WHERE "users"."id" = 1
+Redirected to http://0.0.0.0:3000/games
+Completed 302 Found in 592ms
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered games/index.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 208ms (Views: 52.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /rewards.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (105ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 07:51:02 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started POST "/plays?play%5Bgame_id%5D=1&play%5Bplayer_id%5D=1" for 127.0.0.1 at Fri Dec 09 07:51:05 +0100 2011
+  Processing by PlaysController#create as HTML
+  Parameters: {"play"=>{"player_id"=>"1", "game_id"=>"1"}, "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 167ms
+
+NoMethodError (undefined method `startedAt=' for #<Play:0x10322bfd8>):
+  app/controllers/plays_controller.rb:43:in `create'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.7ms)
+
+
+Started POST "/plays?play%5Bgame_id%5D=1&play%5Bplayer_id%5D=1" for 127.0.0.1 at Fri Dec 09 07:52:23 +0100 2011
+  Processing by PlaysController#create as HTML
+  Parameters: {"play"=>{"player_id"=>"1", "game_id"=>"1"}, "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo="}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 55ms
+
+NoMethodError (undefined method `startedAt=' for #<Play:0x102cf8b60>):
+  app/controllers/plays_controller.rb:43:in `create'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
+
+
+Started POST "/plays?play%5Bgame_id%5D=1&play%5Bplayer_id%5D=1" for 127.0.0.1 at Fri Dec 09 07:52:30 +0100 2011
+  Processing by PlaysController#create as HTML
+  Parameters: {"play"=>{"player_id"=>"1", "game_id"=>"1"}, "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 160ms
+
+NoMethodError (undefined method `startedAt=' for #<Play:0x102ea8230>):
+  app/controllers/plays_controller.rb:43:in `create'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.1ms)
+
+
+Started POST "/plays?play%5Bgame_id%5D=1&play%5Bplayer_id%5D=1" for 127.0.0.1 at Fri Dec 09 07:52:58 +0100 2011
+  Processing by PlaysController#create as HTML
+  Parameters: {"play"=>{"player_id"=>"1", "game_id"=>"1"}, "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 1 LIMIT 1
+  [1m[36mChallenge Load (0.2ms)[0m  [1mSELECT "challenges".* FROM "challenges" WHERE "challenges"."game_id" = 1[0m
+  [1m[35mSQL (16.7ms)[0m  INSERT INTO "plays" ("created_at", "finished_at", "game_id", "player_id", "started_at", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:52:59 UTC +00:00], ["finished_at", nil], ["game_id", 1], ["player_id", 1], ["started_at", Fri, 09 Dec 2011 06:52:58 UTC +00:00], ["status", nil], ["updated_at", Fri, 09 Dec 2011 06:52:59 UTC +00:00]]
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "player_challenges" ("challenge_id", "created_at", "play_id", "status", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["challenge_id", 1], ["created_at", Fri, 09 Dec 2011 06:52:59 UTC +00:00], ["play_id", 1], ["status", nil], ["updated_at", Fri, 09 Dec 2011 06:52:59 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "player_challenges" ("challenge_id", "created_at", "play_id", "status", "updated_at") VALUES (?, ?, ?, ?, ?)  [["challenge_id", 2], ["created_at", Fri, 09 Dec 2011 06:52:59 UTC +00:00], ["play_id", 1], ["status", nil], ["updated_at", Fri, 09 Dec 2011 06:52:59 UTC +00:00]]
+Redirected to http://0.0.0.0:3000/plays/1
+Completed 302 Found in 336ms
+
+
+Started GET "/plays/1" for 127.0.0.1 at Fri Dec 09 07:52:59 +0100 2011
+  Processing by PlaysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPlay Load (0.3ms)[0m  SELECT "plays".* FROM "plays" WHERE "plays"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered plays/show.html.erb within layouts/application (21.5ms)
+Completed 500 Internal Server Error in 95ms
+
+ActionView::Template::Error (undefined method `startedAt' for #<Play:0x102f83510>):
+    2: 
+    3: <p>
+    4:   <b>Statedat:</b>
+    5:   <%= @play.startedAt %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/plays/show.html.erb:5:in `_app_views_plays_show_html_erb___221311710_2172147540'
+  app/controllers/plays_controller.rb:17:in `show'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.2ms)
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "role" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151009')[0m
+Migrating to CreateGames (20111203151018)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "status" varchar(255), "creator_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_creator_id" ON "games" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151018')[0m
+Migrating to CreateChallenges (20111203154126)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "points" integer, "title" varchar(255), "description" text, "game_id" integer, "status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_challenges_on_game_id" ON "challenges" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203154126')[0m
+Migrating to CreatePlays (20111203163819)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "plays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "startedAt" datetime, "finishedAt" datetime, "status" varchar(255), "game_id" integer, "player_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_plays_on_game_id" ON "plays" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_game_id')
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_plays_on_player_id" ON "plays" ("player_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203163819')
+Migrating to CreatePlayerChallenges (20111203205813)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "player_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "play_id" integer, "challenge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_player_challenges_on_play_id" ON "player_challenges" ("play_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_play_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_player_challenges_on_challenge_id" ON "player_challenges" ("challenge_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203205813')[0m
+Migrating to AddDeviseToUsers (20111203213618)
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(128) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35m (0.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203213618')[0m
+Migrating to PopulateUsers (20111203214629)
+  [1m[35m (0.2ms)[0m  SELECT 1 FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1
+  [1m[36mSQL (4.9ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "login", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "aaa@bbb.com"], ["encrypted_password", "$2a$10$FAi5OKpKTvtGcLy59TCqnOjJcpuynEc19RjIJXwCJSUuUoN97bzjm"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["login", "test"], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["role", "PLAYER"], ["sign_in_count", 0], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203214629')
+Migrating to PopulateGames (20111203214918)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "games" ("created_at", "creator_id", "description", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["creator_id", 1], ["description", "Visit interesting places. Collect two codes."], ["status", "ACTIVE"], ["title", "Collect two codes!"], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203214918')[0m
+Migrating to PopulateChallenges (20111203215108)
+  [1m[35mGame Load (0.3ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "challenges" ("created_at", "description", "game_id", "points", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["description", "Ask barman for code"], ["game_id", 1], ["points", 5], ["status", "ACTIVE"], ["title", "Capture Code in XCaffee"], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00]]
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "challenges" ("created_at", "description", "game_id", "points", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["description", "Order one beer and ask for code"], ["game_id", 1], ["points", 10], ["status", "ACTIVE"], ["title", "Order beer in 17 Pub :)"], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203215108')
+Migrating to CreateRewards (20111208065943)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "rewards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "priceInPoints" integer, "userLimit" integer, "expirationDate" datetime, "description" text, "sponsor_id" integer, "creator_id" integer, "image_file_name" varchar(255), "image_content_type" varchar(255), "imgae_file_size" integer, "image_updated_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_rewards_on_sponsor_id" ON "rewards" ("sponsor_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_rewards_on_sponsor_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_rewards_on_creator_id" ON "rewards" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208065943')[0m
+Migrating to CreatePointKinds (20111208184954)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "point_kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208184954')[0m
+Migrating to CreateMarks (20111208185509)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "marks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pointSum" integer, "pointKind_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208185509')[0m
+Migrating to PopulatePointKinds (20111208191237)
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["name", "PUBLIC"], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["name", "SPONSORED_BY_A"], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208191237')
+Migrating to PopulateMarks (20111208191449)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPointKind Load (0.2ms)[0m  SELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["pointKind_id", 1], ["pointSum", 110], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["user_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPointKind Load (0.1ms)[0m  [1mSELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["pointKind_id", 2], ["pointSum", 10], ["updated_at", Fri, 09 Dec 2011 06:53:42 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208191449')[0m
+Migrating to CreateRewardCollections (20111208200634)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "reward_collections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "collectDate" datetime, "status" varchar(255), "winner_id" integer, "reward_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_reward_collections_on_winner_id" ON "reward_collections" ("winner_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_winner_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_reward_collections_on_reward_id" ON "reward_collections" ("reward_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208200634')
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_challenges_on_game_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_games_on_creator_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("marks")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_challenge_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_player_challenges_on_play_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_player_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_plays_on_game_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("point_kinds")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_reward_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_reward_collections_on_winner_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_rewards_on_creator_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_rewards_on_sponsor_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 401 Unauthorized in 41ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered /usr/local/lib/ruby/gems/1.8/gems/devise-1.5.2/app/views/devise/shared/_links.erb (3.1ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/devise-1.5.2/app/views/devise/sessions/new.html.erb within layouts/application (24.4ms)
+Completed 200 OK in 203ms (Views: 145.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+Served asset /challenges.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+Served asset /games.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:57 +0100 2011
+Served asset /plays.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /rewards.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /user.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /users.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /jquery.js - 304 Not Modified (49ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /challenges.js - 304 Not Modified (17ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /games.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /plays.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /rewards.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /user.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /users.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 07:53:58 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Fri Dec 09 07:53:59 +0100 2011
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo=", "utf8"=>"✓", "user"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "email"=>"aaa@bbb.com"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mUPDATE "users" SET "current_sign_in_ip" = '127.0.0.1', "last_sign_in_ip" = '127.0.0.1', "updated_at" = '2011-12-09 06:54:00.368908', "last_sign_in_at" = '2011-12-09 06:54:00.367538', "current_sign_in_at" = '2011-12-09 06:54:00.367538', "sign_in_count" = 1 WHERE "users"."id" = 1[0m
+Redirected to http://0.0.0.0:3000/games
+Completed 302 Found in 447ms
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 07:54:00 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.3ms)[0m  [1mSELECT "games".* FROM "games" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered games/index.html.erb within layouts/application (40.8ms)
+Completed 200 OK in 140ms (Views: 76.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:00 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:00 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:00 +0100 2011
+Served asset /challenges.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:00 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:00 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:00 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:01 +0100 2011
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/plays?play%5Bgame_id%5D=1&play%5Bplayer_id%5D=1" for 127.0.0.1 at Fri Dec 09 07:54:03 +0100 2011
+  Processing by PlaysController#create as HTML
+  Parameters: {"play"=>{"player_id"=>"1", "game_id"=>"1"}, "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 1 LIMIT 1
+  [1m[36mChallenge Load (0.2ms)[0m  [1mSELECT "challenges".* FROM "challenges" WHERE "challenges"."game_id" = 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "plays" ("created_at", "finishedAt", "game_id", "player_id", "startedAt", "status", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 06:54:04 UTC +00:00], ["finishedAt", nil], ["game_id", 1], ["player_id", 1], ["startedAt", Fri, 09 Dec 2011 06:54:04 UTC +00:00], ["status", nil], ["updated_at", Fri, 09 Dec 2011 06:54:04 UTC +00:00]]
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "player_challenges" ("challenge_id", "created_at", "play_id", "status", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["challenge_id", 1], ["created_at", Fri, 09 Dec 2011 06:54:04 UTC +00:00], ["play_id", 1], ["status", nil], ["updated_at", Fri, 09 Dec 2011 06:54:04 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "player_challenges" ("challenge_id", "created_at", "play_id", "status", "updated_at") VALUES (?, ?, ?, ?, ?)  [["challenge_id", 2], ["created_at", Fri, 09 Dec 2011 06:54:04 UTC +00:00], ["play_id", 1], ["status", nil], ["updated_at", Fri, 09 Dec 2011 06:54:04 UTC +00:00]]
+Redirected to http://0.0.0.0:3000/plays/1
+Completed 302 Found in 276ms
+
+
+Started GET "/plays/1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+  Processing by PlaysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPlay Load (0.3ms)[0m  SELECT "plays".* FROM "plays" WHERE "plays"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPlayerChallenge Load (0.3ms)[0m  [1mSELECT "player_challenges".* FROM "player_challenges" WHERE "player_challenges"."play_id" = 1[0m
+  [1m[35mChallenge Load (0.2ms)[0m  SELECT "challenges".* FROM "challenges" WHERE "challenges"."id" = 1 LIMIT 1
+  [1m[36mChallenge Load (0.3ms)[0m  [1mSELECT "challenges".* FROM "challenges" WHERE "challenges"."id" = 2 LIMIT 1[0m
+Rendered player_challenges/_player_challenge.erb (30.6ms)
+Rendered plays/show.html.erb within layouts/application (197.9ms)
+Completed 200 OK in 298ms (Views: 231.1ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:04 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /users.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 07:54:05 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/plays" for 127.0.0.1 at Fri Dec 09 08:16:16 +0100 2011
+  Processing by PlaysController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPlay Load (0.3ms)[0m  [1mSELECT "plays".* FROM "plays" [0m
+Rendered plays/index.html.erb within layouts/application (34.7ms)
+Completed 500 Internal Server Error in 208ms
+
+ActionView::Template::Error (undefined method `state_machine' for #<Class:0x10307a7c0>):
+    17:     <td><%= play.startedAt %></td>
+    18:     <td><%= play.finishedAt %></td>
+    19:     <td><%= play.status %></td>
+    20:     <td><%= play.game.title %></td>
+    21:     <td><%= play.player.login %></td>
+    22:     <td><%= link_to 'Show', play %></td>
+    23:     <td><%= link_to 'Edit', edit_play_path(play) %></td>
+  app/models/game.rb:15
+  app/views/plays/index.html.erb:20:in `_app_views_plays_index_html_erb___256566158_2173472020'
+  app/views/plays/index.html.erb:15:in `each'
+  app/views/plays/index.html.erb:15:in `_app_views_plays_index_html_erb___256566158_2173472020'
+  app/controllers/plays_controller.rb:7:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.4ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.5ms)
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 08:20:48 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.3ms)[0m  SELECT "games".* FROM "games" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered games/index.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 450ms (Views: 401.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /challenges.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /games.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /plays.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /rewards.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /user.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /users.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /jquery.js - 304 Not Modified (41ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /challenges.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /games.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /plays.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /rewards.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /user.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /users.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:49 +0100 2011
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/games/new" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+  Processing by GamesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered games/_form.html.erb (11.2ms)
+Rendered games/new.html.erb within layouts/application (22.9ms)
+Completed 200 OK in 258ms (Views: 97.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:54 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:55 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:55 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:55 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:55 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:55 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:55 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 08:20:55 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started POST "/games" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+  Processing by GamesController#create as HTML
+  Parameters: {"game"=>{"title"=>"ddd", "creator_id"=>"1", "description"=>"", "status"=>"new"}, "commit"=>"Create Game", "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo=", "utf8"=>"✓"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (15.5ms)[0m  INSERT INTO "games" ("created_at", "creator_id", "description", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 07:21:04 UTC +00:00], ["creator_id", nil], ["description", nil], ["status", "new"], ["title", nil], ["updated_at", Fri, 09 Dec 2011 07:21:04 UTC +00:00]]
+Redirected to http://0.0.0.0:3000/games/2
+Completed 302 Found in 189ms
+
+
+Started GET "/games/2" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+  Processing by GamesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.3ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mChallenge Load (0.2ms)[0m  [1mSELECT "challenges".* FROM "challenges" WHERE "challenges"."game_id" = 2[0m
+Rendered collection (0.0ms)
+Rendered games/show.html.erb within layouts/application (175.8ms)
+Completed 200 OK in 285ms (Views: 211.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:04 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 08:21:05 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 08:21:12 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.3ms)[0m  [1mSELECT "games".* FROM "games" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered games/index.html.erb within layouts/application (30.2ms)
+Completed 500 Internal Server Error in 216ms
+
+ActionView::Template::Error (undefined method `login' for nil:NilClass):
+    17:     <td><%= game.title %></td>
+    18:     <td><%= game.description %></td>
+    19:     <td><%= game.status %></td>
+    20:     <td><%= game.creator.login %></td>
+    21:     <td><%= link_to 'Show', game %></td>
+    22:     <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    23:     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?',
+  app/views/games/index.html.erb:20:in `_app_views_games_index_html_erb___747595171_2172458420'
+  app/views/games/index.html.erb:15:in `each'
+  app/views/games/index.html.erb:15:in `_app_views_games_index_html_erb___747595171_2172458420'
+  app/controllers/games_controller.rb:8:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.2ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.3ms)
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 08:21:26 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (1.3ms)[0m  SELECT "games".* FROM "games" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered games/index.html.erb within layouts/application (19.3ms)
+Completed 500 Internal Server Error in 207ms
+
+ActionView::Template::Error (undefined method `login' for nil:NilClass):
+    17:     <td><%= game.title %></td>
+    18:     <td><%= game.description %></td>
+    19:     <td><%= game.status %></td>
+    20:     <td><%= game.creator.login %></td>
+    21:     <td><%= link_to 'Show', game %></td>
+    22:     <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    23:     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?',
+  app/views/games/index.html.erb:20:in `_app_views_games_index_html_erb___747595171_2172458420'
+  app/views/games/index.html.erb:15:in `each'
+  app/views/games/index.html.erb:15:in `_app_views_games_index_html_erb___747595171_2172458420'
+  app/controllers/games_controller.rb:8:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.0ms)
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 08:21:44 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.3ms)[0m  [1mSELECT "games".* FROM "games" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered games/index.html.erb within layouts/application (20.9ms)
+Completed 500 Internal Server Error in 186ms
+
+ActionView::Template::Error (undefined method `login' for nil:NilClass):
+    17:     <td><%= game.title %></td>
+    18:     <td><%= game.description %></td>
+    19:     <td><%= game.status %></td>
+    20:     <td><%= game.creator.login %></td>
+    21:     <td><%= link_to 'Show', game %></td>
+    22:     <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    23:     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?',
+  app/views/games/index.html.erb:20:in `_app_views_games_index_html_erb___747595171_2172458420'
+  app/views/games/index.html.erb:15:in `each'
+  app/views/games/index.html.erb:15:in `_app_views_games_index_html_erb___747595171_2172458420'
+  app/controllers/games_controller.rb:8:in `index'
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "role" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151009')[0m
+Migrating to CreateGames (20111203151018)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "status" varchar(255), "creator_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_creator_id" ON "games" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151018')[0m
+Migrating to CreateChallenges (20111203154126)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "points" integer, "title" varchar(255), "description" text, "game_id" integer, "status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_challenges_on_game_id" ON "challenges" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203154126')[0m
+Migrating to CreatePlays (20111203163819)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "plays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "startedAt" datetime, "finishedAt" datetime, "status" varchar(255), "game_id" integer, "player_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.3ms)[0m  CREATE INDEX "index_plays_on_game_id" ON "plays" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_game_id')
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_plays_on_player_id" ON "plays" ("player_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203163819')
+Migrating to CreatePlayerChallenges (20111203205813)
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "player_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "play_id" integer, "challenge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_player_challenges_on_play_id" ON "player_challenges" ("play_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_play_id')[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_player_challenges_on_challenge_id" ON "player_challenges" ("challenge_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203205813')[0m
+Migrating to AddDeviseToUsers (20111203213618)
+  [1m[35m (1.8ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(128) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203213618')[0m
+Migrating to PopulateUsers (20111203214629)
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1
+  [1m[36mSQL (4.9ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "login", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 07:22:38 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "aaa@bbb.com"], ["encrypted_password", "$2a$10$xmRYzptaEZRCEEq/alfrC.P24e1rcoZ/AQxoosRIqu7IxHow8JMk2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["login", "test"], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["role", "PLAYER"], ["sign_in_count", 0], ["updated_at", Fri, 09 Dec 2011 07:22:38 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203214629')
+Migrating to PopulateGames (20111203214918)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203214918')
+Migrating to PopulateChallenges (20111203215108)
+  [1m[36mGame Load (0.3ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+Migrating to CreateGames (20111203151018)
+Migrating to CreateChallenges (20111203154126)
+Migrating to CreatePlays (20111203163819)
+Migrating to CreatePlayerChallenges (20111203205813)
+Migrating to AddDeviseToUsers (20111203213618)
+Migrating to PopulateUsers (20111203214629)
+Migrating to PopulateGames (20111203214918)
+Migrating to PopulateChallenges (20111203215108)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mGame Load (10.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (1.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "role" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151009')[0m
+Migrating to CreateGames (20111203151018)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "status" varchar(255), "creator_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_creator_id" ON "games" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151018')[0m
+Migrating to CreateChallenges (20111203154126)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "points" integer, "title" varchar(255), "description" text, "game_id" integer, "status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_challenges_on_game_id" ON "challenges" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203154126')[0m
+Migrating to CreatePlays (20111203163819)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "plays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "startedAt" datetime, "finishedAt" datetime, "status" varchar(255), "game_id" integer, "player_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.3ms)[0m  CREATE INDEX "index_plays_on_game_id" ON "plays" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_game_id')
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_plays_on_player_id" ON "plays" ("player_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203163819')
+Migrating to CreatePlayerChallenges (20111203205813)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "player_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "play_id" integer, "challenge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_player_challenges_on_play_id" ON "player_challenges" ("play_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_play_id')[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_player_challenges_on_challenge_id" ON "player_challenges" ("challenge_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203205813')[0m
+Migrating to AddDeviseToUsers (20111203213618)
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(128) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203213618')[0m
+Migrating to PopulateUsers (20111203214629)
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1
+  [1m[36mSQL (4.9ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "login", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 07:23:16 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "aaa@bbb.com"], ["encrypted_password", "$2a$10$ON3Mv9ELvnuaEc07ycMwSO9VQAcnMaYM5WouxKqyXdXgmkvvG6FdS"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["login", "test"], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["role", "PLAYER"], ["sign_in_count", 0], ["updated_at", Fri, 09 Dec 2011 07:23:16 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203214629')
+Migrating to PopulateGames (20111203214918)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203214918')
+Migrating to PopulateChallenges (20111203215108)
+  [1m[36mGame Load (0.3ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+Migrating to CreateGames (20111203151018)
+Migrating to CreateChallenges (20111203154126)
+Migrating to CreatePlays (20111203163819)
+Migrating to CreatePlayerChallenges (20111203205813)
+Migrating to AddDeviseToUsers (20111203213618)
+Migrating to PopulateUsers (20111203214629)
+Migrating to PopulateGames (20111203214918)
+Migrating to PopulateChallenges (20111203215108)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mGame Load (9.9ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (2.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111203151009)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "role" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151009')[0m
+Migrating to CreateGames (20111203151018)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "status" varchar(255), "creator_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_creator_id" ON "games" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203151018')[0m
+Migrating to CreateChallenges (20111203154126)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "points" integer, "title" varchar(255), "description" text, "game_id" integer, "status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_challenges_on_game_id" ON "challenges" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203154126')[0m
+Migrating to CreatePlays (20111203163819)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "plays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "startedAt" datetime, "finishedAt" datetime, "status" varchar(255), "game_id" integer, "player_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.3ms)[0m  CREATE INDEX "index_plays_on_game_id" ON "plays" ("game_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_game_id')
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_plays_on_player_id" ON "plays" ("player_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203163819')
+Migrating to CreatePlayerChallenges (20111203205813)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "player_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "play_id" integer, "challenge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_player_challenges_on_play_id" ON "player_challenges" ("play_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_play_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_player_challenges_on_challenge_id" ON "player_challenges" ("challenge_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203205813')[0m
+Migrating to AddDeviseToUsers (20111203213618)
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(128) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203213618')[0m
+Migrating to PopulateUsers (20111203214629)
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "login", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "aaa@bbb.com"], ["encrypted_password", "$2a$10$eG96KVnIuM.K1O2spFPUm.vKk68qBfq1xFeSUTpfoheJiTiaxEY5u"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["login", "test"], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["role", "PLAYER"], ["sign_in_count", 0], ["updated_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203214629')
+Migrating to PopulateGames (20111203214918)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "games" ("created_at", "creator_id", "description", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00], ["creator_id", 1], ["description", "Visit interesting places. Collect two codes."], ["status", "new"], ["title", "Collect two codes!"], ["updated_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111203214918')[0m
+Migrating to PopulateChallenges (20111203215108)
+  [1m[35mGame Load (0.3ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "challenges" ("created_at", "description", "game_id", "points", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00], ["description", "Ask barman for code"], ["game_id", 1], ["points", 5], ["status", "ACTIVE"], ["title", "Capture Code in XCaffee"], ["updated_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00]]
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "challenges" ("created_at", "description", "game_id", "points", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00], ["description", "Order one beer and ask for code"], ["game_id", 1], ["points", 10], ["status", "ACTIVE"], ["title", "Order beer in 17 Pub :)"], ["updated_at", Fri, 09 Dec 2011 07:24:14 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111203215108')
+Migrating to CreateRewards (20111208065943)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "rewards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "priceInPoints" integer, "userLimit" integer, "expirationDate" datetime, "description" text, "sponsor_id" integer, "creator_id" integer, "image_file_name" varchar(255), "image_content_type" varchar(255), "imgae_file_size" integer, "image_updated_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_rewards_on_sponsor_id" ON "rewards" ("sponsor_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_rewards_on_sponsor_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_rewards_on_creator_id" ON "rewards" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208065943')[0m
+Migrating to CreatePointKinds (20111208184954)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "point_kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208184954')[0m
+Migrating to CreateMarks (20111208185509)
+  [1m[35m (0.6ms)[0m  CREATE TABLE "marks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pointSum" integer, "pointKind_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208185509')[0m
+Migrating to PopulatePointKinds (20111208191237)
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00], ["name", "PUBLIC"], ["updated_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "point_kinds" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00], ["name", "SPONSORED_BY_A"], ["updated_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208191237')
+Migrating to PopulateMarks (20111208191449)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPointKind Load (0.2ms)[0m  SELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00], ["pointKind_id", 1], ["pointSum", 110], ["updated_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00], ["user_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPointKind Load (0.2ms)[0m  [1mSELECT "point_kinds".* FROM "point_kinds" WHERE "point_kinds"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "marks" ("created_at", "pointKind_id", "pointSum", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00], ["pointKind_id", 2], ["pointSum", 10], ["updated_at", Fri, 09 Dec 2011 07:24:15 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111208191449')[0m
+Migrating to CreateRewardCollections (20111208200634)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "reward_collections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "collectDate" datetime, "status" varchar(255), "winner_id" integer, "reward_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_reward_collections_on_winner_id" ON "reward_collections" ("winner_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_winner_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_reward_collections_on_reward_id" ON "reward_collections" ("reward_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111208200634')
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_challenges_on_game_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("games")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_games_on_creator_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("marks")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_challenge_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_player_challenges_on_play_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("plays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_plays_on_player_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_plays_on_game_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("point_kinds")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_reward_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_reward_collections_on_winner_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("rewards")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_rewards_on_creator_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_rewards_on_sponsor_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "points" integer, "title" varchar(255), "description" text, "game_id" integer, "status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("challenges")[0m
+  [1m[35m (1.9ms)[0m  CREATE INDEX "index_challenges_on_game_id" ON "challenges" ("game_id")
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "status" varchar(255), "creator_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("games")
+  [1m[36m (2.1ms)[0m  [1mCREATE INDEX "index_games_on_creator_id" ON "games" ("creator_id")[0m
+  [1m[35m (2.4ms)[0m  CREATE TABLE "marks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "pointSum" integer, "pointKind_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "player_challenges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "play_id" integer, "challenge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (2.1ms)[0m  [1mCREATE INDEX "index_player_challenges_on_challenge_id" ON "player_challenges" ("challenge_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("player_challenges")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_player_challenges_on_challenge_id')[0m
+  [1m[35m (2.0ms)[0m  CREATE INDEX "index_player_challenges_on_play_id" ON "player_challenges" ("play_id")
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "plays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "startedAt" datetime, "finishedAt" datetime, "status" varchar(255), "game_id" integer, "player_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("plays")
+  [1m[36m (2.6ms)[0m  [1mCREATE INDEX "index_plays_on_game_id" ON "plays" ("game_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("plays")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_plays_on_game_id')[0m
+  [1m[35m (2.4ms)[0m  CREATE INDEX "index_plays_on_player_id" ON "plays" ("player_id")
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "point_kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "reward_collections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "collectDate" datetime, "status" varchar(255), "winner_id" integer, "reward_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (2.7ms)[0m  CREATE INDEX "index_reward_collections_on_reward_id" ON "reward_collections" ("reward_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("reward_collections")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_reward_collections_on_reward_id')
+  [1m[36m (2.0ms)[0m  [1mCREATE INDEX "index_reward_collections_on_winner_id" ON "reward_collections" ("winner_id")[0m
+  [1m[35m (2.7ms)[0m  CREATE TABLE "rewards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "priceInPoints" integer, "userLimit" integer, "expirationDate" datetime, "description" text, "sponsor_id" integer, "creator_id" integer, "image_file_name" varchar(255), "image_content_type" varchar(255), "imgae_file_size" integer, "image_updated_at" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("rewards")[0m
+  [1m[35m (3.1ms)[0m  CREATE INDEX "index_rewards_on_creator_id" ON "rewards" ("creator_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("rewards")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_rewards_on_creator_id')
+  [1m[36m (2.3ms)[0m  [1mCREATE INDEX "index_rewards_on_sponsor_id" ON "rewards" ("sponsor_id")[0m
+  [1m[35m (2.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "role" varchar(255), "created_at" datetime, "updated_at" datetime, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (2.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (2.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111208200634')
+  [1m[36m (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111203151009')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111203151018')
+  [1m[36m (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111203154126')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111203163819')
+  [1m[36m (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111203205813')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111203213618')
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111203214629')[0m
+  [1m[35m (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111203214918')
+  [1m[36m (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111203215108')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111208065943')
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111208184954')[0m
+  [1m[35m (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111208185509')
+  [1m[36m (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20111208191237')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20111208191449')
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 08:35:11 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 401 Unauthorized in 60ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Fri Dec 09 08:35:11 +0100 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered /usr/local/lib/ruby/gems/1.8/gems/devise-1.5.2/app/views/devise/shared/_links.erb (5.2ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/devise-1.5.2/app/views/devise/sessions/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 224ms (Views: 55.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:12 +0100 2011
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Fri Dec 09 08:35:13 +0100 2011
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"TFvhpvAB2aScYUq+CDDy/L8aefuNoEjuxUS4X7v5qZo=", "utf8"=>"✓", "user"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "email"=>"aaa@bbb.com"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'aaa@bbb.com' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2011-12-09 07:35:14.442400', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2011-12-09 07:35:14.443646', "last_sign_in_at" = '2011-12-09 07:35:14.442400', "last_sign_in_ip" = '127.0.0.1' WHERE "users"."id" = 1[0m
+Redirected to http://0.0.0.0:3000/games
+Completed 302 Found in 455ms
+
+
+Started GET "/games" for 127.0.0.1 at Fri Dec 09 08:35:14 +0100 2011
+  Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.3ms)[0m  [1mSELECT "games".* FROM "games" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered games/index.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 208ms (Views: 54.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:14 +0100 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /dashboard.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /plays.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /player_challenges.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/games.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /games.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /reward_collections.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /rewards.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /user.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dashboard.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /dashboard.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/games.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /games.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/player_challenges.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /player_challenges.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plays.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /plays.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reward_collections.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /reward_collections.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rewards.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /rewards.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /user.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Fri Dec 09 08:35:15 +0100 2011
+Served asset /application.js - 304 Not Modified (1ms)
