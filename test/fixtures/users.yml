@@ -1,11 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  collectedPoints: 1
   login: MyString
   role: MyString
-
+  email: aaaa@bbb.com
 two:
-  collectedPoints: 1
   login: MyString
   role: MyString
+  email: aaaa@cc.com
