@@ -39,19 +39,19 @@ class PlayerChallengesController < ApplicationController
 
   # POST /player_challenges
   # POST /player_challenges.json
-  def create
-    @player_challenge = PlayerChallenge.new(params[:player_challenge])
+  #  def create
+  #   @player_challenge = PlayerChallenge.new(params[:player_challenge])
 
-    respond_to do |format|
-      if @player_challenge.save
-        format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully created.' }
-        format.json { render :json => @player_challenge, :status => :created, :location => @player_challenge }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @player_challenge.save
+  #       format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully created.' }
+  #       format.json { render :json => @player_challenge, :status => :created, :location => @player_challenge }
+  #     else
+  #       format.html { render :action => "new" }
+  #       format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PUT /player_challenges/1
   # PUT /player_challenges/1.json

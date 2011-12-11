@@ -41,7 +41,6 @@ class PlaysController < ApplicationController
   def create
     @play = Play.new(params[:play])
     @play.startedAt = Time.now
-
     @play.game.challenges.each do |challenge|
       playerChallenge = PlayerChallenge.new
       playerChallenge.challenge = challenge
