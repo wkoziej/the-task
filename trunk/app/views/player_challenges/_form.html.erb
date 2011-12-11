@@ -2,7 +2,6 @@
   <% if @player_challenge.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@player_challenge.errors.count, "error") %> prohibited this player_challenge from being saved:</h2>
-
       <ul>
       <% @player_challenge.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,19 +10,30 @@
     </div>
   <% end %>
 
+Challenge <b> <%=  @player_challenge.challenge.title %> </b>
+of game <b> <%=  @player_challenge.play.game.title%> </b>
+
   <div class="field">
     <%= f.label :status %><br />
     <%= f.text_field :status %>
   </div>
-  <div class="field">
-    <%= f.label :play_id %><br />
-    <%= f.text_field :play_id %>
-  </div>
-  <div class="field">
-    <%= f.label :challenge_id %><br />
-    <%= f.text_field :challenge_id %>
-  </div>
-  <div class="actions">
+
+   <%= f.hidden_field :play_id %>
+   <%= f.hidden_field :challenge_id %>
+
+
+
+   <%= f.fields_for @player_challenge.challenge do |g| %>
+
+   <div class="field">
+     <%= g.label :challange_data %><br />
+     <%= g.text_field :challenge_data %>
+   </div>
+
+   <% end %>
+
+ <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

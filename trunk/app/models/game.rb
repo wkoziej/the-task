@@ -9,8 +9,7 @@ class Game < ActiveRecord::Base
   validate :creator, :presence => true
 
   def initialize(params = nil) 
-    super() 
-    #self.status = "NEW"
+    super(params) 
   end 
   
   state_machine :status, :initial => :new do
