@@ -14,10 +14,14 @@ ActiveRecord::Schema.define(:version => 20111208200634) do
 
   create_table "challenges", :force => true do |t|
     t.integer  "points"
+    t.integer  "pointKind_id"
     t.string   "title"
     t.text     "description"
     t.integer  "game_id"
     t.string   "status"
+    t.string   "type"
+    t.float    "longitude"
+    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +51,10 @@ ActiveRecord::Schema.define(:version => 20111208200634) do
     t.string   "status"
     t.integer  "play_id"
     t.integer  "challenge_id"
+    t.string   "type"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

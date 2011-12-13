@@ -21,8 +21,9 @@ of game <b> <%=  @player_challenge.play.game.title%> </b>
    <%= f.hidden_field :play_id %>
    <%= f.hidden_field :challenge_id %>
 
+   <%= render @player_challenge =>
 
-
+<!--
    <%= f.fields_for @player_challenge.challenge do |g| %>
 
    <div class="field">
@@ -31,6 +32,7 @@ of game <b> <%=  @player_challenge.play.game.title%> </b>
    </div>
 
    <% end %>
+-->
 
  <div class="actions">
     <%= f.submit %>

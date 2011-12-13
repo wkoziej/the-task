@@ -4,6 +4,10 @@ class CreatePlayerChallenges < ActiveRecord::Migration
       t.string :status
       t.references :play
       t.references :challenge
+      t.string :type
+      t.float :longitude 
+      t.float :latitude
+      t.string :code
 
       t.timestamps
     end
