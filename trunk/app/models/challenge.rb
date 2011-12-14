@@ -1,7 +1,9 @@
 class Challenge < ActiveRecord::Base
   belongs_to :game
-  has_one :action
+  belongs_to :pointKind
 
+  attr_accessible :title, :description, :points, :latitude, :longitude, :type
+  
   def initialize(params = nil) 
     super(params) 
   end 

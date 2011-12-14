@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+captureCode:
+  points: 5
+  pointKind: two
+  title: Take it
+  description: Some text
+  game: one
+  type: CaptureCode
+  status: active
+  
+enterMessage:
   points: 1
-  title: MyString
-  description: MyText
-  game: 
-
-two:
-  points: 1
-  title: MyString
-  description: MyText
-  game: 
+  pointKind: one
+  title: Take it again
+  description: Other text
+  game: one 
+  type: EnterMessage
+  status: new

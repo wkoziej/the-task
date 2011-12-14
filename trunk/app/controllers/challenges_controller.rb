@@ -41,7 +41,6 @@ class ChallengesController < ApplicationController
   # POST /challenges.json
   def create
     @challenge = Challenge.new(params[:challenge])
-
     respond_to do |format|
       if @challenge.save
         format.html { redirect_to @challenge, :notice => 'Challenge was successfully created.' }
@@ -63,6 +62,7 @@ class ChallengesController < ApplicationController
         format.html { redirect_to @challenge, :notice => 'Challenge was successfully updated.' }
         format.json { head :ok }
       else
+        # logger.debug @challenge.errors.messages
         format.html { render :action => "edit" }
         format.json { render :json => @challenge.errors, :status => :unprocessable_entity }
       end

@@ -42,7 +42,13 @@ class PlaysController < ApplicationController
     @play = Play.new(params[:play])
     @play.startedAt = Time.now
     @play.game.challenges.each do |challenge|
-      playerChallenge = PlayerChallenge.new
+      playerChallenge = nil
+      case challenge.class
+      when CaptureCode.class
+        playerChallenge = CapturingCode.new
+      when EnterMessage.class
+        playerChallenge = EnteringMessage.new
+      end
       playerChallenge.challenge = challenge
       playerChallenge.play = @play
       @play.player_challenges << playerChallenge  
@@ -53,6 +59,7 @@ class PlaysController < ApplicationController
         format.html { redirect_to @play, :notice => 'Play was successfully created.' }
         format.json { render :json => @play, :status => :created, :location => @play }
       else
+        # logger.debug @challenge.errors.messages
         format.html { render :action => "new" }
         format.json { render :json => @play.errors, :status => :unprocessable_entity }
       end

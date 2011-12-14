@@ -1,10 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  login: MyString
-  role: MyString
+  login: player1
+  role: player
   email: aaaa@bbb.com
+
 two:
-  login: MyString
-  role: MyString
+  login: player2
+  role: player
   email: aaaa@cc.com
+  

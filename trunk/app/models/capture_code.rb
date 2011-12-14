@@ -1,0 +1,2 @@
+class CaptureCode < Challenge
+end
