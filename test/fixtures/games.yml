@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  description: MyText
-  status: MyString
-  creator: 
+  title: First Game
+  description: Try it one
+  status: active
+  creator: one
 
 two:
-  title: MyString
-  description: MyText
-  status: MyString
-  creator: 
+  title: Second Game
+  description: Try it two
+  status: archived
+  creator: one

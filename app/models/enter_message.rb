@@ -1,0 +1,2 @@
+class EnterMessage < Challenge
+end

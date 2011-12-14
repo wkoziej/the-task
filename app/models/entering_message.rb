@@ -1,0 +1,2 @@
+class EnteringMessage < PlayerChallenge
+end

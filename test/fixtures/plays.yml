@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  startedAt: 2011-12-03 17:38:19
-  finishedAt: 2011-12-03 17:38:19
-  status: MyString
-  game: 
-  player: 
+  status: started
+  game: one 
+  player: one 
 
 two:
   startedAt: 2011-12-03 17:38:19
   finishedAt: 2011-12-03 17:38:19
-  status: MyString
-  game: 
-  player: 
+  status: started
+  game: two 
+  player: two

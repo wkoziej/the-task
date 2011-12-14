@@ -3,6 +3,8 @@ require 'test_helper'
 class RewardCollectionsControllerTest < ActionController::TestCase
   setup do
     @reward_collection = reward_collections(:one)
+    @user = User.find(users(:one))
+    sign_in @user   
   end
 
   test "should get index" do

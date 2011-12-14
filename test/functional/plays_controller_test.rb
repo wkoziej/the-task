@@ -3,6 +3,8 @@ require 'test_helper'
 class PlaysControllerTest < ActionController::TestCase
   setup do
     @play = plays(:one)
+    @user = User.find(users(:one))
+    sign_in @user   
   end
 
   test "should get index" do
