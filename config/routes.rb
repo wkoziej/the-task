@@ -7,14 +7,17 @@ TheTask::Application.routes.draw do
 
   devise_for :users
 
+  resources :challenges
   resources :capture_codes, :controller => :challenges
   resources :enter_messages, :controller => :challenges
 
   resources :player_challenges
+  resources :capturing_codes, :controller => :player_challenges
+  resources :entering_messages, :controller => :player_challenges
+
 
   resources :plays
 
-  resources :challenges
 
   resources :games
 

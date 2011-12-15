@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class PlayerChallengesController < ApplicationController
   # GET /player_challenges
   # GET /player_challenges.json
@@ -23,14 +24,15 @@ class PlayerChallengesController < ApplicationController
 
   # GET /player_challenges/new
   # GET /player_challenges/new.json
-  def new
-    @player_challenge = PlayerChallenge.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @player_challenge }
-    end
-  end
+  # Wyzwania tworzą się podczas tworzenie rozgrywki
+  # def new
+  #  @player_challenge = PlayerChallenge.new
+  #
+  #    respond_to do |format|
+  #      format.html # new.html.erb
+  #      format.json { render :json => @player_challenge }
+  #    end
+  #  end
 
   # GET /player_challenges/1/edit
   def edit
@@ -39,14 +41,16 @@ class PlayerChallengesController < ApplicationController
 
   # POST /player_challenges
   # POST /player_challenges.json
-  #  def create
-  #   @player_challenge = PlayerChallenge.new(params[:player_challenge])
-
-  #   respond_to do |format|
-  #     if @player_challenge.save
-  #       format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully created.' }
+  # Wyzwania tworzą się podczas tworzenie rozgrywki
+  #def create
+  #  @player_challenge = PlayerChallenge.new(params[:player_challenge])
+  #  
+  #  respond_to do |format|
+  #    if @player_challenge.save
+  #      format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully created.' }
   #       format.json { render :json => @player_challenge, :status => :created, :location => @player_challenge }
   #     else
+  #       logger.debug @player_challenge.errors.messages
   #       format.html { render :action => "new" }
   #       format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
   #     end
@@ -63,6 +67,7 @@ class PlayerChallengesController < ApplicationController
         format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully updated.' }
         format.json { head :ok }
       else
+        logger.debug @player_challenge.errors.messages
         format.html { render :action => "edit" }
         format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
       end
