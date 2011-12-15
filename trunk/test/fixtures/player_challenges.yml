@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  status: new
+enteringMessage:
+  status: unfinished
   play: one
   challenge: enterMessage 
+  type: EnteringMessage
 
-two:
-  status: new
+capturingCode:
+  status: unfinished
   play: one
   challenge: captureCode 
+  type: CapturingCode
