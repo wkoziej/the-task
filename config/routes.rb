@@ -23,6 +23,8 @@ TheTask::Application.routes.draw do
 
   resources :users
 
+  #match 'games/:id/activate', :contorller => :games 
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
