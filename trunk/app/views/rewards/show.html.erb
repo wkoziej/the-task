@@ -32,9 +32,8 @@
 
 
 
-<!-- <%= image_tag @reward.image.url %> -->
-<%= image_tag @reward.image.url(:medium) %>
-<%= image_tag @reward.image.url(:thumb) %>
+<%= image_tag @reward.image.url(:medium) if @reward.image.present? %>
+<%= image_tag @reward.image.url(:thumb)   if @reward.image.present?  %>
 
 <%= link_to 'Edit', edit_reward_path(@reward) %> |
 <%= link_to 'Back', rewards_path %>

@@ -23,3 +23,6 @@
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
+<%= link_to 'Play', plays_path(:play => {:player_id => current_user,
+:game_id => @game.id}), :confirm => 'Play?', :method => :post if
+@game.active? %>

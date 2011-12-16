@@ -42,12 +42,13 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(params[:game])
-
+    @game.creator = current_user
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, :notice => 'Game was successfully created.' }
         format.json { render :json => @game, :status => :created, :location => @game }
       else
+        logger.debug @game.errors.messages
         format.html { render :action => "new" }
         format.json { render :json => @game.errors, :status => :unprocessable_entity }
       end
@@ -58,12 +59,12 @@ class GamesController < ApplicationController
   # PUT /games/1.json
   def update
     @game = Game.find(params[:id])
-
     respond_to do |format|
       if @game.update_attributes(params[:game])
         format.html { redirect_to @game, :notice => 'Game was successfully updated.' }
         format.json { head :ok }
       else
+        logger.debug @game.errors.messages
         format.html { render :action => "edit" }
         format.json { render :json => @game.errors, :status => :unprocessable_entity }
       end
