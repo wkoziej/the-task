@@ -2,7 +2,7 @@ class PlayerChallenge < ActiveRecord::Base
   belongs_to :play
   belongs_to :challenge
 
-  attr_accessible :code, :latitude, :longitude
+  attr_accessible :latitude, :longitude
 
   def initialize(params = nil) 
     super(params) 

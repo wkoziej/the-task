@@ -25,7 +25,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/new.json
   def new
     @challenge = Challenge.new
-
+    @game = Game.find(params[:game_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @challenge }
@@ -35,15 +35,18 @@ class ChallengesController < ApplicationController
   # GET /challenges/1/edit
   def edit
     @challenge = Challenge.find(params[:id])
+    @game = Game.find(params[:game_id])
   end
 
   # POST /challenges
   # POST /challenges.json
   def create
     @challenge = Challenge.new(params[:challenge])
+    @game = Game.find(params[:game_id])
+    @challenge.game = @game
     respond_to do |format|
       if @challenge.save
-        format.html { redirect_to @challenge, :notice => 'Challenge was successfully created.' }
+        format.html { redirect_to game_challenge_url(params[:game_id], @challenge.id), :notice => 'Challenge was successfully created.' }
         format.json { render :json => @challenge, :status => :created, :location => @challenge }
       else
         format.html { render :action => "new" }
@@ -56,10 +59,9 @@ class ChallengesController < ApplicationController
   # PUT /challenges/1.json
   def update
     @challenge = Challenge.find(params[:id])
-
     respond_to do |format|
       if @challenge.update_attributes(params[:challenge])
-        format.html { redirect_to @challenge, :notice => 'Challenge was successfully updated.' }
+        format.html { redirect_to game_challenge_url(params[:game_id], @challenge.id), :notice => 'Challenge was successfully updated.' }
         format.json { head :ok }
       else
         # logger.debug @challenge.errors.messages
@@ -76,7 +78,7 @@ class ChallengesController < ApplicationController
     @challenge.destroy
 
     respond_to do |format|
-      format.html { redirect_to challenges_url }
+      format.html { redirect_to game_challenges_url(params[:game_id]) }
       format.json { head :ok }
     end
   end

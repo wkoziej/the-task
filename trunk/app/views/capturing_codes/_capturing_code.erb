@@ -1,4 +1,9 @@
 <p>
 Capturing code...
 </p>
-<%= render :template => "player_challenges/_player_challenge", :locals => { :player_challenge => capturing_code } %>
+
+ <%= link_to('Capture code',  edit_capturing_code_path(capturing_code) ) if capturing_code.unfinished? %>
+
+<br/>
+
+

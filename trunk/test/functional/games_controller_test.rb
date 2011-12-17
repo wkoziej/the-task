@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GamesControllerTest < ActionController::TestCase
   setup do
-    @game = games(:one)
+    @game = Game.find(games(:one))
     @user = User.find(users(:one))
     sign_in @user 
   end
@@ -30,6 +30,12 @@ class GamesControllerTest < ActionController::TestCase
     get :show, :id => @game.to_param
     assert_response :success
   end
+
+ # test "should activate game" do
+ #   get :activate, :id => @game.to_param
+ #   assert_response :success, @response.body
+ # end
+
 
   test "should get edit" do
     get :edit, :id => @game.to_param

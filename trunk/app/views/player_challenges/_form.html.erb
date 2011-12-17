@@ -1,4 +1,3 @@
-
 <%= form_for(@player_challenge) do |f| %>
   <% if @player_challenge.errors.any? %>
     <div id="error_explanation">
@@ -12,18 +11,16 @@
   <% end %>
 
 Challenge <b> <%=  @player_challenge.challenge.title %> </b>
-of game <b> <%=  @player_challenge.play.game.title %> </b>
+of game <b> <%=  @player_challenge.play.game.title %> </b> ....
 
   <div class="field">
     <%= f.label :status %><br />
     <%= f.text_field :status %>
   </div>
 
-   <%= f.hidden_field :play_id %>
-   <%= f.hidden_field :challenge_id %>
-
-   
    <%= render @player_challenge %>
+
+
    <div class="actions">
      <%= f.submit %>
    </div>

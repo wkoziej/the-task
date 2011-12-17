@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20111213215451) do
     t.float    "longitude"
     t.float    "latitude"
     t.string   "code"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

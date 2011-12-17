@@ -8,6 +8,7 @@ class CreatePlayerChallenges < ActiveRecord::Migration
       t.float :longitude 
       t.float :latitude
       t.string :code
+      t.text :message
 
       t.timestamps
     end

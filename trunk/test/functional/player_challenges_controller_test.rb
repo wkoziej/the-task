@@ -41,13 +41,22 @@ class PlayerChallengesControllerTest < ActionController::TestCase
   end
 
   test "should update capturing_code" do
-    put :update, :id => @capturingCode.to_param, :player_challenge => { :code => "1234" }
+    put :update, :id => @capturingCode.to_param, :player_challenge => {  }
+    # Wracamy do edycji bo kod pusty
+    assert_template :edit, @response.body 
+
+    put :update, :id => @capturingCode.to_param, :player_challenge => { :code => "not empty" }
     assert_redirected_to capturing_code_path(assigns(:player_challenge))
+     
   end
 
   test "should update entering message" do
-    put :update, :id => @enteringMessage.to_param, :player_challenge => { :code => "1234" }
+    put :update, :id => @enteringMessage.to_param, :player_challenge => {  }
+    # Wracamy do edycji bo message pusty
+    assert_template :edit, "Powinnismy powrócić do edycji jeżeli nie wpisano wiadomosci"
+    put :update, :id => @enteringMessage.to_param, :player_challenge => { :message => "Message not empty" }
     assert_redirected_to entering_message_path(assigns(:player_challenge))
+
   end
 
   test "should destroy player_challenge" do
