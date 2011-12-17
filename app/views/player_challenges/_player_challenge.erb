@@ -1,11 +1,11 @@
-
+<p>
+  <b>
+  <%= player_challenge.challenge.title %>
+  </b>  
+</p>
 <p>
   <b>Status:</b>
   <%= player_challenge.status %>
   <%= link_to('Finish',  edit_player_challenge_path(player_challenge) ) if player_challenge.unfinished? %>
 </p>
 
-<p>
-  <b>Challenge:</b>
-  <%= player_challenge.challenge.title %>
-</p>

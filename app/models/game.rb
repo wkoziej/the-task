@@ -32,5 +32,8 @@ class Game < ActiveRecord::Base
     
   end
 
+  def can_archive?
+    active? and !challenges.empty?
+  end
 
 end

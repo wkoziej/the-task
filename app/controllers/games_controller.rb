@@ -71,6 +71,36 @@ class GamesController < ApplicationController
     end
   end
 
+  # GET /games/1/activate
+  def activate
+    @game = Game.find(params[:id])
+    respond_to do |format|
+      if @game.activate
+        format.html { redirect_to @game, :notice => 'Game was successfully activated.' }
+        format.json { head :ok }
+      else
+        format.html { redirect_to @game, :notice => 'Cannot activate this game.' }
+        format.json { render :json => @game.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
+  # GET /games/1/archive
+  def archive
+    @game = Game.find(params[:id])
+    respond_to do |format|
+      if @game.archive
+        format.html { redirect_to @game, :notice => 'Game was successfully archived.' }
+        format.json { head :ok }
+      else
+        format.html { redirect_to @game, :notice => 'Game cannot be archived.' }
+        format.json { render :json => @game.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
   # DELETE /games/1
   # DELETE /games/1.json
   def destroy

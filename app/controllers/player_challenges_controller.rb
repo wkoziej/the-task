@@ -61,7 +61,7 @@ class PlayerChallengesController < ApplicationController
   # PUT /player_challenges/1.json
   def update
     @player_challenge = PlayerChallenge.find(params[:id])
-
+    
     respond_to do |format|
       if @player_challenge.update_attributes(params[:player_challenge])
         format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully updated.' }

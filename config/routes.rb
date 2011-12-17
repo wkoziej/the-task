@@ -1,16 +1,11 @@
 TheTask::Application.routes.draw do
+  get "dashboard/index"
+ 
   resources :reward_collections
-
   resources :rewards
 
-  get "dashboard/index"
-
   devise_for :users
-
-  resources :challenges
-  resources :capture_codes, :controller => :challenges
-  resources :enter_messages, :controller => :challenges
-
+ 
   resources :player_challenges
   resources :capturing_codes, :controller => :player_challenges
   resources :entering_messages, :controller => :player_challenges
@@ -18,12 +13,17 @@ TheTask::Application.routes.draw do
 
   resources :plays
 
-
-  resources :games
+  resources :games do
+    resources :challenges
+    resources :capture_codes, :controller => :challenges
+    resources :enter_messages, :controller => :challenges
+ 
+    get 'activate', :on => :member 
+    get 'archive', :on => :member 
+  end
 
   resources :users
 
-  #match 'games/:id/activate', :contorller => :games 
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
