@@ -2,7 +2,9 @@ class Challenge < ActiveRecord::Base
   belongs_to :game
   belongs_to :pointKind
 
-  attr_accessible :title, :description, :points, :latitude, :longitude, :type
+  attr_accessible :title, :description, :points, :latitude, :longitude, :type, :pointKind
+
+  validates_presence_of :pointKind, :points, :title, :description
   
   def initialize(params = nil) 
     super(params) 

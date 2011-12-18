@@ -4,7 +4,6 @@ class PlayerChallengesController < ApplicationController
   # GET /player_challenges.json
   def index
     @player_challenges = PlayerChallenge.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @player_challenges }
@@ -15,53 +14,24 @@ class PlayerChallengesController < ApplicationController
   # GET /player_challenges/1.json
   def show
     @player_challenge = PlayerChallenge.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @player_challenge }
     end
   end
 
-  # GET /player_challenges/new
-  # GET /player_challenges/new.json
-  # Wyzwania tworzą się podczas tworzenie rozgrywki
-  # def new
-  #  @player_challenge = PlayerChallenge.new
-  #
-  #    respond_to do |format|
-  #      format.html # new.html.erb
-  #      format.json { render :json => @player_challenge }
-  #    end
-  #  end
-
   # GET /player_challenges/1/edit
+  # GET /capturing_code/1/edit
+  # GET /entering_message/1/edit
   def edit
     @player_challenge = PlayerChallenge.find(params[:id])
+    render :template => @player_challenge.class.name.pluralize.underscore + '/edit'
   end
-
-  # POST /player_challenges
-  # POST /player_challenges.json
-  # Wyzwania tworzą się podczas tworzenie rozgrywki
-  #def create
-  #  @player_challenge = PlayerChallenge.new(params[:player_challenge])
-  #  
-  #  respond_to do |format|
-  #    if @player_challenge.save
-  #      format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully created.' }
-  #       format.json { render :json => @player_challenge, :status => :created, :location => @player_challenge }
-  #     else
-  #       logger.debug @player_challenge.errors.messages
-  #       format.html { render :action => "new" }
-  #       format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   # PUT /player_challenges/1
   # PUT /player_challenges/1.json
   def update
-    @player_challenge = PlayerChallenge.find(params[:id])
-    
+    @player_challenge = PlayerChallenge.find(params[:id])    
     respond_to do |format|
       if @player_challenge.update_attributes(params[:player_challenge])
         format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully updated.' }
@@ -79,7 +49,6 @@ class PlayerChallengesController < ApplicationController
   def destroy
     @player_challenge = PlayerChallenge.find(params[:id])
     @player_challenge.destroy
-
     respond_to do |format|
       format.html { redirect_to player_challenges_url }
       format.json { head :ok }

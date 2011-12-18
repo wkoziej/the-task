@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  pointSum: 
-  pointKind: 
-  user: 
+  pointSum: 1 
+  pointKind: public
+  user: one
 
 two:
-  pointSum: 
-  pointKind: 
-  user: 
+  pointSum: 2 
+  pointKind: private 
+  user: one

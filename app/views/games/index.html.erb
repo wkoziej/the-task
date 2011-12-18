@@ -1,25 +1,16 @@
-<h1>Listing games</h1>
+<h1>Games</h1>
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Creator</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Game info</th>
+<th>Action</th>
  </tr>
 
 <% @games.each do |game| %>
   <tr>
-    <td><%= game.title %></td>
-    <td><%= game.description %></td>
-    <td><%= game.status %></td>
-    <td><%= game.creator.login %></td>
+    <td> <b><%= game.title %> </b> <br />
+
+    <%= game.description %></td>
     <td><%= link_to 'Show', game %></td>
   </tr>
 <% end %>

@@ -16,48 +16,20 @@ class PlayerChallengesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:player_challenges)
   end
 
-  # Wyzwania tworzą się podczas tworzenia gdy
-  #test "should get new" do
-  #  get :new
-  #  assert_response :success
-  #end
-
-  # Wyzwania tworzą się podczas tworzenia gdy
-  #test "should create player_challenge" do
-  #  assert_difference('PlayerChallenge.count') do
-  #    post :create, :player_challenge => { :play_id => @capturingCode.play, :challenge_id => @capturingCode.challenge } 
-  #  end
-  #  assert_redirected_to player_challenge_path(assigns(:player_challenge))
-  #end
-
   test "should show player_challenge" do
     get :show, :id => @capturingCode.to_param
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, :id => @capturingCode.to_param
-    assert_response :success
-  end
 
-  test "should update capturing_code" do
-    put :update, :id => @capturingCode.to_param, :player_challenge => {  }
-    # Wracamy do edycji bo kod pusty
-    assert_template :edit, @response.body 
+  # test "should update entering message" do
+  #   put :update, :id => @enteringMessage.to_param, :player_challenge => {  }
+  #   # Wracamy do edycji bo message pusty
+  #   assert_template :edit, "Powinnismy powrócić do edycji jeżeli nie wpisano wiadomosci"
+  #   put :update, :id => @enteringMessage.to_param, :player_challenge => { :message => "Message not empty" }
+  #   assert_redirected_to entering_message_path(assigns(:player_challenge))
 
-    put :update, :id => @capturingCode.to_param, :player_challenge => { :code => "not empty" }
-    assert_redirected_to capturing_code_path(assigns(:player_challenge))
-     
-  end
-
-  test "should update entering message" do
-    put :update, :id => @enteringMessage.to_param, :player_challenge => {  }
-    # Wracamy do edycji bo message pusty
-    assert_template :edit, "Powinnismy powrócić do edycji jeżeli nie wpisano wiadomosci"
-    put :update, :id => @enteringMessage.to_param, :player_challenge => { :message => "Message not empty" }
-    assert_redirected_to entering_message_path(assigns(:player_challenge))
-
-  end
+  # end
 
   test "should destroy player_challenge" do
     assert_difference('PlayerChallenge.count', -1) do
