@@ -7,8 +7,7 @@ class Game < ActiveRecord::Base
   has_many :plays
 
   # Validations
-  validate :status, :presence => true
-  validate :creator, :presence => true
+  validates_presence_of :status, :creator, :title, :description
 
   def initialize(params = nil) 
     super(params) 

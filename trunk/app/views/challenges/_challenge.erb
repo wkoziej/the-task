@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <b>Points Kind:</b>
+  <%= challenge.pointKind.name %>
+</p>
+
+<p>
   <b>Title:</b>
   <%= challenge.title %>
 </p>
@@ -15,4 +20,4 @@
   <%= challenge.description %>
 </p>
 
-<%= link_to 'Edit', edit_game_challenge_path(challenge.game, challenge) if challenge.game.new? %> 
+

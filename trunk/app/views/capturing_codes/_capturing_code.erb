@@ -1,9 +1,7 @@
-<p>
-Capturing code...
+
 </p>
-
- <%= link_to('Capture code',  edit_capturing_code_path(capturing_code) ) if capturing_code.unfinished? %>
-
+ <%= capturing_code.challenge.title %>
+ <%= link_to('Finish',  edit_capturing_code_path(capturing_code) ) if capturing_code.unfinished? %>
 <br/>
 
 

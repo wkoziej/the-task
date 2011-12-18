@@ -11,4 +11,10 @@ class User < ActiveRecord::Base
   has_many :marks
   has_many :reward_collections
   # has_many :rewards, :through => :users, :foreign_key => ""
+
+  def pointSum(pointKind)
+    mark = Mark.find_by_user_id_and_pointKind_id(self, pointKind)
+    mark == nil ? 0 : mark.pointSum
+  end
+
 end

@@ -1,4 +1,6 @@
 TheTask::Application.routes.draw do
+  resources :capturing_codes
+
   get "dashboard/index"
  
   resources :reward_collections
@@ -6,8 +8,10 @@ TheTask::Application.routes.draw do
 
   devise_for :users
  
-  resources :player_challenges
-  resources :capturing_codes, :controller => :player_challenges
+  resources :player_challenges do
+  end
+
+#  resources :capturing_codes, :controller => :player_challenges
   resources :entering_messages, :controller => :player_challenges
 
 

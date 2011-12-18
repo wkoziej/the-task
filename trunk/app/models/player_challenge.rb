@@ -10,6 +10,8 @@ class PlayerChallenge < ActiveRecord::Base
   
   state_machine :status, :initial => :unfinished do
     
+    after_transition :unfinished => :finished, :do => :update_points
+
     state :finished do
     end
 
@@ -25,4 +27,12 @@ class PlayerChallenge < ActiveRecord::Base
     end
     
   end
+
+  def update_points
+    mark = Mark.find_or_create_by_user_id_and_pointKind_id(play.player, challenge.pointKind)
+    mark.pointSum = 0 if mark.pointSum == nil
+    mark.pointSum += challenge.points
+    mark.save
+  end
+
 end

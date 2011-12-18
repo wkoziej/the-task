@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(:version => 20111213215451) do
 
   create_table "challenges", :force => true do |t|
-    t.integer  "points"
-    t.integer  "pointKind_id"
-    t.string   "title"
-    t.text     "description"
-    t.integer  "game_id"
-    t.string   "status"
-    t.string   "type"
+    t.integer  "points",       :null => false
+    t.integer  "pointKind_id", :null => false
+    t.string   "title",        :null => false
+    t.text     "description",  :null => false
+    t.integer  "game_id",      :null => false
+    t.string   "status",       :null => false
+    t.string   "type",         :null => false
     t.float    "longitude"
     t.float    "latitude"
     t.datetime "created_at"
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(:version => 20111213215451) do
   end
 
   add_index "challenges", ["game_id"], :name => "index_challenges_on_game_id"
+  add_index "challenges", ["pointKind_id"], :name => "index_challenges_on_pointKind_id"
 
   create_table "games", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "status"
-    t.integer  "creator_id"
+    t.string   "title",       :null => false
+    t.text     "description", :null => false
+    t.string   "status",      :null => false
+    t.integer  "creator_id",  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

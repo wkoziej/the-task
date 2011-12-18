@@ -41,9 +41,11 @@ class ChallengesController < ApplicationController
   # POST /challenges
   # POST /challenges.json
   def create
-    @challenge = Challenge.new(params[:challenge])
+    @challenge = CaptureCode.new(params[:challenge])
     @game = Game.find(params[:game_id])
     @challenge.game = @game
+    @challenge.pointKind = PointKind.find_by_name('PUBLIC');
+
     respond_to do |format|
       if @challenge.save
         format.html { redirect_to game_challenge_url(params[:game_id], @challenge.id), :notice => 'Challenge was successfully created.' }
