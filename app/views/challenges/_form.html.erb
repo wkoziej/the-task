@@ -12,13 +12,26 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :type %><br />
+    <%= f.select(:type, @challengeTypes) %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :points %><br />
     <%= f.number_field :points %>
   </div>
+
   <div class="field">
+    <%= f.label :pointKind %><br />
+    <%= f.select(:pointKind_id, @pointKinds) %>
+  </div>
+
+  <Div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>

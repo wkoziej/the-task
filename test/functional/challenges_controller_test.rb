@@ -29,15 +29,15 @@ class ChallengesControllerTest < ActionController::TestCase
         :points => @captureCode.points, :pointKind_id => @captureCode.pointKind.id, :description =>  @captureCode.description } 
     end
 
-    assert_redirected_to game_challenge_path(@game,assigns(:challenge))
-  end
-
-  test "should create enter message challenge" do
-    assert_difference('Challenge.count') do
-      post :create, :game_id => @game.id, :challenge => {:type => @enterMessage.type, :title => @enterMessage.title, :points => @enterMessage.points, :pointKind => @enterMessage.pointKind} 
-    end
     assert_redirected_to game_challenge_path(@game, assigns(:challenge))
   end
+
+  # test "should create enter message challenge" do
+  #   assert_difference('Challenge.count') do
+  #     post :create, :game_id => @game.id, :challenge => {:type => @enterMessage.type, :title => @enterMessage.title, :points => @enterMessage.points, :pointKind => @enterMessage.pointKind} 
+  #   end
+  #   assert_redirected_to game_challenge_path(@game, assigns(:challenge))
+  # end
 
 
   test "should show challenge" do
