@@ -25,6 +25,8 @@ class RewardsController < ApplicationController
   # GET /rewards/new.json
   def new
     @reward = Reward.new
+    @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+    @users = User.all.collect {|p| [p.login, p.id] }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,9 @@ class RewardsController < ApplicationController
   # GET /rewards/1/edit
   def edit
     @reward = Reward.find(params[:id])
+    @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+    @users = User.all.collect {|p| [p.login, p.id] }
+
   end
 
   # POST /rewards

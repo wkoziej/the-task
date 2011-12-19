@@ -12,33 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :priceInPoints %><br />
-    <%= f.number_field :priceInPoints %>
-  </div>
-  <div class="field">
-    <%= f.label :userLimit %><br />
-    <%= f.number_field :userLimit %>
-  </div>
-  <div class="field">
-    <%= f.label :expirationDate %><br />
-    <%= f.datetime_select :expirationDate %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :sponsor_id %><br />
-    <%= f.text_field :sponsor_id %>
-  </div>
-  <div class="field">
-    <%= f.label :creator_id %><br />
-    <%= f.text_field :creator_id %>
   </div>
 
   <div class="field">
     <%= f.label :image %><br />
     <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :priceInPoints %><br />
+    <%= f.number_field :priceInPoints %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pointKind %><br />
+    <%= f.select(:pointKind_id, @pointKinds) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :userLimit %><br />
+    <%= f.number_field :userLimit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expirationDate %><br />
+    <%= f.datetime_select :expirationDate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sponsor_id %><br />
+    <%= f.select(:sponsor_id, @users) %>
   </div>
   
   <div class="actions">
