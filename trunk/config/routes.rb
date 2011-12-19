@@ -1,17 +1,17 @@
 TheTask::Application.routes.draw do
-  resources :capturing_codes
 
   get "dashboard/index"
+  devise_for :users
+
+  match 'players/:id/challenges' => 'player_challenges#index'
+
+  resources :capturing_codes, :only => [:edit, :show, :update]
+  # TODO like :capturing_codes
+  resources :entering_messages, :controller => :player_challenges
  
+
   resources :reward_collections
   resources :rewards
-
-  devise_for :users
- 
-
-#  resources :capturing_codes, :controller => :player_challenges
-  resources :entering_messages, :controller => :player_challenges
-
 
   resources :plays, :except => [:destroy, :edit, :new]
 
@@ -27,8 +27,9 @@ TheTask::Application.routes.draw do
   resources :users do
   #  resources :challenges, :controller => :player_challenges
   end
+  
+  root :to => 'dashboard#index'
 
-  match 'players/:id/challenges' => 'player_challenges#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -79,7 +80,7 @@ TheTask::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'dashboard#index'
+  #  root :to => 'dashboard#index'
 
   
   # See how all your routes lay out with "rake routes"

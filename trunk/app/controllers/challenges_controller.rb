@@ -24,10 +24,13 @@ class ChallengesController < ApplicationController
   # GET /challenges/new
   # GET /challenges/new.json
   def new
-    @challenge = Challenge.new
+    @challenge = Challenge.new 
     @game = Game.find(params[:game_id])
+    @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+    # TODO !!!
+    @challengeTypes = [["Capture Code", "CaptureCode"], ["Enter Message", "EnterMessage" ]]
     respond_to do |format|
-      format.html # new.html.erb
+      format.html 
       format.json { render :json => @challenge }
     end
   end
@@ -41,10 +44,10 @@ class ChallengesController < ApplicationController
   # POST /challenges
   # POST /challenges.json
   def create
-    @challenge = CaptureCode.new(params[:challenge])
+    # TODO !!!
+###    @challenge = params[:type].new()
     @game = Game.find(params[:game_id])
     @challenge.game = @game
-    @challenge.pointKind = PointKind.find_by_name('PUBLIC');
 
     respond_to do |format|
       if @challenge.save
