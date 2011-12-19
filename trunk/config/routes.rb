@@ -8,14 +8,12 @@ TheTask::Application.routes.draw do
 
   devise_for :users
  
-  resources :player_challenges do
-  end
 
 #  resources :capturing_codes, :controller => :player_challenges
   resources :entering_messages, :controller => :player_challenges
 
 
-  resources :plays
+  resources :plays, :except => [:destroy, :edit, :new]
 
   resources :games do
     resources :challenges
@@ -26,9 +24,12 @@ TheTask::Application.routes.draw do
     get 'archive', :on => :member 
   end
 
-  resources :users
+  resources :users do
+  #  resources :challenges, :controller => :player_challenges
+  end
 
- 
+  match 'players/:id/challenges' => 'player_challenges#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

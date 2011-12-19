@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
     end
   
     event :activate do
-      transition :new => :active, :if => lambda {|game| !game.challenges.empty?}
+      transition :new => :active, :if => :can_activate?
     end
     
     event :archive do
@@ -35,4 +35,8 @@ class Game < ActiveRecord::Base
     active? and !challenges.empty?
   end
 
+  def can_activate?
+    !challenges.empty?
+  end
+   
 end

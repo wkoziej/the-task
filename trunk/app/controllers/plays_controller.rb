@@ -20,21 +20,21 @@ class PlaysController < ApplicationController
     end
   end
 
-  # GET /plays/new
-  # GET /plays/new.json
-  def new
-    @play = Play.new
+  # # GET /plays/new
+  # # GET /plays/new.json
+  # def new
+  #   @play = Play.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @play }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # new.html.erb
+  #     format.json { render :json => @play }
+  #   end
+  # end
 
-  # GET /plays/1/edit
-  def edit
-    @play = Play.find(params[:id])
-  end
+  # # GET /plays/1/edit
+  # def edit
+  #   @play = Play.find(params[:id])
+  # end
 
   # POST /plays
   # POST /plays.json
