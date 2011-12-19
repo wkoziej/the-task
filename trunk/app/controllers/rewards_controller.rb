@@ -41,7 +41,6 @@ class RewardsController < ApplicationController
   # POST /rewards.json
   def create
     @reward = Reward.new(params[:reward])
-
     respond_to do |format|
       if @reward.save
         format.html { redirect_to @reward, :notice => 'Reward was successfully created.' }

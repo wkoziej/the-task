@@ -7,11 +7,12 @@ class PlayerChallengesControllerTest < ActionController::TestCase
     @capturingCode = CapturingCode.find( player_challenges(:capturingCode))
     @enteringMessage = EnteringMessage.find( player_challenges(:enteringMessage))
     @user = User.find(users(:one))
+    @play = plays(:one)
     sign_in @user   
   end
 
   test "should get index" do
-    get :index
+    get :index, :player_id => @user.to_param 
     assert_response :success
     assert_not_nil assigns(:player_challenges)
   end

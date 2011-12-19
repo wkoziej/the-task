@@ -28,7 +28,7 @@ class ChallengesController < ApplicationController
     @game = Game.find(params[:game_id])
     @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
     # TODO !!!
-    @challengeTypes = [["Capture Code", "CaptureCode"], ["Enter Message", "EnterMessage" ]]
+    @challengeTypes = challengeTypeArray
     respond_to do |format|
       format.html 
       format.json { render :json => @challenge }
@@ -39,21 +39,28 @@ class ChallengesController < ApplicationController
   def edit
     @challenge = Challenge.find(params[:id])
     @game = Game.find(params[:game_id])
+    @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+    @challengeTypes = challengeTypeArray 
   end
 
   # POST /challenges
   # POST /challenges.json
   def create
     # TODO !!!
-###    @challenge = params[:type].new()
+    @object_name = params[:challenge][:type].to_s + ".new"
+    logger.debug(@object_name)
+    @challenge = eval(@object_name)
     @game = Game.find(params[:game_id])
     @challenge.game = @game
 
     respond_to do |format|
-      if @challenge.save
+      if @challenge.update_attributes(params[:challenge]) and @challenge.save
         format.html { redirect_to game_challenge_url(params[:game_id], @challenge.id), :notice => 'Challenge was successfully created.' }
         format.json { render :json => @challenge, :status => :created, :location => @challenge }
       else
+        logger.debug(@challenge.errors.full_messages)
+        @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+        @challengeTypes = challengeTypeArray 
         format.html { render :action => "new" }
         format.json { render :json => @challenge.errors, :status => :unprocessable_entity }
       end
@@ -87,4 +94,9 @@ class ChallengesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def challengeTypeArray
+    [["Capture Code", "CaptureCode"], ["Enter Message", "EnterMessage" ]]
+  end
+
 end

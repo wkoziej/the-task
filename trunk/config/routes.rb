@@ -3,15 +3,16 @@ TheTask::Application.routes.draw do
   get "dashboard/index"
   devise_for :users
 
-  match 'players/:id/challenges' => 'player_challenges#index'
+  match 'players/:player_id/challenges' => 'player_challenges#index'
+#  match 'players/:player_id/rewards' => 'reward_collections#index'
+  
 
   resources :capturing_codes, :only => [:edit, :show, :update]
   # TODO like :capturing_codes
   resources :entering_messages, :controller => :player_challenges
  
-
-  resources :reward_collections
   resources :rewards
+  resources :reward_collections
 
   resources :plays, :except => [:destroy, :edit, :new]
 
@@ -26,6 +27,7 @@ TheTask::Application.routes.draw do
 
   resources :users do
   #  resources :challenges, :controller => :player_challenges
+#    resources :
   end
   
   root :to => 'dashboard#index'

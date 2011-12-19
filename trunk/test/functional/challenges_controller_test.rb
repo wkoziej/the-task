@@ -26,7 +26,7 @@ class ChallengesControllerTest < ActionController::TestCase
   test "should create capture code challenge" do
     assert_difference('Challenge.count') do
       post :create, :game_id => @game.id, :challenge => {:type => @captureCode.type, :title => @captureCode.title, 
-        :points => @captureCode.points, :pointKind_id => @captureCode.pointKind.id, :description =>  @captureCode.description } 
+        :points => @captureCode.points, :pointKind_id => @captureCode.pointKind.id, :description =>  @captureCode.description, :type => "CaptureCode" } 
     end
 
     assert_redirected_to game_challenge_path(@game, assigns(:challenge))
