@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20111213215451) do
 
   create_table "rewards", :force => true do |t|
     t.integer  "priceInPoints"
+    t.integer  "pointKind_id"
     t.integer  "userLimit"
     t.datetime "expirationDate"
     t.text     "description"
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20111213215451) do
   end
 
   add_index "rewards", ["creator_id"], :name => "index_rewards_on_creator_id"
+  add_index "rewards", ["pointKind_id"], :name => "index_rewards_on_pointKind_id"
   add_index "rewards", ["sponsor_id"], :name => "index_rewards_on_sponsor_id"
 
   create_table "users", :force => true do |t|

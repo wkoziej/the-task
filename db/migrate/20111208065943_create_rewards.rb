@@ -2,6 +2,7 @@ class CreateRewards < ActiveRecord::Migration
   def change
     create_table :rewards do |t|
       t.integer :priceInPoints
+      t.references :pointKind
       t.integer :userLimit
       t.datetime :expirationDate
       t.text :description
@@ -17,5 +18,6 @@ class CreateRewards < ActiveRecord::Migration
 
     add_index :rewards, :sponsor_id
     add_index :rewards, :creator_id
+    add_index :rewards, :pointKind_id
   end
 end

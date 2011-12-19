@@ -3,11 +3,11 @@
 one:
   collectDate: 2011-12-08 21:06:34
   status: MyString
-  winner: 
-  reward: 
+  winner: one 
+  reward: one
 
 two:
   collectDate: 2011-12-08 21:06:34
   status: MyString
-  winner: 
-  reward: 
+  winner: two
+  reward: two

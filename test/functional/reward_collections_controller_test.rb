@@ -8,7 +8,7 @@ class RewardCollectionsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, :player_id => @user.to_param
     assert_response :success
     assert_not_nil assigns(:reward_collections)
   end
@@ -22,7 +22,6 @@ class RewardCollectionsControllerTest < ActionController::TestCase
     assert_difference('RewardCollection.count') do
       post :create, :reward_collection => @reward_collection.attributes
     end
-
     assert_redirected_to reward_collection_path(assigns(:reward_collection))
   end
 
@@ -36,16 +35,5 @@ class RewardCollectionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update reward_collection" do
-    put :update, :id => @reward_collection.to_param, :reward_collection => @reward_collection.attributes
-    assert_redirected_to reward_collection_path(assigns(:reward_collection))
-  end
 
-  test "should destroy reward_collection" do
-    assert_difference('RewardCollection.count', -1) do
-      delete :destroy, :id => @reward_collection.to_param
-    end
-
-    assert_redirected_to reward_collections_path
-  end
 end

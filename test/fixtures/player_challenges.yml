@@ -2,7 +2,7 @@
 
 enteringMessage:
   status: unfinished
-  play: one
+  play: two
   challenge: enterMessage 
   type: EnteringMessage
 
