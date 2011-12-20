@@ -11,8 +11,11 @@ TheTask::Application.routes.draw do
   # TODO like :capturing_codes
   resources :entering_messages, :controller => :player_challenges
  
-  resources :rewards
-  resources :reward_collections
+  resources :rewards do
+    get 'collect', :on => :member 
+  end
+  
+  resources :reward_collections, :only => [:index, :show]
 
   resources :plays, :except => [:destroy, :edit, :new]
 

@@ -19,4 +19,9 @@ rich_without_rewards:
   login: rich1
   role: player
   email: aaa3@cc.com
+
+poor:
+  login: poor
+  role: player
+  email: aaa55@cc.com
   

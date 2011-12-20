@@ -1,29 +1,4 @@
 <h1>Listing reward_collections</h1>
 
-<table>
-  <tr>
-    <th>Collectdate</th>
-    <th>Status</th>
-    <th>Winner</th>
-    <th>Reward</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render @reward_collections %>
 
-<% @reward_collections.each do |reward_collection| %>
-  <tr>
-    <td><%= reward_collection.collectDate %></td>
-    <td><%= reward_collection.status %></td>
-    <td><%= reward_collection.winner %></td>
-    <td><%= reward_collection.reward %></td>
-    <td><%= link_to 'Show', reward_collection %></td>
-    <td><%= link_to 'Edit', edit_reward_collection_path(reward_collection) %></td>
-    <td><%= link_to 'Destroy', reward_collection, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Reward collection', new_reward_collection_path %>

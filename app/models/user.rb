@@ -19,12 +19,15 @@ class User < ActiveRecord::Base
   end
 
   def collect(reward)
-    if reward.available? and
-        pointSum(reward.pointKind) >= reward.priceInPoints
+    mark = Mark.find_by_user_id_and_pointKind_id(self, reward.pointKind)
+    if reward.available?  and mark != nil and mark.pointSum >= reward.priceInPoints
       newReward = RewardCollection.new
       newReward.winner = self
       newReward.reward = reward
       reward_collections << newReward
+      mark.pointSum -= reward.priceInPoints
+      mark.save
+      save
     end
   end
 

@@ -1,5 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+one:
+  winner: two
+  reward: two
+  status: choosen
+
 reward_coll1:
   winner: rich 
   reward: one
@@ -9,3 +14,4 @@ reward_coll2:
   winner: rich
   reward: two
   status: choosen
+

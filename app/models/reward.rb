@@ -12,4 +12,8 @@ class Reward < ActiveRecord::Base
       (expirationDate == nil or expirationDate < DateTime.now)
   end
 
+  def availableFor?(user)
+    available? and user.pointSum(pointKind) >= priceInPoints
+  end
+
 end
