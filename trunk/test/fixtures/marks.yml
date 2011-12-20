@@ -9,3 +9,13 @@ two:
   pointSum: 2 
   pointKind: private 
   user: one
+
+richPublicPoints:
+  pointSum: 100000
+  pointKind: public
+  user: rich
+
+richPrivatePoints:
+  pointSum: 100000
+  pointKind: private
+  user: rich

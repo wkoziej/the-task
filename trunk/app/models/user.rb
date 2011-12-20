@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :games
   has_many :plays
   has_many :marks
-  has_many :reward_collections
+  has_many :reward_collections, :foreign_key => :winner_id
+  has_many :rewards, :through => :reward_collections 
   # has_many :rewards, :through => :users, :foreign_key => ""
 
   def pointSum(pointKind)
@@ -17,4 +18,7 @@ class User < ActiveRecord::Base
     mark == nil ? 0 : mark.pointSum
   end
 
+  def collect(reward)
+    false
+  end
 end
