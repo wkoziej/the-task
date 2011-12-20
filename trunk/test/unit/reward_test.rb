@@ -14,15 +14,23 @@ class RewardTest < ActiveSupport::TestCase
   end
 
   test "winning the reward by rich user" do
-    @richUser = User.find(users(:rich_without_rewards))
     @reward = rewards(:reward_available)
-    assert @richUser.rewards.empty?, "Uzytkownik posiada juz nagrody!"
-    assert @richUser.pointSum('public') < @reward.priceInPoints, " Bogatego usera nie stac na nagrode!"
-    assert @richUser.collect(@reward), "Nie udalo sie zebrac nagrody "  + @richUser.errors.full_messages.to_s
-    assert !@richUser.rewards.empty?, "Uzytkownik nie posiada mimo tego, ze ja wygral!"
+    @richUser = User.find(users(:rich_without_rewards))
+    assert @richUser.rewards.empty?, "User has rewards!"
+    @pointSumA = @richUser.pointSum(point_kinds(:public)) 
+    assert @pointSumA >= @reward.priceInPoints, " Rich user cant get reward ! " + @pointSumA.to_s + " " + @reward.priceInPoints.to_s
+    assert @reward.availableFor?(@richUser), "Rich user cant get reward!"
+    assert @richUser.collect(@reward), "Cant collect reward! "  + @richUser.errors.full_messages.to_s
+    assert !@richUser.rewards.empty?, "User has no rewards!"
+    @pointSumB = @richUser.pointSum(point_kinds(:public)) 
+    assert @pointSumA != @pointSumB, "Reward cost nothing! " + @pointSumA.to_s + " " + @pointSumB.to_s
   end
 
   test "blocking rewards for poor user" do
+    @reward = rewards(:reward_available)
+    @poorUser = User.find(users(:poor))
+    assert !@reward.availableFor?(@poorUser), "Poor user can get reward!"
+    assert !@poorUser.collect(@reward), "Poor user too rich!"
   end
 
 end

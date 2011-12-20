@@ -1,25 +1,2 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Collectdate:</b>
-  <%= @reward_collection.collectDate %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @reward_collection.status %>
-</p>
-
-<p>
-  <b>Winner:</b>
-  <%= @reward_collection.winner %>
-</p>
-
-<p>
-  <b>Reward:</b>
-  <%= @reward_collection.reward %>
-</p>
-
-
-<%= link_to 'Edit', edit_reward_collection_path(@reward_collection) %> |
-<%= link_to 'Back', reward_collections_path %>
+<%= render @reward_collection %>

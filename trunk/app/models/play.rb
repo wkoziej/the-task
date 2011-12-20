@@ -10,6 +10,8 @@ class Play < ActiveRecord::Base
 
   state_machine :status, :initial => :started do
     
+    after_transition [:started, :unfinished] => [:finished, :canceled], :do => lambda { |play| play.finishedAt = DateTime.now }
+
     state :finished do
     end
 

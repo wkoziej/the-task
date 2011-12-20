@@ -84,4 +84,21 @@ class RewardsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  # GET /rewards/1/collect
+  def collect
+    @reward = Reward.find(params[:id])
+    @user = current_user
+    respond_to do |format|
+      if @user.collect(@reward)
+        format.html { redirect_to @reward, :notice => 'Reward was successfully collected.' }
+        format.json { head :ok }
+      else
+        logger.debug @user.errors.full_messages
+        format.html { redirect_to @user, :notice => 'Cant collect reward.' }
+        format.json { render :json => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
 end

@@ -19,3 +19,8 @@ richPrivatePoints:
   pointSum: 100000
   pointKind: private
   user: rich
+
+rich_without_rewards:
+  pointSum: 100000
+  pointKind: public
+  user: rich_without_rewards

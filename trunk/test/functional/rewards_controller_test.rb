@@ -49,4 +49,13 @@ class RewardsControllerTest < ActionController::TestCase
 
     assert_redirected_to rewards_path
   end
+
+  test "should get collect reward" do
+    @user = User.find(users(:rich))
+    @reward = rewards(:reward_available)
+    sign_in @user   
+    get :collect, :id => @reward.to_param
+    assert_redirected_to reward_path(@reward)
+  end
+
 end

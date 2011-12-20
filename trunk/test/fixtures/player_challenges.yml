@@ -11,3 +11,15 @@ capturingCode:
   play: one
   challenge: captureCode 
   type: CapturingCode
+
+cc1:
+  status: unfinished
+  play: p1
+  challenge: captureCode 
+  type: CapturingCode
+
+cc2:
+  status: unfinished
+  play: p1
+  challenge: captureCode 
+  type: CapturingCode

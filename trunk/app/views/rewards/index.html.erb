@@ -1,27 +1,22 @@
 <h1>Listing rewards</h1>
 
 <table>
+
   <tr>
     <th></th>
     <th>Description</th>
-
     <th>Price</th>
-
-    <th></th>
-    <th></th>
   </tr>
 
 <% @rewards.each do |reward| %>
+
   <tr>
     <td><%= link_to (image_tag reward.image.url(:thumb)), reward %> </td>
-
     <td><%= reward.priceInPoints %> / <%= reward.pointKind.name %> </td>
     <td><%= reward.description %></td>
-  
-    <td><%= link_to 'Show', reward %></td>
-    <td><%= link_to 'Edit', edit_reward_path(reward) %></td>
-    <td><%= link_to 'Destroy', reward, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'You can get it :)', reward  if reward.availableFor?(current_user) %>
   </tr>
+
 <% end %>
 </table>
 

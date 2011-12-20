@@ -11,3 +11,9 @@ two:
   description: Try it two
   status: archived
   creator: one
+
+g1:
+  title: Test for finishing
+  description: Dest
+  status: new
+  creator: one
