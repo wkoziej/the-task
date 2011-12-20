@@ -10,3 +10,8 @@ two:
   role: player
   email: aaaa@cc.com
   
+rich:
+  login: rich
+  role: player
+  email: aaa1@cc.com
+  
