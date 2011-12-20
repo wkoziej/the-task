@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
   end
 
   def collect(reward)
-    false
+    if reward.available? and
+        pointSum(reward.pointKind) >= reward.priceInPoints
+      newReward = RewardCollection.new
+      newReward.winner = self
+      newReward.reward = reward
+      reward_collections << newReward
+    end
   end
+
+
 end

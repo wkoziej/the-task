@@ -5,7 +5,6 @@ class CreateRewardCollections < ActiveRecord::Migration
       t.string :status
       t.references :winner
       t.references :reward
-
       t.timestamps
     end
     add_index :reward_collections, :winner_id

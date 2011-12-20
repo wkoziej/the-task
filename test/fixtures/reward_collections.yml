@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  collectDate: 2011-12-08 21:06:34
-  status: MyString
-  winner: one 
+reward_coll1:
+  winner: rich 
   reward: one
+  status: choosen
 
-two:
-  collectDate: 2011-12-08 21:06:34
-  status: MyString
-  winner: two
+reward_coll2:
+  winner: rich
   reward: two
+  status: choosen

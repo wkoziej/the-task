@@ -4,7 +4,7 @@ one:
   priceInPoints: 13
   pointKind: public
   userLimit: 2
-  expirationDate: 2011-12-08 07:59:43
+  expirationDate: 2021-12-08 07:59:43
   description: MyText
   sponsor: one
   creator: one
@@ -13,6 +13,34 @@ two:
   priceInPoints: 1
   pointKind: private
   userLimit: 1
+  expirationDate: 2020-12-08 07:59:43
+  description: MyText
+  sponsor: one
+  creator: one
+
+not_available_because_of_user_limit:
+  priceInPoints: 1
+  pointKind: private
+  userLimit: 0
+  expirationDate: 
+  description: MyText
+  sponsor: one
+  creator: one
+	
+
+not_available_because_of_date:
+  priceInPoints: 1
+  pointKind: private
+  userLimit: 0
+  expirationDate: 2010-12-08 11:11:11
+  description: MyText
+  sponsor: one
+  creator: one
+
+reward_available:
+  priceInPoints: 1
+  pointKind: public
+  userLimit: 111
   expirationDate: 2011-12-08 07:59:43
   description: MyText
   sponsor: one
