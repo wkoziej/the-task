@@ -46,11 +46,14 @@ class RewardsController < ApplicationController
   # POST /rewards.json
   def create
     @reward = Reward.new(params[:reward])
+    @reward.creator = current_user
     respond_to do |format|
       if @reward.save
         format.html { redirect_to @reward, :notice => 'Reward was successfully created.' }
         format.json { render :json => @reward, :status => :created, :location => @reward }
       else
+        @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+        @users = User.all.collect {|p| [p.login, p.id] }
         format.html { render :action => "new" }
         format.json { render :json => @reward.errors, :status => :unprocessable_entity }
       end
