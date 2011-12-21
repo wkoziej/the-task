@@ -36,7 +36,7 @@ class Game < ActiveRecord::Base
   end
 
   def can_activate?
-    !challenges.empty?
+    !challenges.empty? and !archived?
   end
    
 end
