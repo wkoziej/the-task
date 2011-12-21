@@ -13,9 +13,7 @@
   </div>
 
   <div id="menu">
-    <center>
-       <%= link_to 'home', '/' %> | <%= link_to 'games', games_path %> | <%= link_to 'plays', plays_path %> | <%= link_to 'rewards', rewards_path %> | <%= link_to 'my profile', user_path(current_user) if current_user %> 
-    </center>
+    <%= link_to 'home', '/' %> | <%= link_to 'games', games_path %> | <%= link_to 'plays', plays_path %> | <%= link_to 'my profile', user_path(current_user) if current_user %> 
   </div>
 
   <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>

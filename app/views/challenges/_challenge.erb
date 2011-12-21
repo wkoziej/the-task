@@ -1,18 +1,16 @@
+<div id="challenge_desc">
 
 <p>
-  <b>Points/Type:</b>
-  <%= challenge.points %> /  <%= challenge.pointKind.name %>
+  <b> <%= challenge.title %> </b>
+  <br />
+  <%= challenge.points %> <%= challenge.pointKind.name %> points
 </p>
 
-<p>
-  <b>
-  <%= challenge.title %>
-</b>
-</p>
 
 <p>
-  <b>Description:</b>
+  <b>Description:</b> <br />
   <%= challenge.description %>
 </p>
 
 
+</div>

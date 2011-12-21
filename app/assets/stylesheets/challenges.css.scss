@@ -1,3 +1,23 @@
 // Place all the styles related to the challenges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#challenge_desc {
+    margin-right:5px;
+    margin-left:5px;
+    background-color: #DDDDDD;
+}
+
+
+
+#capture_code_div, #enter_message_div  {
+    margin-right:1%;
+    margin-left:1%;
+    background-color: #DDDDBB;
+}
+
+#capture_code_desc, #enter_message_desc {
+    margin-right:5px;
+    margin-left:5px;
+    background-color: #DDDDDD;
+}

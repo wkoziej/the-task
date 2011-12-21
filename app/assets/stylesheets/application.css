@@ -7,5 +7,15 @@
 */
 #top_menu {
     position:absolute;
-    right:50px;
+    right:10%;
+}
+
+#menu {
+    left:10%;
+    background-color: #DDDDBB;
+}
+
+#content {
+    margin-left: 10%;
+    margin-right: 10%;
 }
