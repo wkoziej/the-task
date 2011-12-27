@@ -2,8 +2,6 @@
 
 <table>
   <tr>
-    <th>Statedat</th>
-    <th>Finishedat</th>
     <th>Status</th>
     <th>Game</th>
     <th>Player</th>
@@ -14,10 +12,8 @@
 
 <% @plays.each do |play| %>
   <tr>
-    <td><%= play.startedAt %></td>
-    <td><%= play.finishedAt %></td>
-    <td><%= play.status %></td>
-    <td><%= play.game.title %></td>
+    <td> <%= play.status %></td>
+    <td> <%= play.game.title %></td>
     <td><%= play.player.login %></td>
     <td><%= link_to 'Show', play %></td>
  </tr>

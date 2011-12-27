@@ -1,6 +1,6 @@
 
 </p>
- <%= capturing_code.challenge.title %>
+ <%= link_to capturing_code.challenge.title, capturing_code_path(capturing_code) %>
  <%= link_to('Finish',  edit_capturing_code_path(capturing_code) ) if capturing_code.unfinished? %>
 <br/>
 
