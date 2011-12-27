@@ -10,12 +10,50 @@
     right:10%;
 }
 
-#menu {
+#main_menu {
     left:10%;
     background-color: #DDDDBB;
 }
 
 #content {
+    position:absolute;
     margin-left: 10%;
     margin-right: 10%;
+    margin-top: 60px;
+}
+
+
+ul, ul li {
+	display: block;
+	list-style: none;
+	padding: 20;
+}
+
+ul {
+	position: absolute;
+}
+
+ul li {
+	float: left;
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: transparent #25b #25b #9ce;
+}
+
+ul a:link, ul a:visited {
+	text-decoration: none;
+	display: block;
+	width: 145px;
+	text-align: center;
+	padding: 5px 0;
+	font-weight: bold;
+	background-color: #27c;
+	color: #def;
+	border-top: 10px solid #25b;
+}
+
+ul a:hover {
+	background-color: #28e;
+	color: #fff;
+	border-top: 20px solid #26d;
 }
