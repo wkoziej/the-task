@@ -1,33 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Statedat:</b>
-  <%= @play.startedAt %>
-</p>
+
 
 <p>
-  <b>Finishedat:</b>
-  <%= @play.finishedAt %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @play.status %>
-</p>
-
-<p>
-  <b>Game:</b>
+  <b>Play in Game:</b>
   <%= @play.game.title %>
-</p>
-
-<p>
-  <b>Player:</b>
+  <br /> <b>Status:</b>
+  <%= @play.status %>
+ <br /> <b>Player:</b>
   <%= @play.player.login %>
 </p>
 
-<hr />
+
 <p>
-  <b>And this is your challenges... Good luck</b>
+  <b>Challenges:</b>
   <%= render @play.player_challenges %>
 </p>
 

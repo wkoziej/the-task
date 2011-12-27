@@ -1,5 +1,39 @@
 class PopulateData < ActiveRecord::Migration
   def up
+
+    user = User.new
+    user.login = 'test'
+    user.email = 'aaa@bbb.com'
+    user.password = "aaabbb"
+    user.role = "PLAYER"
+    user.save()
+
+    pointKind = PointKind.new
+    pointKind.name = 'PUBLIC'
+    pointKind.save ()
+
+    pointKind = PointKind.new
+    pointKind.name = 'SPONSORED_BY_A'
+    pointKind.save ()
+
+    mark = Mark.new
+    mark.user = User.find (1)
+    mark.pointKind = PointKind.find(1)
+    mark.pointSum = 110
+    mark.save()
+
+    mark = Mark.new
+    mark.user = User.find (1)
+    mark.pointKind = PointKind.find(2)
+    mark.pointSum = 10
+    mark.save()
+
+    game = Game.new
+    game.creator = User.find(1)
+    game.title = 'Collect two codes!'
+    game.description = 'Visit interesting places. Collect two codes.'
+    game.save()
+
     challenge = CaptureCode.new
     challenge.game = Game.find(1)
     challenge.points = 5
