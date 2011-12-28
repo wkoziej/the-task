@@ -5,55 +5,81 @@
  *= require_self
  *= require_tree . 
 */
-#top_menu {
-    position:absolute;
-    right:10%;
+body {
+    position: relative; 
+}
+
+#small_menu {
+    position: absolute; left: 10%; right:10%; top:0px;
+    border: 1px solid yellow;  
+    background-color: yellow;
 }
 
 #main_menu {
-    left:10%;
-    background-color: #DDDDBB;
+    border: 1px solid gray;
+    position: absolute; left: 10%; right: 10%; top:34px;
+    background-color: gray;
+    clear:both;
 }
 
 #content {
-    position:absolute;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 60px;
+    position: absolute; left: 10%; right:10%; top: 100px;
+    border: 1px solid gray;
+    clear:both;
+    padding: 10px 10px;
 }
 
 
 ul, ul li {
 	display: block;
 	list-style: none;
-	padding: 20;
 }
 
-ul {
-	position: absolute;
-}
 
-ul li {
-	float: left;
+#small_menu  li {
+	float: right;
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: transparent #25b #25b #9ce;
 }
 
-ul a:link, ul a:visited {
+#main_menu  li {
+    	float: right;
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: transparent #25b #25b #9ce;
+}
+
+#small_menu a:link, #small_menu a:visited {
+    	text-decoration: none;
+	display: block;
+	width: 110px;
+	text-align: center;
+	padding: 3px 0;
+	background-color: gray;
+	color: yellow;
+	border-top: 5px solid #000;
+}
+
+#main_menu a:link, #main_menu a:visited {
 	text-decoration: none;
 	display: block;
 	width: 145px;
 	text-align: center;
 	padding: 5px 0;
 	font-weight: bold;
-	background-color: #27c;
-	color: #def;
-	border-top: 10px solid #25b;
+	background-color: yellow;
+	color: gray;
+	border-top: 10px solid #000;
 }
 
-ul a:hover {
-	background-color: #28e;
-	color: #fff;
-	border-top: 20px solid #26d;
+li a:hover {
+	background-color: gray;
+	color: red;
+	border-top: 15px solid #dddd00;
+}
+
+h1 {
+    text-align: center;
+    font-family: Fantasy;
 }
