@@ -1,7 +1,9 @@
 pl:
   home: Łąka
   games: Kwiatki
-  plays: Rwanie kwiatków
+  plays: Kwiatorwanie
   challenges: Płatki
-  me: Mój kwiatostan
+  me: Mój kwiatów stan
   logout: Odlatuję
+  new_game: Zasadź kwiatka	
+  game_title: Nazwa kwiatka

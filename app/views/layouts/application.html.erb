@@ -10,14 +10,17 @@
 <body>
 
 <ul id="small_menu">
+  <% if current_user %>
   <li> <%= link_to t(:logout), destroy_user_session_path, :method => :delete %> </li>
+  <li> <%= link_to t(:me, :login => current_user.login), user_path(current_user) , :class => is_active?('', 'users')  %>  </li>
+  <% else %>
+  <% end %>
 </ul>
 
 <ul id="main_menu">
- <li> <%= link_to t(:plays), plays_path, :class => is_active?(plays_path) %>  </li>
- <li> <%= link_to t(:games), games_path, :class => is_active?(games_path) %>  </li>
- <li> <%= link_to t(:home), '/', :class => is_active?('index')  %> </li>
- <li> <%= link_to t(:me), user_path(current_user) , :class => is_active?(user_path(current_user))  if current_user %>  </li>
+ <li> <%= link_to t(:plays), plays_path, :class => is_active?('index', 'plays') %>  </li>
+ <li> <%= link_to t(:games), games_path, :class => is_active?('index', 'games') %>  </li>
+ <li> <%= link_to t(:home), '/', :class => is_active?('index', 'dashboard')  %> </li>
 </ul>
 
 

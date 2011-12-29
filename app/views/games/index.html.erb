@@ -1,17 +1,23 @@
-<%= link_to 'New Game', new_game_path %>
-<h1>Games</h1>
+<div id="create_elem">
+<%= link_to t(:new_game), new_game_path %>
+</div>
+
+<h1> <%= t(:games) %></h1>
 
 <table>
   <tr>
     <th></th>
- </tr>
-
-<% @games.each do |game| %>
-  <tr>
-    <td><%= link_to game.title, game %> </b> <br />
-    <%= game.description %></td>
   </tr>
-<% end %>
+
+  <% @games.each do |game| %>
+  <tr>
+    <td><%= link_to game.title, game %> <%= game.description %> </td>
+  </tr>
+  <% end %>
+
+  <%= will_paginate @games %>
+
+
 </table>
 
 <br />
