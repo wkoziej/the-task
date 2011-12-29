@@ -5,6 +5,13 @@
  *= require_self
  *= require_tree . 
 */
+
+
+.active {
+    font-family: Fantasy;
+    color:red;
+}
+
 body {
     position: relative; 
 }
@@ -58,25 +65,32 @@ ul, ul li {
 	padding: 3px 0;
 	background-color: gray;
 	color: yellow;
-	border-top: 5px solid #000;
+	border-top: 2px solid #000;
 }
 
 #main_menu a:link, #main_menu a:visited {
-	text-decoration: none;
 	display: block;
 	width: 145px;
 	text-align: center;
 	padding: 5px 0;
 	font-weight: bold;
 	background-color: yellow;
+	text-decoration: none;
 	color: gray;
-	border-top: 10px solid #000;
+	border-top: 4px solid #000;
 }
 
-li a:hover {
+
+#main_menu li a:hover {
 	background-color: gray;
-	color: red;
-	border-top: 15px solid #dddd00;
+	color: yellow;
+	border-top: 5px solid yellow;
+}
+
+#small_menu li a:hover {
+	background-color: yellow;
+	color: black;
+	border-top: 3px solid gray;
 }
 
 h1 {
