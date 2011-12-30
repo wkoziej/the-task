@@ -4,20 +4,16 @@
 
 <h1> <%= t(:games) %></h1>
 
-<table>
-  <tr>
-    <th></th>
-  </tr>
+<table style="width:100%;">
 
   <% @games.each do |game| %>
   <tr>
-    <td><%= link_to game.title, game %> <%= game.description %> </td>
+    <td>
+      <%= render :partial => "games/info", :locals => { :game => game } %>    
+    </td>
   </tr>
   <% end %>
 
-  <%= will_paginate @games %>
-
-
 </table>
 
-<br />
+<%= will_paginate @games %>

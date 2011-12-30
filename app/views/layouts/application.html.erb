@@ -18,6 +18,8 @@
 </ul>
 
 <ul id="main_menu">
+ <li> <%= link_to t(:rewards), rewards_path, :class => is_active?('index', 'rewards') %> 
+ </li>
  <li> <%= link_to t(:plays), plays_path, :class => is_active?('index', 'plays') %>  </li>
  <li> <%= link_to t(:games), games_path, :class => is_active?('index', 'games') %>  </li>
  <li> <%= link_to t(:home), '/', :class => is_active?('index', 'dashboard')  %> </li>

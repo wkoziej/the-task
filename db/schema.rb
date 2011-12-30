@@ -40,10 +40,14 @@ ActiveRecord::Schema.define(:version => 2020010101000000) do
   add_index "challenges", ["pointKind_id"], :name => "index_challenges_on_pointKind_id"
 
   create_table "games", :force => true do |t|
-    t.string   "title",       :null => false
-    t.text     "description", :null => false
-    t.string   "status",      :null => false
-    t.integer  "creator_id",  :null => false
+    t.string   "title",              :null => false
+    t.text     "description",        :null => false
+    t.string   "status",             :null => false
+    t.integer  "creator_id",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "imgae_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

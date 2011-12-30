@@ -9,6 +9,8 @@ class Game < ActiveRecord::Base
   # Validations
   validates_presence_of :status, :creator, :title, :description
 
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
   def initialize(params = nil) 
     super(params) 
   end 
