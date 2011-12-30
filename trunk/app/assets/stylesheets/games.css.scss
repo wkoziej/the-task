@@ -1,3 +1,29 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.game_info {
+    position: relative;
+    display: block;
+}
+
+#game_title, #game_description  {
+    text-decoration: none;
+    color: black;
+}
+
+
+#game_title {
+    position: relative;
+    font-size: large;
+    padding: 0.25cm 0.25cm;
+}
+
+#game_description {
+
+}
+
+#game_image {
+    float: left;
+    padding: 0.25cm 0.25cm;
+}
