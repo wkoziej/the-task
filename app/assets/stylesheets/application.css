@@ -8,7 +8,7 @@
 
 
 .active {
-    letter-spacing: 7px;
+    /* letter-spacing: 7px; */
     font-family: Purisa;
     font-weight: bold;
     font-size: large;
@@ -48,7 +48,6 @@ ul, ul li {
     list-style: none;
     font-family: Purisa;
 }
-
 
 #small_menu  li {
 	float: right;

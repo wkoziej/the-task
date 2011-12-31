@@ -5,11 +5,15 @@
 .game_info {
     position: relative;
     display: block;
+
+}
+
+.game_link {
+    text-decoration:none;
 }
 
 #game_title, #game_description  {
-    text-decoration: none;
-    color: black;
+    color: black;    
 }
 
 
@@ -23,7 +27,43 @@
 
 }
 
+#game_menu {
+    padding: 0.25cm 0.25cm;
+
+}
+
+ul#game_menu,  li {
+    display: block;
+    list-style: none;
+}
+
+
 #game_image {
     float: left;
-    padding: 0.25cm 0.25cm;
+    width: 110px;
+}
+
+
+#game_menu  li {
+    float: right;
+    border-width: 0 0px 1px 0px;
+    border-style: solid;
+    border-color: transparent gray gray gray;
+}
+
+#game_menu a:link, #small_menu a:visited {
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    text-align: center;
+    padding: 1px 0;
+    background-color: white;
+    color: black;
+}
+
+#game_menu li a:hover {
+	border-top: 1px solid black;
+    background-color: white;
+    color: black;
+
 }

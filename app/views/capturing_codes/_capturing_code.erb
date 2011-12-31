@@ -1,7 +1,5 @@
+<%= render :partial => 'player_challenges/player_challenge', :locals => { :player_challenge => capturing_code } %>
 
-</p>
- <%= link_to capturing_code.challenge.title, capturing_code_path(capturing_code) %>
- <%= link_to('Finish',  edit_capturing_code_path(capturing_code) ) if capturing_code.unfinished? %>
-<br/>
+
 
 

@@ -1,16 +1,10 @@
-<div id="challenge_desc">
+<%if challenge.game.new? %>
+<ul id="challenge_menu">
+  <li><%= link_to 'Edit', edit_game_challenge_path(challenge.game, challenge) %></li>
+  <li><%= link_to 'Destroy', [challenge.game,challenge], :confirm => 'Are you sure?', :method => :delete %></li> 
+</ul>
+<%end%>
 
-<p>
-  <b> <%= challenge.title %> </b>
-  <br />
-  <%= challenge.points %> <%= challenge.pointKind.name %> points
-</p>
-
-
-<p>
-  <b>Description:</b> <br />
-  <%= challenge.description %>
-</p>
-
-
-</div>
+<div id="challenge_worth"> <%= challenge.points %> <%= challenge.pointKind.name %> </div>
+<div id="challenge_title"> <%= challenge.title %> </div>
+<div id="challenge_desc">  <%= challenge.description %> </div>

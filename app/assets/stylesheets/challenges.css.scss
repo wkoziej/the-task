@@ -2,22 +2,73 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#challenge_desc {
-    margin-right:5px;
-    margin-left:5px;
-    background-color: #DDDDDD;
+
+#challenges_list {
+    clear:both;
 }
+
+#challenge_worth {
+    width:8%;
+    float:left;    
+    font-size: x-small;
+}
+
+#challenge_title {
+    margin-left:10%;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: large;
+}
+
+#challenge_desc {
+    margin-left:10%;
+}
+
+#challenge_menu {
+    width:20%;
+    float: right;
+}
+
+ul#challenge_menu,  li {
+    display: block;
+    list-style: none;
+}
+
+
+#challenge_menu  li {
+    float: right;
+    border-width: 0 0px 1px 0px;
+    border-style: solid;
+    border-color: transparent gray gray gray;
+}
+
+#challenge_menu a:link, #small_menu a:visited {
+    text-decoration: none;
+    display: block;
+    width: 80px;
+    text-align: center;
+    padding: 1px 0;
+    background-color: white;
+    color: black;
+}
+
+#challenge_menu li a:hover {
+	border-top: 1px solid black;
+    background-color: white;
+    color: black;
+
+}
+
 
 
 
 #capture_code_div, #enter_message_div  {
     margin-right:1%;
     margin-left:1%;
-    background-color: #DDDDBB;
+
 }
 
 #capture_code_desc, #enter_message_desc {
     margin-right:5px;
     margin-left:5px;
-    background-color: #DDDDDD;
 }

@@ -1,0 +1,19 @@
+<div id="challenges_list">
+<div id="create_elem">
+<%= link_to 'Add challenge', new_game_challenge_path(game)  if game and game.new? %> 
+</div>
+
+<h1> <%= t(:challenges) %></h1>
+
+<table style="width:100%;">
+
+  <% challenges.each do |challenge| %>
+  <tr>
+    <td>
+      <%= render challenge %>
+    </td>
+  </tr>
+  <% end %>
+
+</table>
+</div>

@@ -9,7 +9,9 @@
   <% @games.each do |game| %>
   <tr>
     <td>
-      <%= render :partial => "games/info", :locals => { :game => game } %>    
+      <%= link_to(game, :class => "game_link") do %>
+      <%= render :partial => "games/game", :locals => { :game => game } %>    
+      <% end %>
     </td>
   </tr>
   <% end %>
