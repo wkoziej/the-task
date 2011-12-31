@@ -1,11 +1,10 @@
-<p>
-  <b>
-  <%= player_challenge.challenge.title %>
-  </b>  
-</p>
-<p>
-  <b>Status:</b>
-  <%= player_challenge.status %>
-  <%= link_to('Finish',  edit_player_challenge_path(player_challenge) ) if player_challenge.unfinished? %>
-</p>
+<div id="player_challenge_status"> 
+  <% if player_challenge.unfinished? %>
+    <%= link_to( '/' + player_challenge.class.name.pluralize.underscore.downcase + '/' + player_challenge.id.to_s + '/edit' ) do %>
+    <%= t(:player_challenge_status) %>
+    <%= player_challenge.status %> 
+    <% end %>
+  <% end %>
+</div>
 
+<%= render :partial => 'challenges/challenge', :locals => { :challenge => player_challenge.challenge } %>

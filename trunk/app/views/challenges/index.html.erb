@@ -1,29 +1,3 @@
-<h1>Listing challenges</h1>
+<%= render :partial => "challenges/list", :locals => {:challenges => @challenges, :game => nil } %>
 
-<table>
-  <tr>
-    <th>Points</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Game</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @challenges.each do |challenge| %>
-  <tr>
-    <td><%= challenge.points %></td>
-    <td><%= challenge.title %></td>
-    <td><%= challenge.description %></td>
-    <td><%= challenge.game %></td>
-    <td><%= link_to 'Show', [challenge.game,challenge]  %></td>
-    <td><%= link_to 'Edit', edit_game_challenge_path(challenge.game, challenge) %></td>
-    <td><%= link_to 'Destroy', [challenge.game,challenge], :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Challenge', new_game_challenge_path %>

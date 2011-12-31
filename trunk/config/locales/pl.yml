@@ -7,4 +7,15 @@ pl:
   logout: Odlatuję
   new_game: Zasadź kwiatka	
   game_title: Nazwa kwiatka
-  rewards: Sam miód	      
+  rewards: Sam miód	
+  edit: Popraw
+  delete: Usuń
+  archive: Archiwizuj
+  activate: Aktywuj
+  are_you_sure: Czy na pewno na pewno?	
+  play_status: "Kwiatorwanie w statusie:"
+  player_challenge_status: "Zerwanie płatka:"
+  date:
+    order:fd
+date:
+  order: asdfasd 

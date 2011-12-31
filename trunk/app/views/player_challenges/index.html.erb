@@ -1,21 +1,3 @@
 <h1>Listing player_challenges</h1>
 
-<table>
-  <tr>
-    <th>Status</th>
-    <th>Play</th>
-    <th>Challenge</th>
-    <th></th>
- </tr>
-
-<% @player_challenges.each do |player_challenge| %>
-  <tr>
-    <td><%= player_challenge.status %></td>
-    <td><%= player_challenge.play.game.title %></td>
-    <td><%= player_challenge.challenge.title %></td>
-    <td><%= link_to 'Show', player_challenge %></td>
- </tr>
-<% end %>
-</table>
-
-<br />
+<%= render :partial => "player_challenges/list", :locals => { :player_challenges => @player_challenges, :player => nil } %>

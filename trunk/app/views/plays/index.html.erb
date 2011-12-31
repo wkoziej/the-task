@@ -1,24 +1,14 @@
-<h1>Listing plays</h1>
+<h1><%= t(:plays) %></h1>
 
-<table>
+<table style="width:100%;">
+  <% @plays.each do |play| %>
   <tr>
-    <th>Status</th>
-    <th>Game</th>
-    <th>Player</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td> 
+      <%= link_to(play, :class => "play_link") do %>
+      <%= render :partial => "plays/play", :locals => { :play => play } %>    
+      <% end %>
+    </td>
   </tr>
-
-<% @plays.each do |play| %>
-  <tr>
-    <td> <%= play.status %></td>
-    <td> <%= play.game.title %></td>
-    <td><%= play.player.login %></td>
-    <td><%= link_to 'Show', play %></td>
- </tr>
-<% end %>
+  <% end %>
 </table>
-
-<br />
 

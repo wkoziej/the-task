@@ -1,19 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<%= render :partial => "games/game", :locals => { :game => @play.game } %>    
 
-
-<p>
-  <b>Play in Game:</b>
-  <%= @play.game.title %>
-  <br /> <b>Status:</b>
+<div id="play_status"> 
+  <%= t(:play_status) %>
   <%= @play.status %>
- <br /> <b>Player:</b>
-  <%= @play.player.login %>
-</p>
+</div>
 
-
-<p>
-  <b>Challenges:</b>
-  <%= render @play.player_challenges %>
-</p>
-
+<%= render :partial => "player_challenges/list", :locals => { :player_challenges => @play.player_challenges } %>

@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.paginate(:page => params[:page], :per_page => 1)
+    @games = Game.paginate(:page => params[:page], :per_page => 3)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @games }
