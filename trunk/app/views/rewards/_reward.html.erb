@@ -1,0 +1,10 @@
+<div id= "reward_info">
+  <div id="reward_image"> <%= image_tag reward.image.url(:thumb)  if reward.image.present? %> </div>
+  <div id="reward_price"> <%= reward.priceInPoints %> <%= reward.pointKind.name %> </div>
+  <div id="reward_description"> <%= reward.description %> </div> 
+</div>
+
+
+
+
+ 

@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1> <%= t(:game) %></h1>
+
 <ul id="game_menu">
   <li> <%= link_to t(:edit), edit_game_path(@game)  if @game.new? %> </li>
   <li> <%= link_to t(:delete), @game, :confirm => t(:are_you_sure), :method => :delete if @game.new? %>  </li>
@@ -7,6 +9,7 @@
   <li> <%= link_to t(:activate), activate_game_path(@game) if @game.can_activate?  %>  </li>
   <li> <%= link_to t(:play), plays_path(:play => {:player_id => current_user, :game_id => @game.id}), :method => :post if @game.active? %>  </li>
 </ul>
+
 
 <%= render :partial => "games/game", :locals => { :game => @game } %>    
 

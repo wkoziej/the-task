@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<%= render :partial => "games/game", :locals => { :game => @play.game } %>    
-
 <div id="play_status"> 
-  <%= t(:play_status) %>
-  <%= @play.status %>
+   <%= image_tag "/" + @play.status.to_s + ".png", :size => "32x32" %>
 </div>
+
+<h1> <%= t(:player_game) %></h1>
+
+<%= render :partial => "games/game", :locals => { :game => @play.game } %>    
 
 <%= render :partial => "player_challenges/list", :locals => { :player_challenges => @play.player_challenges } %>
