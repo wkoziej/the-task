@@ -16,6 +16,21 @@ pl:
   play_status: "Kwiatorwanie w statusie:"
   player_challenge_status: "Zerwanie płatka:"
   date:
-    order:fd
-date:
-  order: asdfasd 
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+    day_names: [Śmierdziela, Pośmierdziałek, Fetorek, Smroda, Czadek, Pierdek, Smrodota]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datetime_select.
+    order:
+      - :year
+      - :month
+      - :day
+  editing_capturing_code: Wypełnianie kodu

@@ -1,3 +1,5 @@
+<%= render :partial => 'player_challenges/player_challenge', :locals => { :player_challenge => @capturing_code } %>
+
 <%= form_for(@capturing_code) do |f| %>
   <% if @capturing_code.errors.any? %>
     <div id="error_explanation">
