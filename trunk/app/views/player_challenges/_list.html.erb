@@ -2,6 +2,13 @@
   <% player_challenges.each do |player_challenge| %>
   <tr>
     <td>
+
+      <% if player_challenge.unfinished? %>
+        <%= link_to( '/' + player_challenge.class.name.pluralize.underscore.downcase + '/' + player_challenge.id.to_s + '/edit' ) do %>
+	<%= t(:player_challenge_status) %>
+	<%= player_challenge.status %> 
+	<% end %>
+      <% end %>
       <%= render player_challenge %>      
     </td>
   </tr>
