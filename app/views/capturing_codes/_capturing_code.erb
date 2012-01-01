@@ -1,5 +1,8 @@
 <%= render :partial => 'player_challenges/player_challenge', :locals => { :player_challenge => capturing_code } %>
 
+<div id="capturing_code_value">
+  <%= t(:captured_code_info, {:captured_code => capturing_code.code} ) if capturing_code.finished? %>
+</div>
 
 
 

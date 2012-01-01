@@ -36,3 +36,4 @@ gem "paperclip", "~> 2.4"
 gem 'state_machine', '1.1'
 ##gem 'searchlogic'
 gem 'will_paginate', '~> 3.0'
+gem 'omniauth-openid'
