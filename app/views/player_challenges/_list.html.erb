@@ -1,16 +1,21 @@
-<table id="player_challenges_list">
+<div id="player_challenges_list">
+
+<h1> <%= t(:player_challenges_list) %> </h1>
+
+<table style="width: 100%;">
   <% player_challenges.each do |player_challenge| %>
   <tr>
     <td>
 
       <% if player_challenge.unfinished? %>
         <%= link_to( '/' + player_challenge.class.name.pluralize.underscore.downcase + '/' + player_challenge.id.to_s + '/edit' ) do %>
-	<%= t(:player_challenge_status) %>
-	<%= player_challenge.status %> 
+	  <%= render player_challenge %>      
 	<% end %>
+      <% else %>
+        <%= render player_challenge %>      
       <% end %>
-      <%= render player_challenge %>      
-    </td>
+   </td>
   </tr>
   <% end %>
 </table>
+</div>

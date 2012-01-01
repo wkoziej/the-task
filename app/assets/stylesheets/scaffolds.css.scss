@@ -25,7 +25,28 @@ a {
 
 div {
   &.field, &.actions {
-    margin-bottom: 10px; } }
+    margin-bottom: 10px; 
+   }
+
+  label {
+  	  display:block;
+	  width: 120px;	
+	  float: left;
+  } 
+
+  input, select, textarea {
+  	 clear: both;
+  }
+
+  .actions  {
+  	  clear: both; 
+	  input {
+	  	border: solid 1px;
+		margin-left: 120px;
+		width: 220px;
+		 }
+  } 
+}
 
 #notice {
   color: green; }

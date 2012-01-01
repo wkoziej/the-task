@@ -1,40 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-
-<p>
-  <b>Description:</b>
-  <%= @reward.description %>
-</p>
-
-
-<p>
-  <b>Price:</b>
-  <%= @reward.priceInPoints %>  <%= @reward.pointKind.name %>
-</p>
-
-<p>
-  <b>Userlimit:</b>
-  <%= @reward.userLimit %>
-</p>
-
-<p>
-  <b>Expirationdate:</b>
-  <%= @reward.expirationDate %>
-</p>
-
-<p>
-  Sponsor:
-  <%= @reward.sponsor.login %>
-</p>
-
-<p>
-  Creator:
-  <%= @reward.creator.login %>
-</p>
+<ul id="reward_menu">
+  <li> <%= link_to 'Edit', edit_reward_path(@reward)  %> </li>
+  <li> <%= link_to 'Destroy', @reward, :confirm => 'Are you sure?', :method => :delete %> </li>
+  <li> <%= link_to 'Get it', collect_reward_path(@reward), :confirm => 'Realy want this reward?' if @reward.availableFor?(current_user) %> </li>
+</ul>
 
 
-<%= image_tag @reward.image.url(:medium) if @reward.image.present? %>
+<%= render :partial => "rewards/reward", :locals => { :reward => @reward } %>    
+      
 
-<%= link_to 'Edit', edit_reward_path(@reward)  %>
-<%= link_to 'Destroy', @reward, :confirm => 'Are you sure?', :method => :delete %>
-<%= link_to 'Get it', collect_reward_path(@reward), :confirm => 'Realy want this reward?' if @reward.availableFor?(current_user) %>

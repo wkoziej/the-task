@@ -1,25 +1,23 @@
-<h1>Listing rewards</h1>
+<div id="create_elem">
+<%= link_to t(:new_reward), new_reward_path %>
+</div>
 
-<table>
+<h1> <%= t(:listing_rewards) %> </h1>
 
+<table style="width:100%;">
+
+  <% @rewards.each do |reward| %>
+  
   <tr>
-    <th></th>
-    <th>Description</th>
-    <th>Price</th>
+    <td>
+      <%= link_to(reward, :class => "reward_link") do %>
+      <%= render :partial => "rewards/reward", :locals => { :reward => reward } %>    
+      <% end %>
+    </td>
   </tr>
 
-<% @rewards.each do |reward| %>
+  <% end %>
 
-  <tr>
-    <td><%= link_to (image_tag reward.image.url(:thumb)), reward %> </td>
-    <td><%= reward.priceInPoints %> / <%= reward.pointKind.name %> </td>
-    <td><%= reward.description %></td>
-    <td><%= link_to 'You can get it :)', reward  if reward.availableFor?(current_user) %>
-  </tr>
-
-<% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Reward', new_reward_path %>

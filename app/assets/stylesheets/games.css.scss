@@ -3,9 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .game_info {
-    position: relative;
     display: block;
-
 }
 
 .game_link {
@@ -38,7 +36,7 @@ ul#game_menu,  li {
 }
 
 
-#game_image {
+#game_info #game_image {
     float: left;
     width: 110px;
 }
@@ -67,3 +65,4 @@ ul#game_menu,  li {
     color: black;
 
 }
+

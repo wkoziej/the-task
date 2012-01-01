@@ -11,38 +11,39 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
 
   <div class="field">
-    <%= f.label :image %><br />
+    <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
 
   <div class="field">
-    <%= f.label :priceInPoints %><br />
+    <%= f.label :priceInPoints %>
     <%= f.number_field :priceInPoints %>
   </div>
 
   <div class="field">
-    <%= f.label :pointKind %><br />
+    <%= f.label :pointKind %>
     <%= f.select(:pointKind_id, @pointKinds) %>
   </div>
 
   <div class="field">
-    <%= f.label :userLimit %><br />
+    <%= f.label :userLimit %>
     <%= f.number_field :userLimit %>
   </div>
 
   <div class="field">
-    <%= f.label :expirationDate %><br />
+    <%= f.label :expirationDate %>
     <%= f.date_select :expirationDate %>
   </div>
 
   <div class="field">
-    <%= f.label :sponsor_id %><br />
+    <%= f.label :sponsor_id %>
     <%= f.select(:sponsor_id, @users) %>
   </div>
   

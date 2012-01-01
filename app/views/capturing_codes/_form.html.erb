@@ -4,7 +4,6 @@
   <% if @capturing_code.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@capturing_code.errors.count, "error") %> prohibited this capturing_code from being saved:</h2>
-
       <ul>
       <% @capturing_code.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -13,11 +12,13 @@
     </div>
   <% end %>
 
-  <div class="actions">
-
-    <%= f.label :code %><br />
+<div class="field">
+    <%= f.label :code %>
     <%= f.text_field :code %>
+</div>
 
-    <%= f.submit %>
+  <div class="actions">
+   <%= f.submit %>
   </div>
+
 <% end %>
