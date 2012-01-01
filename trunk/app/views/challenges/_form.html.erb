@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :points %><br />
+    <%= f.label :points %>
     <%= f.number_field :points %>
     <%= f.select(:pointKind_id, @pointKinds) %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
 
   <div class="field">
-    <%= f.label :type %><br />
+    <%= f.label :type %>
     <%= f.select(:type, @challengeTypes) %>
   </div>
 

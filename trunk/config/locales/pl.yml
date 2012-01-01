@@ -34,3 +34,4 @@ pl:
       - :month
       - :day
   editing_capturing_code: Wypełnianie kodu
+  captured_code_info: "Wprowadzony kod : %{captured_code} "

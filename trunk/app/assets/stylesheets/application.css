@@ -66,18 +66,16 @@ ul, ul li {
 #small_menu a:link, #small_menu a:visited {
     	text-decoration: none;
 	display: block;
-	width: 140px;
 	text-align: center;
-	padding: 1px 0;
+	padding: 1px 10px 1px 10px;
 	background-color: white;
 	color: black;
 }
 
 #main_menu a:link, #main_menu a:visited {
 	display: block;
-	width: 145px;
 	text-align: center;
-	padding: 5px 0;
+	padding: 10px 10px 1px 10px;
 	background-color: white;
 	text-decoration: none;
 	color: black;

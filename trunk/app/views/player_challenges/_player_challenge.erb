@@ -1,5 +1,5 @@
 <div id="player_challenge_status"> 
-   <%= image_tag "/" + player_challenge.status.to_s + ".png", :size => "32x32" %>
+   <%= image_tag "/" + player_challenge.status.to_s + ".png" %>
 </div>
 
 <%= render :partial => 'challenges/challenge', :locals => { :challenge => player_challenge.challenge } %>

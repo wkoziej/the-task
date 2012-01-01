@@ -14,12 +14,12 @@
   <li> <%= link_to t(:logout), destroy_user_session_path, :method => :delete %> </li>
   <li> <%= link_to t(:me, :login => current_user.login), user_path(current_user) , :class => is_active?('', 'users')  %>  </li>
   <% else %>
+  <li> <%= link_to "sign in with google", user_omniauth_authorize_path(:google) %> </li>
   <% end %>
 </ul>
 
 <ul id="main_menu">
- <li> <%= link_to t(:rewards), rewards_path, :class => is_active?('index', 'rewards') %> 
- </li>
+ <li> <%= link_to t(:rewards), rewards_path, :class => is_active?('index', 'rewards') %> </li>
  <li> <%= link_to t(:plays), plays_path, :class => is_active?('index', 'plays') %>  </li>
  <li> <%= link_to t(:games), games_path, :class => is_active?('index', 'games') %>  </li>
  <li> <%= link_to t(:home), '/', :class => is_active?('index', 'dashboard')  %> </li>

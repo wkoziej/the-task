@@ -1,5 +1,5 @@
 <div id="play_status"> 
-   <%= image_tag "/" + play.status.to_s + ".png", :size => "32x32" %>
+   <%= image_tag "/" + play.status.to_s + ".png" %>
 </div>
 
 <%= render :partial => "games/game", :locals => { :game => play.game } %>    
