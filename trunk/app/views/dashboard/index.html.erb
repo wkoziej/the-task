@@ -1,7 +1,2 @@
-<h1>Welcome</h1>
-<p>To start play choose one of many <%= link_to 'games', games_path %> </p>
-<p>You can create yor own <%= link_to 'new game', new_game_path %> </p>
-<p>Check your current <%= link_to 'plays', plays_path %> </p>
-<p>Find out about your points in your <%= link_to 'profile', user_path(current_user) %> </p>
-<p>Exchange your points into <%= link_to 'rewards', rewards_path %> </p>
-<p>If you want you can sponsor <%= link_to 'reward', new_reward_path %> </p>
+<h1> <%= t(:dashboard) %> </h1>
+Nowości (nowe gry: X ostatnich, najlepsi gracze, nowe nagrody Y - ostatnich) <br />
