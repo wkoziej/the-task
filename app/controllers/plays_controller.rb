@@ -44,10 +44,10 @@ class PlaysController < ApplicationController
     @play.game.challenges.each do |challenge|
       playerChallenge = nil
       case challenge.class
-      when CaptureCode.class
-        playerChallenge = CapturingCode.new
       when EnterMessage.class
         playerChallenge = EnteringMessage.new
+      when CaptureCode.class
+        playerChallenge = CapturingCode.new
       end
       playerChallenge.challenge = challenge
       playerChallenge.play = @play

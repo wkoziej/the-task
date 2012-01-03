@@ -1,2 +1,10 @@
 <h1> <%= t(:dashboard) %> </h1>
-Nowości (nowe gry: X ostatnich, najlepsi gracze, nowe nagrody Y - ostatnich) <br />
+
+<div id="dashboard_games">
+  <%= render :partial => "games/list", :locals => { :games => @games } %> 
+</div>
+
+<div id="dashboard_rewards">
+<%= render :partial => "rewards/list", :locals => { :rewards => @rewards } %> 
+</div>
+
