@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.game_info {
-    display: block;
+#game_info {
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .game_link {

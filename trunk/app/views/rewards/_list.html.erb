@@ -1,0 +1,18 @@
+
+<h1> <%= t(:listing_rewards) %> </h1>
+
+<table style="width:100%;">
+
+  <% rewards.each do |reward| %>
+  
+  <tr>
+    <td>
+      <%= link_to(reward, :class => "reward_link") do %>
+      <%= render :partial => "rewards/reward", :locals => { :reward => reward } %>    
+      <% end %>
+    </td>
+  </tr>
+
+  <% end %>
+
+</table>

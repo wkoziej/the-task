@@ -1,0 +1,15 @@
+
+<h1> <%= t(:games) %></h1>
+
+<table style="width:100%;">
+  <% games.each do |game| %>
+  <tr>
+    <td>
+      <%= link_to(game, :class => "game_link") do %>
+      <%= render :partial => "games/game", :locals => { :game => game } %>    
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+
+</table>

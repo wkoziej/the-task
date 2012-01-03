@@ -1,23 +1,5 @@
 <div id="create_elem">
 <%= link_to t(:new_reward), new_reward_path %>
 </div>
-
-<h1> <%= t(:listing_rewards) %> </h1>
-
-<table style="width:100%;">
-
-  <% @rewards.each do |reward| %>
-  
-  <tr>
-    <td>
-      <%= link_to(reward, :class => "reward_link") do %>
-      <%= render :partial => "rewards/reward", :locals => { :reward => reward } %>    
-      <% end %>
-    </td>
-  </tr>
-
-  <% end %>
-
-</table>
-
+<%= render :partial => "rewards/list", :locals => { :rewards => @rewards } %> 
 

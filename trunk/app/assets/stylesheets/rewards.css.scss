@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.reward_info {
+#reward_info {
     display: block;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .reward_link {
