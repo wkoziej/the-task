@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Play < ActiveRecord::Base
   # Relations
   belongs_to :game
@@ -6,6 +7,24 @@ class Play < ActiveRecord::Base
 
   def initialize(params = nil) 
     super(params) 
+    if (self.game and self.player)
+      # Ropoczynamy nową grę
+      self.startedAt = Time.now
+      self.game.challenges.each do |challenge|
+        @playerChallenge = nil
+        logger.debug("challenge.class " + challenge.class.to_s);
+        case challenge.class.to_s
+        when "EnterMessage"
+          @playerChallenge = EnteringMessage.new
+        when "CaptureCode"
+          @playerChallenge = CapturingCode.new
+        end
+        @playerChallenge.challenge = challenge
+        @playerChallenge.play = self
+        @playerChallenge.save
+        player_challenges << @playerChallenge  
+      end
+    end
   end 
 
   state_machine :status, :initial => :started do

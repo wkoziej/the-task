@@ -40,20 +40,6 @@ class PlaysController < ApplicationController
   # POST /plays.json
   def create
     @play = Play.new(params[:play])
-    @play.startedAt = Time.now
-    @play.game.challenges.each do |challenge|
-      playerChallenge = nil
-      case challenge.class
-      when EnterMessage.class
-        playerChallenge = EnteringMessage.new
-      when CaptureCode.class
-        playerChallenge = CapturingCode.new
-      end
-      playerChallenge.challenge = challenge
-      playerChallenge.play = @play
-      @play.player_challenges << playerChallenge  
-    end
-
     respond_to do |format|
       if @play.save
         format.html { redirect_to @play, :notice => 'Play was successfully created.' }
