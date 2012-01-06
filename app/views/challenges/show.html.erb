@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= render @challenge %>
+<%= render :partial => @challenge.class.to_s.underscore, :locals => { :challenge => @challenge } %>
 
 <%= link_to 'Edit', edit_game_challenge_path(@challenge.game, @challenge) %>
 <%= link_to 'Game', game_path(@challenge.game) %>

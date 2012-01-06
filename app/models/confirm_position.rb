@@ -1,0 +1,2 @@
+class ConfirmPosition < Challenge
+end
