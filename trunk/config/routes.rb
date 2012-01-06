@@ -25,6 +25,7 @@ TheTask::Application.routes.draw do
     
     resources :capture_codes, :controller => :challenges
     resources :enter_messages, :controller => :challenges
+    resources :confirm_positions, :controller => :challenges
  
     get 'activate', :on => :member 
     get 'archive', :on => :member 
