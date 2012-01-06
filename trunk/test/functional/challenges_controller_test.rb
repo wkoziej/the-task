@@ -32,14 +32,6 @@ class ChallengesControllerTest < ActionController::TestCase
     assert_redirected_to game_challenge_path(@game, assigns(:challenge))
   end
 
-  # test "should create enter message challenge" do
-  #   assert_difference('Challenge.count') do
-  #     post :create, :game_id => @game.id, :challenge => {:type => @enterMessage.type, :title => @enterMessage.title, :points => @enterMessage.points, :pointKind => @enterMessage.pointKind} 
-  #   end
-  #   assert_redirected_to game_challenge_path(@game, assigns(:challenge))
-  # end
-
-
   test "should show challenge" do
     get :show, :game_id => @game.id, :id => @captureCode.to_param
     assert_response :success
@@ -70,12 +62,12 @@ class ChallengesControllerTest < ActionController::TestCase
       delete :destroy, :game_id => @game.id, :id => @captureCode.to_param
     end
 
-    assert_redirected_to game_challenges_path(@game)
+    assert_redirected_to game_path(@game)
 
     assert_difference('Challenge.count', -1) do
       delete :destroy, :game_id => @game.id, :id => @enterMessage.to_param
     end
 
-    assert_redirected_to game_challenges_path(@game)
+    assert_redirected_to game_path(@game)
   end
 end
