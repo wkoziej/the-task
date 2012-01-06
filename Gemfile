@@ -17,8 +17,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -37,3 +35,4 @@ gem 'state_machine', '1.1'
 ##gem 'searchlogic'
 gem 'will_paginate', '~> 3.0'
 gem 'omniauth-openid'
+gem 'jquery-rails', '>= 1.0.12'

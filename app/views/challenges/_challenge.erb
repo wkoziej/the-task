@@ -1,6 +1,8 @@
 <%if challenge.game.new? %>
 <ul id="challenge_menu">
-  <li><%= link_to 'Edit', edit_game_challenge_path(challenge.game, challenge) %></li>
+    <li><%= link_to 'Edit', edit_game_challenge_path(challenge.game, challenge) %></li>
+     
+
   <li><%= link_to 'Destroy', [challenge.game,challenge], :confirm => 'Are you sure?', :method => :delete %></li> 
 </ul>
 <%end%>

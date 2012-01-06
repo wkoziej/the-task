@@ -3,7 +3,7 @@ TheTask::Application.routes.draw do
   get "dashboard/index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   match 'players/:player_id/challenges' => 'player_challenges#index'
-#  match 'players/:player_id/rewards' => 'reward_collections#index'
+  match 'games/:game_id/challenges/type_change' => 'challenges#type_change'
   
 
   resources :capturing_codes, :only => [:edit, :show, :update]
@@ -18,8 +18,11 @@ TheTask::Application.routes.draw do
 
   resources :plays, :except => [:destroy, :edit, :new]
 
+
   resources :games do
-    resources :challenges
+    resources :challenges do
+    end
+    
     resources :capture_codes, :controller => :challenges
     resources :enter_messages, :controller => :challenges
  

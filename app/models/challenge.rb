@@ -5,7 +5,9 @@ class Challenge < ActiveRecord::Base
   attr_accessible :title, :description, :points, :latitude, :longitude, :type, :pointKind_id
 
   validates_presence_of :pointKind, :points, :title, :description
-  
+  validates_inclusion_of :type, :in => %w( CaptureCode EnterMessage ) #, :message => "extension %s is not included in the list"
+
+
   def initialize(params = nil) 
     super(params) 
   end 
@@ -24,7 +26,7 @@ class Challenge < ActiveRecord::Base
     
     event :archive do
       transition :active => :archived
-    end
-    
+    end    
   end
+
 end

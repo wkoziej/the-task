@@ -1,0 +1,6 @@
+$("#challenge_title").val(' <%= @challenge.class.to_s %> ')
+
+/* Po pierwszej zmianie juz nie będzie dostępna wartość ' Wybierz'*/ 
+$("#challenge_type option[value='']").remove();
+/* Uzupełniamy formularz o brakujące pola */
+$("#challenge_type_details").html(' <%= escape_javascript(render( :partial => @challenge.class.to_s.underscore + "_form_details", :locals => { :challenge => @challenge} )) %> ');
