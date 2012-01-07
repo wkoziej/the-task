@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2020010101000001) do
+ActiveRecord::Schema.define(:version => 2020010101000002) do
 
   create_table "accesses", :force => true do |t|
     t.integer  "game_id"
@@ -117,6 +117,11 @@ ActiveRecord::Schema.define(:version => 2020010101000001) do
 
   create_table "point_kinds", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "position_confirmations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

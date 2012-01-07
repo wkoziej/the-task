@@ -11,16 +11,7 @@ class Play < ActiveRecord::Base
       # Ropoczynamy nową grę
       self.startedAt = Time.now
       self.game.challenges.each do |challenge|
-        @playerChallenge = nil
-        logger.debug("challenge.class " + challenge.class.to_s);
-        case challenge.class.to_s
-        when "EnterMessage"
-          @playerChallenge = EnteringMessage.new
-        when "CaptureCode"
-          @playerChallenge = CapturingCode.new
-        when "ConfirmPosition"
-          @playerChallenge = ConfirmingPosition.new
-        end
+        @playerChallenge = challenge.player_challenge_instance
         @playerChallenge.challenge = challenge
         @playerChallenge.play = self
         @playerChallenge.save

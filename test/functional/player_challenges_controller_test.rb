@@ -17,9 +17,26 @@ class PlayerChallengesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:player_challenges)
   end
 
-  # test "should show player_challenge" do
-  #   get :show, :id => @capturingCode.to_param
-  #   assert_response :success
-  # end
+
+  test "should get edit" do
+    get :edit, :id => @capturingCode.id
+    assert_response :success
+  end
+
+  test "should update capturing_code" do
+    put :update, :id => @capturingCode.to_param, :player_challenge => {  }
+    # Wracamy do edycji bo kod pusty
+    assert_template :edit, @response.body     
+    put :update, :id => @capturingCode.to_param, :player_challenge => { :code => "not empty" }
+    assert_redirected_to play_path(@capturingCode.play)
+  end
+
+  test "should update entering_message" do
+    put :update, :id => @enteringMessage.to_param, :player_challenge => {  }
+    # Wracamy do edycji bo kod pusty
+    assert_template :edit, @response.body     
+    put :update, :id => @enteringMessage.to_param, :player_challenge => { :message => "not empty" }
+    assert_redirected_to play_path(@enteringMessage.play)
+  end
 
 end
