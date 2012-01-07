@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2020010101000000) do
+ActiveRecord::Schema.define(:version => 2020010101000001) do
 
   create_table "accesses", :force => true do |t|
     t.integer  "game_id"
@@ -38,6 +38,11 @@ ActiveRecord::Schema.define(:version => 2020010101000000) do
 
   add_index "challenges", ["game_id"], :name => "index_challenges_on_game_id"
   add_index "challenges", ["pointKind_id"], :name => "index_challenges_on_pointKind_id"
+
+  create_table "confirm_positions", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", :force => true do |t|
     t.string   "title",              :null => false
