@@ -2,7 +2,7 @@ class PlaysController < ApplicationController
   # GET /plays
   # GET /plays.json
   def index
-    @plays = Play.all
+    @plays = Play.where(:status => "started").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,22 +19,6 @@ class PlaysController < ApplicationController
       format.json { render :json => @play }
     end
   end
-
-  # # GET /plays/new
-  # # GET /plays/new.json
-  # def new
-  #   @play = Play.new
-
-  #   respond_to do |format|
-  #     format.html # new.html.erb
-  #     format.json { render :json => @play }
-  #   end
-  # end
-
-  # # GET /plays/1/edit
-  # def edit
-  #   @play = Play.find(params[:id])
-  # end
 
   # POST /plays
   # POST /plays.json

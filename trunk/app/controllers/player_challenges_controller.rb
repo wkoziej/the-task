@@ -23,25 +23,15 @@ class PlayerChallengesController < ApplicationController
   # GET /player_challenges/1/edit
   # GET /capturing_code/1/edit
   # GET /entering_message/1/edit
+  # ...
   def edit
     @player_challenge = PlayerChallenge.find(params[:id])
-    render :template => @player_challenge.class.name.pluralize.underscore + '/edit'
   end
 
   # PUT /player_challenges/1
   # PUT /player_challenges/1.json
   def update
-    @player_challenge = PlayerChallenge.find(params[:id])    
-    respond_to do |format|
-      if @player_challenge.update_attributes(params[:player_challenge])
-        format.html { redirect_to @player_challenge, :notice => 'Player challenge was successfully updated.' }
-        format.json { head :ok }
-      else
-        logger.debug @player_challenge.errors.messages
-        format.html { render :action => "edit" }
-        format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
-      end
-    end
+    player_challenge_update(PlayerChallenge, :player_challenge)
   end
 
   # DELETE /player_challenges/1
@@ -54,4 +44,19 @@ class PlayerChallengesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def player_challenge_update(class_name, param_name)
+    @player_challenge = class_name.find(params[:id])    
+    respond_to do |format|
+      if @player_challenge.update_attributes(params[param_name]) and  @player_challenge.finish
+        format.html { redirect_to play_path(@player_challenge.play), :notice => 'Player Challenge code was successfully updated.' }
+        format.json { head :ok }
+      else
+        logger.debug @player_challenge.errors.messages
+        format.html { render :action => "edit" }
+        format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
 end

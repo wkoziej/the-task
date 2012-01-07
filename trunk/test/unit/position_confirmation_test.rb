@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ConfirmingPositionTest < ActiveSupport::TestCase
+class PositionConfirmationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

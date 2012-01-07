@@ -5,10 +5,13 @@ TheTask::Application.routes.draw do
   match 'players/:player_id/challenges' => 'player_challenges#index'
   match 'games/:game_id/challenges/type_change' => 'challenges#type_change'
   
+  resources :entering_messages, :only => [:edit, :show, :update], :controller => :player_challenges
+  resources :capturing_codes, :only => [:edit, :show, :update], :controller => :player_challenges
+  resources :player_challenges, :only => [:edit, :show, :update], :controller => :player_challenges
+  resources :position_confirmation, :only => [:edit, :show, :update], :controller => :player_challenges
 
-  resources :capturing_codes, :only => [:edit, :show, :update]
   # TODO like :capturing_codes
-  resources :entering_messages, :controller => :player_challenges
+  #  resources :entering_messages, :controller => :player_challenges
  
   resources :rewards do
     get 'collect', :on => :member 

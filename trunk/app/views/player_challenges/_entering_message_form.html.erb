@@ -1,0 +1,19 @@
+<h1><%= t(:editing_capturing_code) %></h1>
+
+<%= render :partial => 'player_challenges/player_challenge', :locals => { :player_challenge => @player_challenge } %>
+
+<%= form_for(@player_challenge, :as => 'player_challenge') do |f| %>
+  <%= render :partial => 'common/error_explanation', :locals => { :model => @player_challenge } %>
+
+  <div class="field">
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
+
+
