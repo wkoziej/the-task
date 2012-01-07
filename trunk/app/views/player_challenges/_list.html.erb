@@ -9,10 +9,15 @@
 
       <% if player_challenge.unfinished? %>
         <%= link_to( '/' + player_challenge.class.name.pluralize.underscore.downcase + '/' + player_challenge.id.to_s + '/edit' ) do %>
-	  <%= render player_challenge %>      
+
+        <%= render :partial => 'player_challenges/' + player_challenge.class.to_s.underscore, :locals => { :player_challenge =>
+        player_challenge } %>      
+
+
 	<% end %>
       <% else %>
-        <%= render player_challenge %>      
+        <%= render :partial => 'player_challenges/' + player_challenge.class.to_s.underscore, :locals => { :player_challenge =>
+        player_challenge } %>      
       <% end %>
    </td>
   </tr>

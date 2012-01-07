@@ -18,6 +18,8 @@ class Play < ActiveRecord::Base
           @playerChallenge = EnteringMessage.new
         when "CaptureCode"
           @playerChallenge = CapturingCode.new
+        when "ConfirmPosition"
+          @playerChallenge = ConfirmingPosition.new
         end
         @playerChallenge.challenge = challenge
         @playerChallenge.play = self
