@@ -31,7 +31,7 @@ class PlayerChallengesController < ApplicationController
   # PUT /player_challenges/1
   # PUT /player_challenges/1.json
   def update
-    player_challenge_update(PlayerChallenge, :player_challenge)
+    generic_update(PlayerChallenge, :player_challenge)
   end
 
   # DELETE /player_challenges/1
@@ -45,11 +45,11 @@ class PlayerChallengesController < ApplicationController
     end
   end
 
-  def player_challenge_update(class_name, param_name)
+  def generic_update(class_name, param_name)
     @player_challenge = class_name.find(params[:id])    
     respond_to do |format|
-      if @player_challenge.update_attributes(params[param_name]) and  @player_challenge.finish
-        format.html { redirect_to play_path(@player_challenge.play), :notice => 'Player Challenge code was successfully updated.' }
+      if @player_challenge.update_attributes(params[param_name]) and @player_challenge.finish
+        format.html { redirect_to play_path(@player_challenge.play), :notice => 'Player challenge code was successfully updated.' }
         format.json { head :ok }
       else
         logger.debug @player_challenge.errors.messages
@@ -57,6 +57,7 @@ class PlayerChallengesController < ApplicationController
         format.json { render :json => @player_challenge.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
 end
