@@ -18,9 +18,13 @@ pl:
   player_challenge_status: "Zerwanie płatka:"
   editing_capturing_code: Wypełnianie kodu
   captured_code_info: "Wprowadzony kod : %{captured_code} "
+  position_confirmation_info: "Wprowadzono współrzędne (%{latitude}, %{longitude})"	   
   choose_challenge: Wybierz wyzwanie
   enter_message: Wpisz tekst
   capture_code: Zdobądź kod
+  confirm_position: Potwierdź pozycję
+
+
   date:
     formats:
       default: "%d-%m-%Y"

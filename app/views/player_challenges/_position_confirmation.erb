@@ -1,5 +1,9 @@
 <%= render :partial => 'player_challenges/player_challenge', :locals => { :player_challenge => player_challenge } %>
- confirming position
+<div id="capturing_code_value">
+  <%= t(:position_confirmation_info, {:longitude => player_challenge.longitude, :latitude => player_challenge.latitude } ) if player_challenge.finished? %>
+</div>
+
+
 
 
 
