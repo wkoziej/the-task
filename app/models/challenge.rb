@@ -2,6 +2,9 @@ class Challenge < ActiveRecord::Base
   belongs_to :game
   belongs_to :pointKind
 
+
+
+
   attr_accessible :title, :description, :points, :latitude, :longitude, :type, :pointKind_id
 
   validates_presence_of :pointKind, :points, :title, :description

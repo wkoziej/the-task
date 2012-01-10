@@ -4,7 +4,6 @@
   <tr>
     <th>Collectedpoints</th>
     <th>Login</th>
-    <th>Role</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +15,6 @@
       <%= render :partial => "user_marks", :locals => { :user_marks => user.marks} %>
     </td>
     <td><%= user.login %></td>
-    <td><%= user.role %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>

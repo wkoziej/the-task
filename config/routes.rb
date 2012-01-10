@@ -1,6 +1,9 @@
 TheTask::Application.routes.draw do
 
   get "dashboard/index"
+
+##  match 'denied' => 'dashboard#denied_action'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   match 'players/:player_id/challenges' => 'player_challenges#index'
   match 'games/:game_id/challenges/type_change' => 'challenges#type_change'

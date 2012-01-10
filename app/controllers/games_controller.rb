@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
 
+#  filter_access_to :edit
+
   # GET /games
   # GET /games.json
   def index

@@ -17,3 +17,11 @@ g1:
   description: Dest
   status: new
   creator: one
+
+game_of_user_two:
+  title: Test for finishing
+  description: Dest
+  status: new
+  creator: two
+
+
