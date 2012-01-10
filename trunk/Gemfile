@@ -36,3 +36,5 @@ gem 'state_machine', '1.1'
 gem 'will_paginate', '~> 3.0'
 gem 'omniauth-openid'
 gem 'jquery-rails', '>= 1.0.12'
+#gem "restful_acl"
+gem "declarative_authorization"

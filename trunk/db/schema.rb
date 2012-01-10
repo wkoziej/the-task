@@ -10,17 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2020010101000002) do
+ActiveRecord::Schema.define(:version => 20120110203722) do
 
-  create_table "accesses", :force => true do |t|
-    t.integer  "game_id"
-    t.integer  "group_id"
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "accesses", ["game_id"], :name => "index_accesses_on_game_id"
-  add_index "accesses", ["group_id"], :name => "index_accesses_on_group_id"
+  add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
+  add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
 
   create_table "challenges", :force => true do |t|
     t.integer  "points",       :null => false
@@ -59,15 +59,6 @@ ActiveRecord::Schema.define(:version => 2020010101000002) do
 
   add_index "games", ["creator_id"], :name => "index_games_on_creator_id"
 
-  create_table "groups", :force => true do |t|
-    t.integer  "creator_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "groups", ["creator_id"], :name => "index_groups_on_creator_id"
-
   create_table "marks", :force => true do |t|
     t.integer  "pointSum"
     t.integer  "pointKind_id"
@@ -75,16 +66,6 @@ ActiveRecord::Schema.define(:version => 2020010101000002) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "members", :force => true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "members", ["group_id"], :name => "index_members_on_group_id"
-  add_index "members", ["user_id"], :name => "index_members_on_user_id"
 
   create_table "player_challenges", :force => true do |t|
     t.string   "status"
@@ -158,9 +139,14 @@ ActiveRecord::Schema.define(:version => 2020010101000002) do
   add_index "rewards", ["pointKind_id"], :name => "index_rewards_on_pointKind_id"
   add_index "rewards", ["sponsor_id"], :name => "index_rewards_on_sponsor_id"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login"
-    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                                 :default => "", :null => false

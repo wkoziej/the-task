@@ -2,26 +2,21 @@
 
 one:
   login: player1
-  role: player
   email: aaaa@bbb.com
 
 two:
   login: player2
-  role: player
   email: aaaa@cc.com
   
 rich:
   login: rich
-  role: player
   email: aaa1@cc.com
 
 rich_without_rewards:
   login: rich1
-  role: player
   email: aaa3@cc.com
 
 poor:
   login: poor
-  role: player
   email: aaa55@cc.com
   

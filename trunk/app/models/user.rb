@@ -11,6 +11,16 @@ class User < ActiveRecord::Base
   has_many :marks
   has_many :reward_collections, :foreign_key => :winner_id
   has_many :rewards, :through => :reward_collections 
+  has_many :assignments
+  has_many :roles, :through => :assignments
+  
+ 
+  def role_symbols
+    roles.map do |role|
+      role.name.underscore.to_sym
+    end
+  end
+
   # has_many :rewards, :through => :users, :foreign_key => ""
 
   def pointSum(pointKind)

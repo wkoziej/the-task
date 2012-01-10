@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RewardTest < ActiveSupport::TestCase
 
-  test "game is available" do
+  test "reward is available" do
     @reward = rewards(:not_available_because_of_user_limit)
     assert !@reward.available?
     @reward = rewards(:not_available_because_of_date)
@@ -31,6 +31,15 @@ class RewardTest < ActiveSupport::TestCase
     @poorUser = User.find(users(:poor))
     assert !@reward.availableFor?(@poorUser), "Poor user can get reward!"
     assert !@poorUser.collect(@reward), "Poor user too rich!"
+  end
+
+  test "sponsor should have right to point kinds when definining reward" do
+    @ordinary_user = nil
+    @r = Reward.new
+    ### 1. Define reward with public points and assert error
+    
+    ### 2. Define reward with private points and assert true when saving reward
+    # assert false
   end
 
 end

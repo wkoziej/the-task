@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'test_helper'
 
 class GamesControllerTest < ActionController::TestCase
@@ -31,12 +32,6 @@ class GamesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
- # test "should activate game" do
- #   get :activate, :id => @game.to_param
- #   assert_response :success, @response.body
- # end
-
-
   test "should get edit" do
     get :edit, :id => @game.to_param
     assert_response :success
@@ -51,7 +46,14 @@ class GamesControllerTest < ActionController::TestCase
     assert_difference('Game.count', -1) do
       delete :destroy, :id => @game.to_param
     end
-
     assert_redirected_to games_path
   end
+
+  test "disability to modify someone else game" do
+    # @game_of_user_two = games(:game_of_user_two)
+    #get :edit, :id => @game_of_user_two.to_param
+    # Użytkownik :one nie może edytować gry użytkownika :two
+    #assert_redirected_to :controller => 'dashboard'
+  end
+
 end

@@ -1,12 +1,17 @@
-# -*- coding: utf-8 -*-
+# -*- coding: undecided -*-
 class PopulateData < ActiveRecord::Migration
   def up
+
+
+    role = Role.new
+    role.name = "admin"
+    role.save
 
     user = User.new
     user.login = 'test'
     user.email = 'aaa@bbb.com'
     user.password = "aaabbb"
-    user.role = "PLAYER"
+    user.roles << role
     user.save()
 
     pointKind = PointKind.new
