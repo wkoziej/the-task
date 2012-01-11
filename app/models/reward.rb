@@ -9,7 +9,7 @@ class Reward < ActiveRecord::Base
 
   def available?
      (userLimit == nil or winners.count < userLimit) and
-      (expirationDate == nil or expirationDate < DateTime.now)
+      (expirationDate == nil or expirationDate > DateTime.now)
   end
 
   def availableFor?(user)
