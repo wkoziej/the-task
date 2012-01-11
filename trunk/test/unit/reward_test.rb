@@ -9,8 +9,8 @@ class RewardTest < ActiveSupport::TestCase
     assert !@reward.available?
     @reward = rewards(:reward_available)
     assert @reward.winners.count == 0, "Somebady has reward" 
-    assert @reward.expirationDate - DateTime.now < 0.seconds, "Time is up " + @reward.expirationDate.to_s + " " + DateTime.now.to_datetime.to_s
-    assert @reward.available?, "Reward not available"
+    assert @reward.expirationDate - DateTime.now > 0.seconds, "Time is up " + @reward.expirationDate.to_s + " " + DateTime.now.to_datetime.to_s
+    assert @reward.available?, "Reward is available"
   end
 
   test "winning the reward by rich user" do

@@ -1,33 +1,32 @@
 require File.expand_path("spec/spec_helper.rb")
 
 describe Reward do
-  before do
-    @user = User.create!(:email => "aaa@bbb.com", :password => "secret")
-    @pointKind = PointKind.new
+  
+  before(:all) do
+    @user = User.create!(:email => "aaa1@bbb1.com", :password => "secret")
+    @pointKind = PointKind.new  
+  end
+
+  before(:each)do
     @reward = Reward.create!(:sponsor => @user, :creator => @user, :priceInPoints => 10, :pointKind => @pointKind)
- end
+  end
 
   describe '#available?' do    
-    
+
     it 'returns true if userLimit is empty' do
-      @reward = Reward.new
-      @reward.userLimit = nil
       @reward.available?.should be_true   
     end
     
     it 'returns true if expirationDate is empty' do
-      @reward = Reward.new
-      @reward.expirationDate = nil
       @reward.available?.should be_true
     end
 
-    it 'returns false if userLimit reached' do
+    it 'returns true if userLimit is greater then winners ' do
+      @reward.winners.count.should eq(0)
       @reward.userLimit = 0;
       @reward.available?.should be_false
       @reward.userLimit = 1;
       @reward.available?.should be_true
-      # @user.collect (@reward)
-      # @reward.available?.should be_false    
     end
     
     it 'returns false if expirationDate is in past' do
@@ -35,6 +34,18 @@ describe Reward do
       @reward.expirationDate = DateTime.now - 1.second
       @reward.available?.should be_false 
     end
+  end
 
+  describe '#availableFor?' do
+    it 'returns true if Reward#available? and user has enought points to get it' do
+      @reward.priceInPoints = 10
+      @reward.pointKind = @pointKind
+      @mark = Mark.new(:user => @usser, :pointKind => @pointKind, :pointSum => 0)
+      @user.marks << @mark
+      @reward.availableFor?(@user).should be_false
+      @mark.pointSum += 10
+      @mark.save
+      @reward.availableFor?(@user).should be_true
+    end
   end
 end
