@@ -38,3 +38,7 @@ gem 'omniauth-openid'
 gem 'jquery-rails', '>= 1.0.12'
 #gem "restful_acl"
 gem "declarative_authorization"
+gem "rspec"
+group :test, :development do
+  gem "rspec-rails", "~> 2.6"
+end
