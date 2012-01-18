@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project name="" company="" manager="" phase="" project-start="20120114T000000Z" mrproject-version="2" calendar="1">
+  <properties/>
+  <phases/>
+  <calendars>
+    <day-types>
+      <day-type id="0" name="Dzie&#x144; roboczy" description="Domy&#x15B;lny dzie&#x144; roboczy"/>
+      <day-type id="1" name="Dzie&#x144; wolny" description="Domy&#x15B;lny dzie&#x144; wolny"/>
+      <day-type id="2" name="U&#x17C;ycie podstawowego" description="U&#x17C;ycie dania z kalendarza podstawowego"/>
+    </day-types>
+    <calendar id="1" name="Domy&#x15B;lny">
+      <default-week mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" sun="1"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0800" end="1200"/>
+          <interval start="1300" end="1700"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days/>
+    </calendar>
+  </calendars>
+  <tasks>
+    <task id="1" name="Inicjacja projektu" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="2" name="Wst&#x119;pna specyfikacja systemu" note="" work="86400" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="3" name="Specyfikacja serwisu i us&#x142;ug dostarczanych przez serwis" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="4" name="Specyfikacja klienta web" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="5" name="Specyfikacja klienta mobilnego" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    </task>
+    <task id="6" name="Okre&#x15B;lenie i przygotowanie zaplecza sprz&#x119;towego i narz&#x119;dziowego" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="7" name="Prototyp platformy i klienta webowego" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="8" name="Badanie (prototypy) i wyb&#xF3;r implementacji klienta mobilnego " note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="9" name="Uruchomienie wersji alfa" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="10" name="Wersja beta dost&#x119;pna dla spo&#x142;eczno&#x15B;ci" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="11" name="Wydanie wersji RC" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="12" name="Premiera platformy" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+    <task id="13" name="Zako&#x144;czenie projektu" note="" work="28800" start="20120114T000000Z" end="20120116T170000Z" work-start="20120116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+  </tasks>
+  <resource-groups/>
+  <resources>
+    <resource id="1" name="web developer" short-name="WBDEV" type="1" units="0" email="" note="" std-rate="60"/>
+    <resource id="2" name="grafik" short-name="GRF" type="1" units="0" email="" note="" std-rate="60"/>
+    <resource id="3" name="project manager" short-name="PM" type="1" units="0" email="" note="" std-rate="100"/>
+    <resource id="4" name="server CI" short-name="CI" type="2" units="0" email="" note="" std-rate="5"/>
+    <resource id="5" name="server SCM" short-name="SCM" type="2" units="0" email="" note="" std-rate="5"/>
+    <resource id="6" name="urz&#x119;dzenie przeno&#x15B;ne" short-name="MOBILE1" type="2" units="0" email="" note="" std-rate="10"/>
+    <resource id="7" name="stacja robocza" short-name="PC1" type="2" units="0" email="" note="" std-rate="10"/>
+    <resource id="8" name="serwer BD" short-name="BD" type="2" units="0" email="" note="" std-rate="5"/>
+    <resource id="9" name="tester" short-name="QA" type="1" units="0" email="" note="" std-rate="100"/>
+    <resource id="10" name="mobile developer" short-name="MOBIDEV" type="1" units="0" email="" note="" std-rate="100"/>
+  </resources>
+  <allocations>
+    <allocation task-id="4" resource-id="3" units="100"/>
+    <allocation task-id="5" resource-id="3" units="100"/>
+    <allocation task-id="2" resource-id="3" units="100"/>
+    <allocation task-id="3" resource-id="3" units="100"/>
+  </allocations>
+</project>
