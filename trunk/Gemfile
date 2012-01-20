@@ -41,4 +41,6 @@ gem "declarative_authorization"
 gem "rspec"
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
+  gem "ruby-prof"
+  gem "reek"
 end
