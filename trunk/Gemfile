@@ -43,4 +43,5 @@ group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem "ruby-prof"
   gem "reek"
+  gem "rails-erd"
 end
