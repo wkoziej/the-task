@@ -19,14 +19,14 @@ class Challenge < ActiveRecord::Base
     ];
   end
 
-  def player_challenge_instance
+  def player_challenge_instance(params)
     case self.class.to_s
     when "EnterMessage"
-      @playerChallenge = EnteringMessage.new
+      @playerChallenge = EnteringMessage.new(params)
     when "CaptureCode"
-      @playerChallenge = CapturingCode.new
+      @playerChallenge = CapturingCode.new(params)
     when "ConfirmPosition"
-      @playerChallenge = PositionConfirmation.new
+      @playerChallenge = PositionConfirmation.new(params)
     end    
   end
 

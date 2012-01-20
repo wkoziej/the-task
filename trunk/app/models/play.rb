@@ -7,18 +7,30 @@ class Play < ActiveRecord::Base
 
   def initialize(params = nil) 
     super(params) 
-    if (self.game and self.player)
-      # Ropoczynamy nową grę
-      self.startedAt = Time.now
-      self.game.challenges.each do |challenge|
-        @playerChallenge = challenge.player_challenge_instance
-        @playerChallenge.challenge = challenge
-        @playerChallenge.play = self
-        @playerChallenge.save
-        player_challenges << @playerChallenge  
-      end
+    if (game and player)
+      start_play
     end
   end 
+
+  def start_play
+    started_at = Time.now
+    game.challenges.each do |challenge|
+      player_challenges << challenge.player_challenge_instance (:challenge => challenge.id, :play => self.id) 
+    end
+  end
+
+  def player_challenge_finished(challenge) 
+    player.update_player_points(challenge.pointKind, challenge.points) 
+    finish_if_all_challanges_finished
+  end
+
+  def finish_if_all_challanges_finished
+    unfinished_challenges_counter = PlayerChallenge.count_all_by_play_id_and_status(self.id, :unfinished)
+    if unfinished_challenges_counter == 0 
+      finish
+      save
+    end  
+  end
 
   state_machine :status, :initial => :started do
     

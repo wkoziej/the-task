@@ -1,3 +1,4 @@
+# Model gry
 class Game < ActiveRecord::Base
   attr_protected :status
 
