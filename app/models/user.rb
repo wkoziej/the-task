@@ -1,3 +1,4 @@
+# Model of application user
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -23,31 +24,36 @@ class User < ActiveRecord::Base
 
   # has_many :rewards, :through => :users, :foreign_key => ""
 
-  def pointSum(pointKind)
-    mark = Mark.find_by_user_id_and_pointKind_id(self, pointKind)
-    mark == nil ? 0 : mark.pointSum
+  def point_sum(point_kind)
+    mark = Mark.find_by_user_id_and_pointKind_id(self.id, point_kind.id)
+    mark == nil ? 0 : mark.point_sum
   end
 
+  def update_points (point_kind, points)
+    mark = Mark.find_or_create_by_user_id_and_pointKind_id(self.id, point_kind)
+    mark.pointSum = 0 if mark.pointSum == nil
+    mark.pointSum += points
+    mark.save 
+  end
+
+
   def collect(reward)
-    mark = Mark.find_by_user_id_and_pointKind_id(self, reward.pointKind)
-    if reward.available?  and mark != nil and mark.pointSum >= reward.priceInPoints
-      newReward = RewardCollection.new
-      newReward.winner = self
-      newReward.reward = reward
-      reward_collections << newReward
-      mark.pointSum -= reward.priceInPoints
-      mark.save
-      save
+    mark = Mark.find_by_user_id_and_pointKind_id(self.id, reward.pointKind)
+    price_in_points =  reward.priceInPoints
+    if reward.available?  and mark != nil and mark.pointSum >= price_in_points
+      reward_collections << RewardCollection.new(:winner => self, :reward => reward)
+      mark.point_sum -= price_in_points
+      mark.save and save
     end
   end
 
 
   def self.find_for_open_id(access_token, signed_in_resource=nil)
-    data = access_token.info
-    if user = User.where(:email => data["email"]).first
+    email = access_token.info["email"]
+    if user = User.where(:email => email).first
       user
     else
-      User.create!(:email => data["email"], :password => Devise.friendly_token[0,20])
+      User.create!(:email => email, :password => Devise.friendly_token[0,20])
     end
   end
 end

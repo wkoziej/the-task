@@ -6,12 +6,13 @@ class Reward < ActiveRecord::Base
   validates_presence_of :sponsor, :creator, :priceInPoints, :pointKind
   has_many :reward_collections
   has_many :winners, :through => :reward_collections
-
+  
   def available?
     (userLimit == nil or winners.count < userLimit) and 
       (expirationDate == nil or expirationDate > DateTime.now)
   end
-
+  # :todo
+  :optimize
   def availableFor?(user)
     available? and user.pointSum(pointKind) >= priceInPoints
   end
