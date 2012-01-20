@@ -45,3 +45,13 @@ reward_available:
   description: MyText
   sponsor: one
   creator: one
+
+car:
+  priceInPoints: 9999
+  pointKind: public
+  userLimit: 1
+  expirationDate: 2021-12-08 07:59:43
+  description: The best car
+  sponsor: one
+  creator: one
+	
