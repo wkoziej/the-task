@@ -1,6 +1,9 @@
 require File.expand_path("spec/spec_helper.rb")
 
 describe Reward do
+
+  fixtures :rewards
+  fixtures :users
   
   before(:all) do
     @user = User.create!(:email => "aaa1@bbb1.com", :password => "secret")
@@ -46,6 +49,12 @@ describe Reward do
       @mark.pointSum += 10
       @mark.save
       @reward.availableFor?(@user).should be_true
+    end
+
+    it 'retruns false for poor user and car reward :)' do
+      @user = users(:poor)
+      @reward = rewards(:car)
+      @reward.availableFor?(@user).should be_false
     end
   end
 end
