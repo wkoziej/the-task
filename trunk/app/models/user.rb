@@ -25,12 +25,12 @@ class User < ActiveRecord::Base
   # has_many :rewards, :through => :users, :foreign_key => ""
 
   def point_sum(point_kind)
-    mark = Mark.find_by_user_id_and_pointKind_id(self.id, point_kind.id)
+    mark = Mark.find_by_user_id_and_point_kind_id(self.id, point_kind.id)
     mark == nil ? 0 : mark.point_sum
   end
 
   def update_points (point_kind, points)
-    mark = Mark.find_or_create_by_user_id_and_pointKind_id(self.id, point_kind)
+    mark = Mark.find_or_create_by_user_id_and_point_kind_id(self.id, point_kind)
     mark.pointSum = 0 if mark.pointSum == nil
     mark.pointSum += points
     mark.save 
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
 
   def collect(reward)
-    mark = Mark.find_by_user_id_and_pointKind_id(self.id, reward.pointKind)
+    mark = Mark.find_by_user_id_and_point_kind_id(self.id, reward.point_kind)
     price_in_points =  reward.priceInPoints
     if reward.available?  and mark != nil and mark.pointSum >= price_in_points
       reward_collections << RewardCollection.new(:winner => self, :reward => reward)

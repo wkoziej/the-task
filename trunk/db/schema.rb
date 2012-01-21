@@ -23,13 +23,13 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
   add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
 
   create_table "challenges", :force => true do |t|
-    t.integer  "points",       :null => false
-    t.integer  "pointKind_id", :null => false
-    t.string   "title",        :null => false
-    t.text     "description",  :null => false
-    t.integer  "game_id",      :null => false
-    t.string   "status",       :null => false
-    t.string   "type",         :null => false
+    t.integer  "points",        :null => false
+    t.integer  "point_kind_id", :null => false
+    t.string   "title",         :null => false
+    t.text     "description",   :null => false
+    t.integer  "game_id",       :null => false
+    t.string   "status",        :null => false
+    t.string   "type",          :null => false
     t.float    "longitude"
     t.float    "latitude"
     t.datetime "created_at"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
   end
 
   add_index "challenges", ["game_id"], :name => "index_challenges_on_game_id"
-  add_index "challenges", ["pointKind_id"], :name => "index_challenges_on_pointKind_id"
+  add_index "challenges", ["point_kind_id"], :name => "index_challenges_on_point_kind_id"
 
   create_table "confirm_positions", :force => true do |t|
     t.datetime "created_at"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
   add_index "games", ["creator_id"], :name => "index_games_on_creator_id"
 
   create_table "marks", :force => true do |t|
-    t.integer  "pointSum"
-    t.integer  "pointKind_id"
+    t.integer  "point_sum"
+    t.integer  "point_kind_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
   add_index "player_challenges", ["play_id"], :name => "index_player_challenges_on_play_id"
 
   create_table "plays", :force => true do |t|
-    t.datetime "startedAt"
-    t.datetime "finishedAt"
+    t.datetime "started_at"
+    t.datetime "finished_at"
     t.string   "status"
     t.integer  "game_id"
     t.integer  "player_id"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
   end
 
   create_table "reward_collections", :force => true do |t|
-    t.datetime "collectDate"
+    t.datetime "collect_date"
     t.string   "status"
     t.integer  "winner_id"
     t.integer  "reward_id"
@@ -120,10 +120,10 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
   add_index "reward_collections", ["winner_id"], :name => "index_reward_collections_on_winner_id"
 
   create_table "rewards", :force => true do |t|
-    t.integer  "priceInPoints"
-    t.integer  "pointKind_id"
-    t.integer  "userLimit"
-    t.datetime "expirationDate"
+    t.integer  "price_in_points"
+    t.integer  "point_kind_id"
+    t.integer  "user_limit"
+    t.datetime "expiration_date"
     t.text     "description"
     t.integer  "sponsor_id"
     t.integer  "creator_id"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
   end
 
   add_index "rewards", ["creator_id"], :name => "index_rewards_on_creator_id"
-  add_index "rewards", ["pointKind_id"], :name => "index_rewards_on_pointKind_id"
+  add_index "rewards", ["point_kind_id"], :name => "index_rewards_on_point_kind_id"
   add_index "rewards", ["sponsor_id"], :name => "index_rewards_on_sponsor_id"
 
   create_table "roles", :force => true do |t|

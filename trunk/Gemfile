@@ -42,6 +42,9 @@ gem "rspec"
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem "ruby-prof"
-  gem "reek"
+  gem "ruby_parser"
+  gem "ruby2ruby",  "1.3.0"
+  gem "reek", "1.2.7"
   gem "rails-erd"
+  gem "factory_girl_rails", "~> 1.2" ## Uwaga na 1.5 i 1.6 -> Invalid .gemspec format in '/usr/lib/ruby/gems/1.8/specifications/factory_girl_rails-1.5.0.gemspec'	
 end

@@ -1,7 +1,7 @@
 class CreateRewardCollections < ActiveRecord::Migration
   def change
     create_table :reward_collections do |t|
-      t.datetime :collectDate
+      t.datetime :collect_date
       t.string :status
       t.references :winner
       t.references :reward

@@ -1,4 +1,4 @@
-# -*- coding: undecided -*-
+# -*- coding: utf-8 -*-
 class PopulateData < ActiveRecord::Migration
   def up
 
@@ -14,24 +14,24 @@ class PopulateData < ActiveRecord::Migration
     user.roles << role
     user.save()
 
-    pointKind = PointKind.new
-    pointKind.name = 'PUBLIC'
-    pointKind.save ()
+    point_kind = PointKind.new
+    point_kind.name = 'PUBLIC'
+    point_kind.save ()
 
-    pointKind = PointKind.new
-    pointKind.name = 'SPONSORED_BY_A'
-    pointKind.save ()
+    point_kind = PointKind.new
+    point_kind.name = 'SPONSORED_BY_A'
+    point_kind.save ()
 
     mark = Mark.new
     mark.user = User.find (1)
-    mark.pointKind = PointKind.find(1)
-    mark.pointSum = 110
+    mark.point_kind = PointKind.find(1)
+    mark.point_sum = 110
     mark.save()
 
     mark = Mark.new
     mark.user = User.find (1)
-    mark.pointKind = PointKind.find(2)
-    mark.pointSum = 10
+    mark.point_kind = PointKind.find(2)
+    mark.point_sum = 10
     mark.save()
 
 
@@ -57,7 +57,7 @@ class PopulateData < ActiveRecord::Migration
     challenge.game = Game.find(1)
     challenge.points = 5
     challenge.title = "Złap bazie w barze"
-    challenge.pointKind = PointKind.find(1)
+    challenge.point_kind = PointKind.find(1)
     challenge.description = "Poproś bara mana"
     if not challenge.save()
       say "Errors during save" 
@@ -69,16 +69,16 @@ class PopulateData < ActiveRecord::Migration
     challenge = EnterMessage.new
     challenge.game = Game.find(1)
     challenge.points = 10
-    challenge.pointKind = PointKind.find(2)
+    challenge.point_kind = PointKind.find(2)
     challenge.title = "Zabaw się w kotka"
     challenge.description = "I złap za myszkę aby..."
     challenge.save()
 
     
     reward = Reward.new
-    reward.priceInPoints = 13
-    reward.pointKind = PointKind.find(:first)
-    reward.userLimit = 2
+    reward.price_in_points = 13
+    reward.point_kind = PointKind.find(:first)
+    reward.user_limit = 2
     reward.description = "Darmowa szklanka wody"
     reward.sponsor = User.find(:first) 
     reward.creator = User.find(:first)
@@ -89,9 +89,9 @@ class PopulateData < ActiveRecord::Migration
     end
 
     reward = Reward.new
-    reward.priceInPoints = 25
-    reward.pointKind = PointKind.find(:first)
-    reward.expirationDate = "2011-12-08 07:59:43"
+    reward.price_in_points = 25
+    reward.point_kind = PointKind.find(:first)
+    reward.expiration_date = "2011-12-08 07:59:43"
     reward.description = "2 złote na loda"
     reward.sponsor = User.find(:first) 
     reward.creator = User.find(:first)
@@ -103,9 +103,9 @@ class PopulateData < ActiveRecord::Migration
 
 
     reward = Reward.new
-    reward.priceInPoints = 1125
-    reward.pointKind = PointKind.find(:first)
-    reward.expirationDate = "2011-12-08 07:59:43"
+    reward.price_in_points = 1125
+    reward.point_kind = PointKind.find(:first)
+    reward.expiration_date = "2011-12-08 07:59:43"
     reward.description = "Czego chcieć więcej"
     reward.sponsor = User.find(:first) 
     reward.creator = User.find(:first)

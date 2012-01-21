@@ -1,22 +1,20 @@
 require File.expand_path("spec/spec_helper.rb")
 
 describe Reward do
-
-  fixtures :rewards
-  fixtures :users
   
   before(:all) do
-    @user = User.create!(:email => "aaa1@bbb1.com", :password => "secret")
-    @pointKind = PointKind.new  
+    @user = FactoryGirl.create(:user)
+    @point_kind = PointKind.new  
+    @car = FactoryGirl.create(:car)
   end
 
   before(:each)do
-    @reward = Reward.create!(:sponsor => @user, :creator => @user, :priceInPoints => 10, :pointKind => @pointKind)
+    @reward = FactoryGirl.create(:reward)
   end
 
   describe '#available?' do    
 
-    it 'returns true if userLimit is empty' do
+    it 'returns true if user_limit is empty' do
       @reward.available?.should be_true   
     end
     
@@ -24,37 +22,35 @@ describe Reward do
       @reward.available?.should be_true
     end
 
-    it 'returns true if userLimit is greater then winners ' do
+    it 'returns true if user_limit is greater then winners ' do
       @reward.winners.count.should eq(0)
-      @reward.userLimit = 0;
+      @reward.user_limit = 0;
       @reward.available?.should be_false
-      @reward.userLimit = 1;
+      @reward.user_limit = 1;
       @reward.available?.should be_true
     end
     
-    it 'returns false if expirationDate is in past' do
+    it 'returns false if expiration_date is in past' do
       @reward = Reward.new
-      @reward.expirationDate = DateTime.now - 1.second
+      @reward.expiration_date = DateTime.now - 1.second
       @reward.available?.should be_false 
     end
   end
 
   describe '#availableFor?' do
     it 'returns true if Reward#available? and user has enought points to get it' do
-      @reward.priceInPoints = 10
-      @reward.pointKind = @pointKind
-      @mark = Mark.new(:user => @usser, :pointKind => @pointKind, :pointSum => 0)
+      @reward.price_in_points = 10
+      @reward.point_kind = @point_kind
+      @mark = Mark.new(:user => @user, :point_kind => @point_kind, :point_sum => 0)
       @user.marks << @mark
-      @reward.availableFor?(@user).should be_false
-      @mark.pointSum += 10
+      @reward.available_for?(@user).should be_false
+      @mark.point_sum += 10
       @mark.save
-      @reward.availableFor?(@user).should be_true
+      @reward.available_for?(@user).should be_true
     end
 
     it 'retruns false for poor user and car reward :)' do
-      @user = users(:poor)
-      @reward = rewards(:car)
-      @reward.availableFor?(@user).should be_false
+      @car.available_for?(@user).should be_false
     end
   end
 end

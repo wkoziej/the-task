@@ -15,7 +15,7 @@ class Play < ActiveRecord::Base
   def start_play
     started_at = Time.now
     game.challenges.each do |challenge|
-      player_challenges << challenge.player_challenge_instance (:challenge => challenge.id, :play => self.id) 
+      player_challenges << challenge.player_challenge_instance(:challenge => challenge.id, :play => self.id) 
     end
   end
 
