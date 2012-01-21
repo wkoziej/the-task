@@ -1,10 +1,10 @@
 class CreateRewards < ActiveRecord::Migration
   def change
     create_table :rewards do |t|
-      t.integer :priceInPoints
-      t.references :pointKind
-      t.integer :userLimit
-      t.datetime :expirationDate
+      t.integer :price_in_points
+      t.references :point_kind
+      t.integer :user_limit
+      t.datetime :expiration_date
       t.text :description
       t.references :sponsor
       t.references :creator
@@ -18,6 +18,6 @@ class CreateRewards < ActiveRecord::Migration
 
     add_index :rewards, :sponsor_id
     add_index :rewards, :creator_id
-    add_index :rewards, :pointKind_id
+    add_index :rewards, :point_kind_id
   end
 end

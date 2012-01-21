@@ -1,13 +1,11 @@
 class Challenge < ActiveRecord::Base
   belongs_to :game
-  belongs_to :pointKind
+  belongs_to :point_kind
 
 
+  attr_accessible :title, :description, :points, :latitude, :longitude, :type, :point_kind
 
-
-  attr_accessible :title, :description, :points, :latitude, :longitude, :type, :pointKind_id
-
-  validates_presence_of :pointKind, :points, :title, :description
+  validates_presence_of :point_kind, :points, :title, :description
 
 
   validates_inclusion_of :type, :in => %w( CaptureCode EnterMessage ConfirmPosition ) #, :message => "extension %s is not included in the list"
