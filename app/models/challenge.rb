@@ -1,34 +1,29 @@
+# Model wyzwania/zadania
 class Challenge < ActiveRecord::Base
   belongs_to :game
   belongs_to :point_kind
 
-
-  attr_accessible :title, :description, :points, :latitude, :longitude, :type, :point_kind
+  attr_accessible :title, :description, :points, :latitude, :longitude, :type, :point_kind_id
 
   validates_presence_of :point_kind, :points, :title, :description
 
 
   validates_inclusion_of :type, :in => %w( CaptureCode EnterMessage ConfirmPosition ) #, :message => "extension %s is not included in the list"
 
-  def challenge_types 
-    [  [I18n.t(:enter_message), "EnterMessage" ], 
-       [I18n.t(:capture_code),  "CaptureCode"] ,
-       [I18n.t(:confirm_position),  "ConfirmPosition"] 
-    ];
-  end
+  CHALLENGE_TYPES = [  [I18n.t(:enter_message), "EnterMessage" ], 
+                       [I18n.t(:capture_code),  "CaptureCode"] ,
+                       [I18n.t(:confirm_position),  "ConfirmPosition"] 
+                    ]
+  
+  CHALLENGE_CLASS_MAPPING = { "EnterMessage" => "EnteringMessage", "CaptureCode" => "CapturingCode", "ConfirmPosition" => "PositionConfirmation"}
 
   def player_challenge_instance(params)
-    case self.class.to_s
-    when "EnterMessage"
-      @playerChallenge = EnteringMessage.new(params)
-    when "CaptureCode"
-      @playerChallenge = CapturingCode.new(params)
-    when "ConfirmPosition"
-      @playerChallenge = PositionConfirmation.new(params)
-    end    
+    @playerChallenge = eval(CHALLENGE_CLASS_MAPPING[self.class.to_s] + '.new')
+    @playerChallenge.play_id = params[:play_id]
+    @playerChallenge.challenge_id = params[:challenge_id]
+    # Return instance
+    @playerChallenge
   end
-
-#  validates_inclusion_of :type, :in => Challenge.challenge_types.collect {|elem| elem[1]} #, :message => "extension %s is not included in the list"
 
   def initialize(params = nil) 
     super(params) 

@@ -5,8 +5,7 @@ module ChallengesHelper
   end
   
   def get_challenge_types
-    @c = Challenge.new
-    @options = @c.challenge_types;
+    @options = Challenge::CHALLENGE_TYPES;
     if params[:id] == nil 
       @options = [[t(:choose_challenge), "" ]].concat(@options);
     end

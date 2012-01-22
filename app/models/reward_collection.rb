@@ -1,3 +1,4 @@
+# Model of rewards collected by user
 class RewardCollection < ActiveRecord::Base
   belongs_to :winner, :class_name => "User", :foreign_key => :winner_id
   belongs_to :reward
@@ -10,7 +11,7 @@ class RewardCollection < ActiveRecord::Base
 
   state_machine :status, :initial => :choosen do
 
-    after_transition :choosen => :collected, :do => lambda { |reward_collecion| reward_collecion.collectDate = DateTime.now }
+    after_transition :choosen => :collected, :do => lambda { |reward_collecion| reward_collecion.collect_date = DateTime.now }
 
     state :choosen do
     end

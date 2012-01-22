@@ -9,7 +9,7 @@ class RewardTest < ActiveSupport::TestCase
     assert !@reward.available?
     @reward = rewards(:reward_available)
     assert @reward.winners.count == 0, "Somebady has reward" 
-    assert @reward.expirationDate - DateTime.now > 0.seconds, "Time is up " + @reward.expirationDate.to_s + " " + DateTime.now.to_datetime.to_s
+    assert @reward.expiration_date - DateTime.now > 0.seconds, "Time is up " + @reward.expiration_date.to_s + " " + DateTime.now.to_datetime.to_s
     assert @reward.available?, "Reward is available"
   end
 
@@ -17,19 +17,19 @@ class RewardTest < ActiveSupport::TestCase
     @reward = rewards(:reward_available)
     @richUser = User.find(users(:rich_without_rewards))
     assert @richUser.rewards.empty?, "User has rewards!"
-    @pointSumA = @richUser.pointSum(point_kinds(:public)) 
-    assert @pointSumA >= @reward.priceInPoints, " Rich user cant get reward ! " + @pointSumA.to_s + " " + @reward.priceInPoints.to_s
-    assert @reward.availableFor?(@richUser), "Rich user cant get reward!"
+    @point_sumA = @richUser.point_sum(point_kinds(:public)) 
+    assert @point_sumA >= @reward.price_in_points, " Rich user cant get reward ! " + @point_sumA.to_s + " " + @reward.price_in_points.to_s
+    assert @reward.available_for?(@richUser), "Rich user cant get reward!"
     assert @richUser.collect(@reward), "Cant collect reward! "  + @richUser.errors.full_messages.to_s
     assert !@richUser.rewards.empty?, "User has no rewards!"
-    @pointSumB = @richUser.pointSum(point_kinds(:public)) 
-    assert @pointSumA != @pointSumB, "Reward cost nothing! " + @pointSumA.to_s + " " + @pointSumB.to_s
+    @point_sumB = @richUser.point_sum(point_kinds(:public)) 
+    assert @point_sumA != @point_sumB, "Reward cost nothing! " + @point_sumA.to_s + " " + @point_sumB.to_s
   end
 
   test "blocking rewards for poor user" do
     @reward = rewards(:reward_available)
     @poorUser = User.find(users(:poor))
-    assert !@reward.availableFor?(@poorUser), "Poor user can get reward!"
+    assert !@reward.available_for?(@poorUser), "Poor user can get reward!"
     assert !@poorUser.collect(@reward), "Poor user too rich!"
   end
 

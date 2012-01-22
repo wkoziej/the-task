@@ -2,7 +2,7 @@
 
 captureCode:
   points: 5
-  pointKind: public
+  point_kind: public
   title: Take it
   description: Some text
   game: one
@@ -11,7 +11,7 @@ captureCode:
   
 enterMessage:
   points: 1
-  pointKind: private
+  point_kind: private
   title: Take it again
   description: Other text
   game: one 
