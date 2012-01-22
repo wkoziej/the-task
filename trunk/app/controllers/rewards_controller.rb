@@ -25,7 +25,7 @@ class RewardsController < ApplicationController
   # GET /rewards/new.json
   def new
     @reward = Reward.new
-    @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+    @point_kinds = PointKind.all.collect {|p| [p.name, p.id] }
     @users = User.all.collect {|p| [p.login, p.id] }
 
     respond_to do |format|
@@ -37,7 +37,7 @@ class RewardsController < ApplicationController
   # GET /rewards/1/edit
   def edit
     @reward = Reward.find(params[:id])
-    @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+    @point_kinds = PointKind.all.collect {|p| [p.name, p.id] }
     @users = User.all.collect {|p| [p.login, p.id] }
 
   end
@@ -52,7 +52,7 @@ class RewardsController < ApplicationController
         format.html { redirect_to @reward, :notice => 'Reward was successfully created.' }
         format.json { render :json => @reward, :status => :created, :location => @reward }
       else
-        @pointKinds = PointKind.all.collect {|p| [p.name, p.id] }
+        @point_kinds = PointKind.all.collect {|p| [p.name, p.id] }
         @users = User.all.collect {|p| [p.login, p.id] }
         format.html { render :action => "new" }
         format.json { render :json => @reward.errors, :status => :unprocessable_entity }

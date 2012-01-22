@@ -6,15 +6,15 @@ one:
   player: one 
 
 two:
-  startedAt: 2011-12-03 17:38:19
-  finishedAt: 2011-12-03 17:38:19
+  started_at: 2011-12-03 17:38:19
+  finished_at: 2011-12-03 17:38:19
   status: started
   game: two 
   player: two
 
 p1:
-  startedAt: 2011-12-03 17:38:19
-  finishedAt: 2011-12-03 17:38:19
+  started_at: 2011-12-03 17:38:19
+  finished_at: 2011-12-03 17:38:19
   status: started
   game: g1  
   player: two

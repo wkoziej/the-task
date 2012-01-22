@@ -31,16 +31,15 @@ class User < ActiveRecord::Base
 
   def update_points (point_kind, points)
     mark = Mark.find_or_create_by_user_id_and_point_kind_id(self.id, point_kind)
-    mark.pointSum = 0 if mark.pointSum == nil
-    mark.pointSum += points
+    mark.point_sum += points
     mark.save 
   end
 
 
   def collect(reward)
     mark = Mark.find_by_user_id_and_point_kind_id(self.id, reward.point_kind)
-    price_in_points =  reward.priceInPoints
-    if reward.available?  and mark != nil and mark.pointSum >= price_in_points
+    price_in_points =  reward.price_in_points
+    if reward.available?  and mark != nil and mark.point_sum >= price_in_points
       reward_collections << RewardCollection.new(:winner => self, :reward => reward)
       mark.point_sum -= price_in_points
       mark.save and save

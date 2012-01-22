@@ -13,9 +13,10 @@ class PlayerChallengeTest < ActiveSupport::TestCase
     assert playerChallenge.unfinished?, "Challenge not finished"
     assert (not playerChallenge.finish), "We finished!"
     playerChallenge.code = "123"
-    @u1 = playerChallenge.play.player.pointSum(playerChallenge.challenge.pointKind)
+    @u1 = playerChallenge.play.player.point_sum(playerChallenge.challenge.point_kind)
     assert (playerChallenge.finish), "We cant finish!"
-    @u2 = playerChallenge.play.player.pointSum(playerChallenge.challenge.pointKind)
+#    playerChallenge.save
+    @u2 = playerChallenge.play.player.point_sum(playerChallenge.challenge.point_kind)
     assert playerChallenge.finished?, "Wrong status"
     assert (@u2 > @u1), ("Points not increased " + @u1.to_s + " " + @u2.to_s)
   end
@@ -31,7 +32,7 @@ class PlayerChallengeTest < ActiveSupport::TestCase
     end
     @play.reload
     assert @play.finished?, "Play not finished"
-    assert @play.finishedAt != nil, "Finish date missing"
+    assert @play.finished_at != nil, "Finish date missing"
   end
 
 end

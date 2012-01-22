@@ -48,7 +48,7 @@ class PlayerChallengesController < ApplicationController
   def generic_update(class_name, param_name)
     @player_challenge = class_name.find(params[:id])    
     respond_to do |format|
-      if @player_challenge.update_attributes(params[param_name]) and @player_challenge.finish
+      if @player_challenge.update_attributes(params[param_name]) and @player_challenge.finish and @player_challenge.save
         format.html { redirect_to play_path(@player_challenge.play), :notice => 'Player challenge code was successfully updated.' }
         format.json { head :ok }
       else

@@ -9,8 +9,8 @@ class Reward < ActiveRecord::Base
   has_many :winners, :through => :reward_collections
   
   def available?
-    (user_limit == nil or winners.count < user_limit) and 
-      (expiration_date == nil or expiration_date > DateTime.now)
+    (user_limit.nil? || winners.count < user_limit) and 
+      (expiration_date.nil? or expiration_date > DateTime.now)
   end
 
   def available_for?(user)

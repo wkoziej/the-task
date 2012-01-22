@@ -2,8 +2,8 @@
 FactoryGirl.define do
 
   factory :user do
-    email "sample@domain.com"
-    login 'login'
+    email "sample1@domain.com"
+    login 'login1'
     password 'secret'
   end
 
@@ -15,6 +15,11 @@ FactoryGirl.define do
   factory :sponsor, :class => User, :parent => :user do
     email "sponsor@domain.com"
     login 'sponsor'
+  end
+
+  factory :winner, :class => User, :parent => :user do
+    email "winner@domain.com"
+    login 'winner'
   end
   
 end

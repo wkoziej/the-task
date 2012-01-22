@@ -1,56 +1,56 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  priceInPoints: 13
-  pointKind: public
-  userLimit: 2
-  expirationDate: 2021-12-08 07:59:43
+  price_in_points: 13
+  point_kind: public
+  user_limit: 2
+  expiration_date: 2021-12-08 07:59:43
   description: MyText
   sponsor: one
   creator: one
 
 two:
-  priceInPoints: 1
-  pointKind: private
-  userLimit: 1
-  expirationDate: 2020-12-08 07:59:43
+  price_in_points: 1
+  point_kind: private
+  user_limit: 1
+  expiration_date: 2020-12-08 07:59:43
   description: MyText
   sponsor: one
   creator: one
 
 not_available_because_of_user_limit:
-  priceInPoints: 1
-  pointKind: private
-  userLimit: 0
-  expirationDate: 
+  price_in_points: 1
+  point_kind: private
+  user_limit: 0
+  expiration_date: 
   description: MyText
   sponsor: one
   creator: one
 	
 
 not_available_because_of_date:
-  priceInPoints: 1
-  pointKind: private
-  userLimit: 0
-  expirationDate: 2010-12-08 11:11:11
+  price_in_points: 1
+  point_kind: private
+  user_limit: 0
+  expiration_date: 2010-12-08 11:11:11
   description: MyText
   sponsor: one
   creator: one
 
 reward_available:
-  priceInPoints: 1
-  pointKind: public
-  userLimit: 111
-  expirationDate: 2021-12-08 07:59:43
+  price_in_points: 1
+  point_kind: public
+  user_limit: 111
+  expiration_date: 2021-12-08 07:59:43
   description: MyText
   sponsor: one
   creator: one
 
 car:
-  priceInPoints: 9999
-  pointKind: public
-  userLimit: 1
-  expirationDate: 2021-12-08 07:59:43
+  price_in_points: 9999
+  point_kind: public
+  user_limit: 1
+  expiration_date: 2021-12-08 07:59:43
   description: The best car
   sponsor: one
   creator: one

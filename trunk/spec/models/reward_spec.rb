@@ -3,7 +3,7 @@ require File.expand_path("spec/spec_helper.rb")
 describe Reward do
   
   before(:all) do
-    @user = FactoryGirl.create(:user)
+    @winner = FactoryGirl.create(:winner)
     @point_kind = PointKind.new  
     @car = FactoryGirl.create(:car)
   end
@@ -18,7 +18,7 @@ describe Reward do
       @reward.available?.should be_true   
     end
     
-    it 'returns true if expirationDate is empty' do
+    it 'returns true if expiration_date is empty' do
       @reward.available?.should be_true
     end
 
@@ -37,20 +37,20 @@ describe Reward do
     end
   end
 
-  describe '#availableFor?' do
+  describe '#available_for?' do
     it 'returns true if Reward#available? and user has enought points to get it' do
       @reward.price_in_points = 10
       @reward.point_kind = @point_kind
-      @mark = Mark.new(:user => @user, :point_kind => @point_kind, :point_sum => 0)
-      @user.marks << @mark
-      @reward.available_for?(@user).should be_false
+      @mark = Mark.new(:user => @winner, :point_kind => @point_kind, :point_sum => 0)
+      @winner.marks << @mark
+      @reward.available_for?(@winner).should be_false
       @mark.point_sum += 10
       @mark.save
-      @reward.available_for?(@user).should be_true
+      @reward.available_for?(@winner).should be_true
     end
 
     it 'retruns false for poor user and car reward :)' do
-      @car.available_for?(@user).should be_false
+      @car.available_for?(@winner).should be_false
     end
   end
 end

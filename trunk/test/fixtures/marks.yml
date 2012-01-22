@@ -1,26 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  pointSum: 1 
-  pointKind: public
+  point_sum: 1 
+  point_kind: public
   user: one
 
 two:
-  pointSum: 2 
-  pointKind: private 
+  point_sum: 2 
+  point_kind: private 
   user: one
 
 richPublicPoints:
-  pointSum: 100000
-  pointKind: public
+  point_sum: 100000
+  point_kind: public
   user: rich
 
 richPrivatePoints:
-  pointSum: 100000
-  pointKind: private
+  point_sum: 100000
+  point_kind: private
   user: rich
 
 rich_without_rewards:
-  pointSum: 100000
-  pointKind: public
+  point_sum: 100000
+  point_kind: public
   user: rich_without_rewards

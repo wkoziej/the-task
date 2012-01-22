@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# Play model
 class Play < ActiveRecord::Base
   # Relations
   belongs_to :game
@@ -9,32 +9,20 @@ class Play < ActiveRecord::Base
     super(params) 
     if (game and player)
       start_play
+    else
+      raise ArgumentError, "game and player parameter cannot be null"
     end
   end 
 
-  def start_play
-    started_at = Time.now
-    game.challenges.each do |challenge|
-      player_challenges << challenge.player_challenge_instance(:challenge => challenge.id, :play => self.id) 
-    end
-  end
-
   def player_challenge_finished(challenge) 
-    player.update_player_points(challenge.pointKind, challenge.points) 
+    player.update_points(challenge.point_kind, challenge.points) 
     finish_if_all_challanges_finished
-  end
-
-  def finish_if_all_challanges_finished
-    unfinished_challenges_counter = PlayerChallenge.count_all_by_play_id_and_status(self.id, :unfinished)
-    if unfinished_challenges_counter == 0 
-      finish
-      save
-    end  
+    save
   end
 
   state_machine :status, :initial => :started do
     
-    after_transition [:started, :unfinished] => [:finished, :canceled], :do => lambda { |play| play.finishedAt = DateTime.now }
+    after_transition [:started, :unfinished] => [:finished, :canceled], :do => lambda { |play| play.finished_at = DateTime.now }
 
     state :finished do
     end
@@ -52,5 +40,22 @@ class Play < ActiveRecord::Base
     
   end
 
+private
+
+  def start_play
+    started_at = Time.now
+    game.challenges.each do |challenge|
+      player_challenges << challenge.player_challenge_instance(:challenge_id => challenge.id, :play_id => self.id) 
+    end
+  end
+
+  def finish_if_all_challanges_finished
+    # todo: find -> count 
+    unfinished_challenges_counter = PlayerChallenge.find_all_by_play_id_and_status(self.id, :unfinished).count
+    if unfinished_challenges_counter == 0 
+      finish
+      save
+    end  
+  end
 
 end
