@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
     t.integer  "creator_id",         :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.integer  "imgae_file_size"
+    t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20120110203722) do
     t.integer  "creator_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.integer  "imgae_file_size"
+    t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
