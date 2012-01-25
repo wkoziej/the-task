@@ -2,6 +2,7 @@
 <h1> <%= t(:games) %></h1>
 
 <table style="width:100%;">
+  <% if games.count > 0 %>
   <% games.each do |game| %>
   <tr>
     <td>
@@ -11,5 +12,7 @@
     </td>
   </tr>
   <% end %>
-
+  <% else %>
+  Brak dostępnych gier
+  <% end %>
 </table>
